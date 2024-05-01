@@ -1,12 +1,6 @@
 package pbl;
 
-public class Fisica {
-    public static double doppler(double velObsAprox, double velFonteAprox)
-    {
-        double velSom = 340;
-        return (velSom + velObsAprox)/(velSom-velFonteAprox);
-    }
-
+public class Calculo {
     public static long fatorial (int number)
     {
         long value = 1;
