@@ -1,6 +1,6 @@
 package pbl;
 
-public class funcoesFisica {
+public class metodos {
     public static double doppler(double velObsAprox, double velFonteAprox)
     {
         double velSom = 340;
