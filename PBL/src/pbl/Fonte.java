@@ -1,20 +1,26 @@
 package pbl;
 
-public class Fonte {
+public class Fonte
+{
+    // Atributos:
     private double potencia;
     private double frequencia;
 
-    public Fonte(double potencia, double frequencia){
+    // Construtor:
+    public Fonte(double potencia, double frequencia)
+    {
         this.potencia = potencia;
         this.frequencia = frequencia;
     }
 
+    // Getters:
     public double getPotencia()
     {
         return potencia;
     }
-
-    public double getFrequencia(){
+    
+    public double getFrequencia()
+    {
         return frequencia;
     }
 }
