@@ -8,7 +8,6 @@ public class Fisica
     public static double doppler(double velObsAprox, double velFonteAprox)
     {
         double velSom = 340;
-        
         return (velSom + velObsAprox) / (velSom - velFonteAprox);
     }
 
@@ -16,14 +15,12 @@ public class Fisica
     {
         double frequenciaPercebidaAntesCruzamento = frequencia * doppler(velObsAprox, velFonteAprox);
         double frequenciaPercebidaDepoisCruzamento = frequencia * doppler(-velObsAprox, -velFonteAprox);
-        
         return new double[]{frequenciaPercebidaAntesCruzamento, frequenciaPercebidaDepoisCruzamento};
     }
 
     public static List<Double> intensidadeSom(double velObsAprox, double velFonteAprox, double distanciaAntesCruzamento, double distanciaDepoisCruzamento, Fonte f)
     {
         List<Double> listaIntensidade = new ArrayList<>();
-
         double frequenciaAmostragem = 44100;
         double periodoAmostragem = 1 / frequenciaAmostragem;
         
