@@ -1,8 +1,9 @@
 package pbl;
 
-public class Observador {
-
-    public Observador(){
+public class Observador
+{
+    public Observador()
+    {
+        
     }
-
 }
