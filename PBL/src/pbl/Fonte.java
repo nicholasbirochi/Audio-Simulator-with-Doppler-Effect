@@ -9,9 +9,10 @@ public class Fonte {
         this.frequencia = frequencia;
     }
 
-    public double getPotencia()[
+    public double getPotencia()
+    {
         return potencia;
-    ]
+    }
 
     public double getFrequencia(){
         return frequencia;
