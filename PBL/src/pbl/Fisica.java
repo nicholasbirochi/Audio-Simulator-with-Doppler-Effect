@@ -1,25 +1,27 @@
 package pbl;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Fisica {
-    public static double doppler(double velObsAprox, double velFonteAprox)
-    {
+
+    public static double doppler(double velObsAprox, double velFonteAprox) {
         double velSom = 340;
-        return (velSom + velObsAprox)/(velSom-velFonteAprox);
+        return (velSom + velObsAprox) / (velSom - velFonteAprox);
     }
-    
-    double static double[] frequenciasAntesDepois(double frequencia, double velObsAprox, double velFonteAprox){
+
+    public static double[] frequenciasAntesDepois(double frequencia, double velObsAprox, double velFonteAprox) {
         double frequenciaPercebidaAntesCruzamento = frequencia * doppler(velObsAprox, velFonteAprox);
         double frequenciaPercebidaDepoisCruzamento = frequencia * doppler(-velObsAprox, -velFonteAprox);
-        return [frequenciaPercebidaAntesCruzamento, frequenciaPercebidaDepoisCruzamento];
+        return new double[]{frequenciaPercebidaAntesCruzamento, frequenciaPercebidaDepoisCruzamento};
     }
 
-    public static List<Double> intensidadeSom(double velObsAprox, double velFonteAprox, double distanciaAntesCruzamento, double distanciaDepoisCruzamento, Fonte f){
-        List<Double> listaIntensidade = new List<Double>();
+    public static List<Double> intensidadeSom(double velObsAprox, double velFonteAprox, double distanciaAntesCruzamento, double distanciaDepoisCruzamento, Fonte f) {
+        List<Double> listaIntensidade = new ArrayList<>();
 
         double frequenciaAmostragem = 44100;
-        double periodoAmostragem = 1/frequenciaAmostragem;
+        double periodoAmostragem = 1 / frequenciaAmostragem;
 
-        double tempoTotal = (distanciaAntesCruzamento+distanciaDepoisCruzamento)/(velObsAprox+velFonteAprox);
+        double tempoTotal = (distanciaAntesCruzamento + distanciaDepoisCruzamento) / (velObsAprox + velFonteAprox);
 
         double potencia = f.getPotencia();
 
@@ -28,9 +30,9 @@ public class Fisica {
 
         double t = 0;
 
-        while (t < tempoTotal){
-            distancia = Math.abs(distanciaAntesCruzamento - (velObsAprox+velFonteAprox)*t);
-            intensidade = potencia/(4*Math.PI*Math.Pow(distancia,2));
+        while (t < tempoTotal) {
+            distancia = Math.abs(distanciaAntesCruzamento - (velObsAprox + velFonteAprox) * t);
+            intensidade = potencia / (4 * Math.PI * Math.pow(distancia, 2));
 
             listaIntensidade.add(intensidade);
 
@@ -38,6 +40,5 @@ public class Fisica {
         }
 
         return listaIntensidade;
-
     }
 }
