@@ -1,6 +1,8 @@
 package pbl;
 
-public class Calculo {
+public class Calculo
+{
+    // Função para o cálculo do fatorial, para não utilizar da biblioteca:
     public static long fatorial (int number)
     {
         long value = 1;
@@ -11,26 +13,25 @@ public class Calculo {
         return value;
     }
 
+    // Função para o cálculo do seno, para não utilizar da biblioteca:
     public static double seno(double angulo)
     {
-
+        // Normalizando o ângulo para o intervalo [-2π, 2π]:
         if(Math.abs(angulo) >= Math.PI * 2)
         {
             return seno(angulo % (Math.PI * 2));
         }
-
-
-        double estimativa = 0;
-        double termo;
-
-        for (int i = 1; i < 20;)
+        double estimativa = 0; // Inicializando a estimativa do seno...
+        double termo; // Variável para armazenar o termo atual da série de Taylor...
+    
+        // Loop para calcular a série de Taylor do seno:
+        for (int i = 1; i < 20;) // Utilizando 20 termos da série...
         {
-
-            int j = i%4 == 1? 1 : -1;
-            termo = (j) * Math.pow(angulo,i) / fatorial(i);
-            estimativa += termo;
-            i += 2;
+            int j = i%4 == 1? 1 : -1; // Alternando o sinal do termo a cada dois termos...
+            termo = (j) * Math.pow(angulo,i) / fatorial(i); // Calculando o termo atual...
+            estimativa += termo; // Adicionando o termo à estimativa do seno...
+            i += 2; // Incrementando o contador por 2 para passar para o próximo termo ímpar...
         }
-        return estimativa;
+        return estimativa; // Retornando a estimativa do seno...
     }
 }
