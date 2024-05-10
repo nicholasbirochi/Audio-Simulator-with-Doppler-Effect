@@ -26,7 +26,7 @@ public class PBL
     {
         System.out.println(Calculo.seno(Math.PI/2));
 
-        System.out.println(seno(Math.PI));
+        System.out.println(Calculo.seno(Math.PI));
         
         // Defina os parâmetros para o arquivo de áudio
             int taxaAmostragem = 44100; // Frequência de amostragem (Hz)
@@ -34,7 +34,8 @@ public class PBL
             double amplitude = 0.5; // Amplitude do som (0.0 a 1.0)
 
             // Caminho do arquivo de áudio a ser salvo
-            String caminhoAudio = "Z:\\audio.wav";
+        String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
+            String caminhoAudio = caminhoDesktop +'/' + "audio.wav";
 
             // Crie o arquivo de áudio
             try
