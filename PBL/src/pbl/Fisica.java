@@ -33,7 +33,7 @@ public class Fisica
 
         while (t < tempoTotal)
         {
-            distancia = Math.abs(distanciaAntesCruzamento - (velObsAprox + velFonteAprox) * t);
+            distancia = Math.pow(Math.pow(distanciaAntesCruzamento - (velObsAprox + velFonteAprox) * t, 2) + 1, 0.5);
             intensidade = potencia / (4 * Math.PI * Math.pow(distancia, 2));
             listaIntensidade.add(intensidade);
 
