@@ -11,34 +11,55 @@ public class Fisica
         return (velSom + velObsAprox) / (velSom - velFonteAprox);
     }
 
-    public static double[] frequenciasAntesDepois(double frequencia, double velObsAprox, double velFonteAprox)
+    public static double[] frequenciasAntesDepois(Experimento exp)
     {
-        double frequenciaPercebidaAntesCruzamento = frequencia * doppler(velObsAprox, velFonteAprox);
-        double frequenciaPercebidaDepoisCruzamento = frequencia * doppler(-velObsAprox, -velFonteAprox);
+        Fonte fonte = ext.getFonte();
+        double frequencia = fonte.getFrequencia();
+        double posicaoInicialFonte = exp.getPosicaoInicialFonte();
+        double posicaoInicialObservador = 0;
+        double velocidadeFonte = getVelocidadeFonte();
+        double velocidadeObservador = getVelocidadeObservador();
+
+        double velocidadeRelativaAproximacaoObservador = posicaoInicialObservador < posicaoInicialFonte? velocidadeObservador: -velocidadeObservador;
+        double velocidadeRelativaAproximacaoFonte = posicaoInicialObservador < posicaoInicialFonte? -velocidadeFonte: velocidadeFonte;
+
+        double frequenciaPercebidaAntesCruzamento = frequencia * doppler(velocidadeRelativaAproximacaoObservador, velocidadeRelativaAproximacaoFonte);
+        double frequenciaPercebidaDepoisCruzamento = frequencia * doppler(-velocidadeRelativaAproximacaoObservador, -velocidadeRelativaAproximacaoFonte);
         return new double[]{frequenciaPercebidaAntesCruzamento, frequenciaPercebidaDepoisCruzamento};
     }
 
-    public static List<Double> intensidadeSom(double velObsAprox, double velFonteAprox, double distanciaAntesCruzamento, double distanciaDepoisCruzamento, Fonte f)
+    public static List<Double> intensidadeSom(Experimento exp)
     {
+        double posicaoInicialFonte = exp.getPosicaoInicialFonte();
+        double velocidadeFonte = exp.getVelocidadeFonte();
+        double velocidadeObservador = exp.getVelocidadeObservador();
+        double velocidadeSom = exp.getVelocidadeSom();
+        double tempoDuracao = exp.getTempoDuracao();
+        
+        Fonte fonte = exp.getFonte();
+        double potencia = fonte.getPotencia();
+        
         List<Double> listaIntensidade = new ArrayList<>();
         double frequenciaAmostragem = 44100;
         double periodoAmostragem = 1 / frequenciaAmostragem;
-        
-        double tempoTotal = (distanciaAntesCruzamento + distanciaDepoisCruzamento) / (velObsAprox + velFonteAprox);
-        double potencia = f.getPotencia();
+
         
         double distancia;
         double intensidade;
         double t = 0;
 
-        while (t < tempoTotal)
+        double velocidadeRelativaAproximacaoObservador = posicaoInicialObservador < posicaoInicialFonte? velocidadeObservador: -velocidadeObservador;
+        double velocidadeRelativaAproximacaoFonte = posicaoInicialObservador < posicaoInicialFonte? -velocidadeFonte: velocidadeFonte;
+
+        while (t < tempoDuracao)
         {
-            distancia = Math.pow(Math.pow(distanciaAntesCruzamento - (velObsAprox + velFonteAprox) * t, 2) + 1, 0.5);
+            distancia = Math.pow(Math.pow(posicaoInicialFonte - (velocidadeRelativaAproximacaoObservador + velocidadeRelativaAproximacaoFonte) * t, 2) + 1, 0.5);
             intensidade = potencia / (4 * Math.PI * Math.pow(distancia, 2));
             listaIntensidade.add(intensidade);
 
             t += periodoAmostragem;
         }
+        
         return listaIntensidade;
     }
 }
