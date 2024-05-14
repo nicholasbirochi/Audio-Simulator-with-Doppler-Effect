@@ -18,6 +18,26 @@ public class Experimento
     this.velocidadeObservador = velocidadeObservador;
     this.velocidadeSom = velocidadeSom;
   }
+
+  public double getPosicaoInicialFonte(){
+    return this.posicaoInicialFonte;
+  }
+
+  public double getPosicaoInicialObservador(){
+    return this.posicaoInicialObservador;
+  }
+
+  public double getVelocidadeFonte(){
+    return this.velocidadeFonte;
+  }
+
+  public double getVelocidadeObservador(){
+    return this.velocidadeObservador;
+  }
+  
+  public double getVelocidadeSom(){
+    return this.velocidadeSom;
+  }
   
     
 }
