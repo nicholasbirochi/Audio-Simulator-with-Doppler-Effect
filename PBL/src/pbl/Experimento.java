@@ -8,7 +8,7 @@ public class Experimento
   private double velocidadeFonte;
   private double velocidadeObservador;
   private double velocidadeSom;
-  private Fonte f;
+  private Fonte fonte;
 
   public Experimento(double posicaoInicialFonte, double velocidadeFonte, double velocidadeObservador, double velocidadeSom, Fonte f)
   {
@@ -16,7 +16,7 @@ public class Experimento
     this.velocidadeFonte = velocidadeFonte;
     this.velocidadeObservador = velocidadeObservador;
     this.velocidadeSom = velocidadeSom;
-    this.f = f;
+    this.fonte = fonte;
   }
 
   public double getPosicaoInicialFonte(){
@@ -34,6 +34,9 @@ public class Experimento
   public double getVelocidadeSom(){
     return this.velocidadeSom;
   }
-  
+
+  public Fonte getFonte(){
+    return this.fonte;
+  }
     
 }
