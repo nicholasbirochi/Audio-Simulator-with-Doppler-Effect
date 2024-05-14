@@ -8,13 +8,15 @@ public class Experimento
   private double velocidadeFonte;
   private double velocidadeObservador;
   private double velocidadeSom;
+  private Fonte f;
 
-  public Experimento(double posicaoInicialFonte, double velocidadeFonte, double velocidadeObservador, double velocidadeSom)
+  public Experimento(double posicaoInicialFonte, double velocidadeFonte, double velocidadeObservador, double velocidadeSom, Fonte f)
   {
     this.posicaoInicialFonte = posicaoInicialFonte;
     this.velocidadeFonte = velocidadeFonte;
     this.velocidadeObservador = velocidadeObservador;
     this.velocidadeSom = velocidadeSom;
+    this.f = f;
   }
 
   public double getPosicaoInicialFonte(){
