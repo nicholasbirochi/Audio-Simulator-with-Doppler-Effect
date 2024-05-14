@@ -40,9 +40,9 @@ public class PBL {
         }
     }
 
-    public static void criarArquivo(String caminhoArquivo, int taxaAmostragem, int duracaoSegundos, String nota, double amplitude)
+    public static void criarArquivo(String caminhoArquivo, int taxaAmostragem)
             throws IOException, UnsupportedAudioFileException {
-        double frequenciaHz = MAPA_FREQUENCIA_NOTAS.getOrDefault(nota, 0.0);
+        int duracaoSegundos = ;
         int numAmostras = taxaAmostragem * duracaoSegundos;
         byte[] dadosAudio = new byte[2 * numAmostras]; // 2 bytes por amostra (formato de áudio PCM de 16 bits)
         for (int i = 0; i < numAmostras; i++) {
