@@ -12,7 +12,6 @@ public class PBL {
     public static void main(String[] args) {
         Fonte f = new Fonte(5, 440);
         Experimento exp = new Experimento(10, -2, 1, 440);
-        int taxaAmostragem = 44100; // Frequência de amostragem (Hz)
         String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
         Scanner scanner = new Scanner(System.in);
 
