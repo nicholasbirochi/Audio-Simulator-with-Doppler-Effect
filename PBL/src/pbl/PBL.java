@@ -11,9 +11,28 @@ public class PBL {
 
     public static void main(String[] args) {
         Fonte f = new Fonte(5, 440);
-        Experimento exp = new Experimento(10, -2, 1, 440);
+        Experimento exp = new Experimento(10, -2, 1, 440, f);
+        double[] frequencias = Fisica.frequenciasAntesDepois(exp);
+        List<Double> intensidades = Fisica.intensidadeSom(exp);
+        
         String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
         Scanner scanner = new Scanner(System.in);
+        
+  public double getPosicaoInicialFonte(){
+    return this.posicaoInicialFonte;
+  }
+
+  public double getVelocidadeFonte(){
+    return this.velocidadeFonte;
+  }
+
+  public double getVelocidadeObservador(){
+    return this.velocidadeObservador;
+  }
+  
+  public double getVelocidadeSom(){
+    return this.velocidadeSom;
+  }
 
         try {
             String caminhoAudio = caminhoDesktop + '/' + nota + ".wav";
