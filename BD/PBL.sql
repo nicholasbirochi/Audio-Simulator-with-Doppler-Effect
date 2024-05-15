@@ -6,11 +6,10 @@ create database PBL
 go
 use PBL
 go
-	
 create table cadastro
 (
 	usuarioID int primary key identity not null,
-	nomePessoa VARCHAR(100),
+	pessoaNome VARCHAR(100),
 	email VARCHAR(100),
 	senha VARCHAR(100)
 )
@@ -20,7 +19,7 @@ create table fonte
 (
 	fonteID int primary key identity not null,
 	frequencia decimal(10,5),
-	nomeFonte VARCHAR(100)
+	fonteNome VARCHAR(100)
 )
 go
 
@@ -28,7 +27,7 @@ create table ambiente
 (
 	ambienteID int primary key identity not null,
 	velocidadeSom decimal(10,5),
-	nomeAmbiente VARCHAR(100)
+	ambienteNome VARCHAR(100)
 )
 go
 
@@ -36,7 +35,7 @@ create table timbre
 (
 	timbreID int primary key identity not null,
 	deformacao decimal(10,5),
-	nomeInstrumento VARCHAR(100)
+	instrumentoNome VARCHAR(100)
 )
 go
 
