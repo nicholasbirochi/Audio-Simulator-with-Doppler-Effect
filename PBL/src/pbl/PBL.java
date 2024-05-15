@@ -11,28 +11,12 @@ public class PBL {
 
     public static void main(String[] args) {
         Fonte f = new Fonte(5, 440);
-        Experimento exp = new Experimento(10, -2, 1, 440, f);
+        Experimento exp = new Experimento(10, -2, 1, 440, 5, 44100, f);
         double[] frequencias = Fisica.frequenciasAntesDepois(exp);
         List<Double> intensidades = Fisica.intensidadeSom(exp);
         
         String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
         Scanner scanner = new Scanner(System.in);
-        
-  public double getPosicaoInicialFonte(){
-    return this.posicaoInicialFonte;
-  }
-
-  public double getVelocidadeFonte(){
-    return this.velocidadeFonte;
-  }
-
-  public double getVelocidadeObservador(){
-    return this.velocidadeObservador;
-  }
-  
-  public double getVelocidadeSom(){
-    return this.velocidadeSom;
-  }
 
         try {
             String caminhoAudio = caminhoDesktop + '/' + nota + ".wav";
@@ -53,24 +37,31 @@ public class PBL {
                 }
             }
 
-            criarArquivo(caminhoAudio, taxaAmostragem, duracaoSegundos, nota, amplitude);
+            criarArquivo(caminhoAudio, exp);
             System.out.println("Arquivo de áudio criado com sucesso em: " + caminhoAudio);
         } catch (IOException | UnsupportedAudioFileException e) {
             System.out.println("Erro ao criar arquivo de áudio: " + e.getMessage());
         }
     }
 
-    public static void criarArquivo(String caminhoArquivo, int taxaAmostragem)
+    public static void criarArquivo(String caminhoArquivo, Experimento exp)
             throws IOException, UnsupportedAudioFileException {
-        int duracaoSegundos = ;
-        int numAmostras = taxaAmostragem * duracaoSegundos;
-        byte[] dadosAudio = new byte[2 * numAmostras]; // 2 bytes por amostra (formato de áudio PCM de 16 bits)
-        for (int i = 0; i < numAmostras; i++) {
+
+        double[] frequencias = Fisica.frequenciasAntesDepois(exp);
+        List<Double> intensidadesFrequencias = Fisica.intensidadeFrequenciaDoSom(exp);
+        Double maiorIntensidade = Calculo.acharMax(intensidadesFrequencias);
+        int taxaAmostragem = exp.getTaxaAmostragem;
+        int numAmostras = intensidades.size();
+
+        byte[] dadosAudio = new byte[2 * numAmostras];
+        int i = 0;
+        foreach (double[] inf : intensidadesFrequencias) {
             double tempo = i / (double) taxaAmostragem;
-            double valor = amplitude * Math.sin(2 * Math.PI * frequenciaHz * tempo);
+            double valor = (inf[0]/maiorIntensidade) * Calculo.seno(2 * Math.PI * inf[1] * tempo);
             short amostra = (short) (valor * Short.MAX_VALUE);
             dadosAudio[2 * i] = (byte) (amostra & 0xFF);
             dadosAudio[2 * i + 1] = (byte) ((amostra >> 8) & 0xFF);
+            i += 1;
         }
         AudioFormat formato = new AudioFormat(taxaAmostragem, 16, 1, true, false);
         AudioInputStream entradaAudio = new AudioInputStream(new java.io.ByteArrayInputStream(dadosAudio), formato, numAmostras);

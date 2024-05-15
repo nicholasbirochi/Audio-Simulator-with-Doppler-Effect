@@ -9,15 +9,17 @@ public class Experimento
   private double velocidadeObservador;
   private double velocidadeSom;
   private double tempoDuracao;
+  private int taxaAmostragem;
   private Fonte fonte;
 
-  public Experimento(double posicaoInicialFonte, double velocidadeFonte, double velocidadeObservador, double velocidadeSom, double tempoDuracao, Fonte f)
+  public Experimento(double posicaoInicialFonte, double velocidadeFonte, double velocidadeObservador, double velocidadeSom, double tempoDuracao, int taxaAmostragem, Fonte f)
   {
     this.posicaoInicialFonte = posicaoInicialFonte;
     this.velocidadeFonte = velocidadeFonte;
     this.velocidadeObservador = velocidadeObservador;
     this.velocidadeSom = velocidadeSom;
     this.tempoDuracao = tempoDuracao;
+    this.taxaAmostragem = taxaAmostragem;
     this.fonte = fonte;
   }
 
@@ -41,13 +43,12 @@ public class Experimento
     return this.tempoDuracao;
   }
 
+  public int getTaxaAmostragem(){
+    return this.taxaAmostragem;
+  }
+
   public Fonte getFonte(){
     return this.fonte;
   }
-
-  public double getTempoCruzamento(){
-  }
-  
-
     
 }

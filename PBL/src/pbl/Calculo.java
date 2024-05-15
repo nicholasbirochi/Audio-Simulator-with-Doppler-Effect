@@ -34,4 +34,19 @@ public class Calculo
         }
         return estimativa; // Retornando a estimativa do seno...
     }
+
+    
+    public static double acharMax(List<Double[]> numbers) {
+        if (numbers == null || numbers.isEmpty()) {
+            throw new IllegalArgumentException("Lista está vazia ou nula");
+        }
+
+        double max = Double.MIN_VALUE;
+        for (double num : numbers) {
+            if (num[0] > max) {
+                max = num[0];
+            }
+        }
+        return max;
+    }
 }

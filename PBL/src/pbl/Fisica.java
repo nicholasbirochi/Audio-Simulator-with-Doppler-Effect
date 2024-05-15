@@ -5,61 +5,64 @@ import java.util.ArrayList;
 public class Fisica
 {
 
-    public static double doppler(double velObsAprox, double velFonteAprox)
+    public static double doppler(double velObsAprox, double velFonteAprox, double velSom)
     {
         double velSom = 340;
         return (velSom + velObsAprox) / (velSom - velFonteAprox);
     }
 
-    public static double[] frequenciasAntesDepois(Experimento exp)
+    public static List<Double[]> intensidadeFrequenciaDoSom(Experimento exp)
     {
-        Fonte fonte = ext.getFonte();
-        double frequencia = fonte.getFrequencia();
         double posicaoInicialFonte = exp.getPosicaoInicialFonte();
         double posicaoInicialObservador = 0;
-        double velocidadeFonte = getVelocidadeFonte();
-        double velocidadeObservador = getVelocidadeObservador();
 
-        double velocidadeRelativaAproximacaoObservador = posicaoInicialObservador < posicaoInicialFonte? velocidadeObservador: -velocidadeObservador;
-        double velocidadeRelativaAproximacaoFonte = posicaoInicialObservador < posicaoInicialFonte? -velocidadeFonte: velocidadeFonte;
+        double posicaoAtualFonte = posicaoInicialFonte;
+        double posicaoAtualObservador = posicaoInicialObservador;
 
-        double frequenciaPercebidaAntesCruzamento = frequencia * doppler(velocidadeRelativaAproximacaoObservador, velocidadeRelativaAproximacaoFonte);
-        double frequenciaPercebidaDepoisCruzamento = frequencia * doppler(-velocidadeRelativaAproximacaoObservador, -velocidadeRelativaAproximacaoFonte);
-        return new double[]{frequenciaPercebidaAntesCruzamento, frequenciaPercebidaDepoisCruzamento};
-    }
-
-    public static List<Double> intensidadeSom(Experimento exp)
-    {
-        double posicaoInicialFonte = exp.getPosicaoInicialFonte();
         double velocidadeFonte = exp.getVelocidadeFonte();
         double velocidadeObservador = exp.getVelocidadeObservador();
         double velocidadeSom = exp.getVelocidadeSom();
+
         double tempoDuracao = exp.getTempoDuracao();
         
         Fonte fonte = exp.getFonte();
         double potencia = fonte.getPotencia();
+        double frequencia = fonte.getFrequencia();
         
         List<Double> listaIntensidade = new ArrayList<>();
-        double frequenciaAmostragem = 44100;
+        double frequenciaAmostragem = exp.getTaxaAmostragem;
         double periodoAmostragem = 1 / frequenciaAmostragem;
 
         
         double distancia;
         double intensidade;
+        double frequenciaPercebida;
         double t = 0;
 
-        double velocidadeRelativaAproximacaoObservador = posicaoInicialObservador < posicaoInicialFonte? velocidadeObservador: -velocidadeObservador;
-        double velocidadeRelativaAproximacaoFonte = posicaoInicialObservador < posicaoInicialFonte? -velocidadeFonte: velocidadeFonte;
+        double velocidadeRelativaAproximacaoObservador; = posicaoInicialObservador < posicaoInicialFonte? velocidadeObservador: -velocidadeObservador;
+        double velocidadeRelativaAproximacaoFonte; = posicaoInicialObservador < posicaoInicialFonte? -velocidadeFonte: velocidadeFonte;
 
         while (t < tempoDuracao)
         {
             distancia = Math.pow(Math.pow(posicaoInicialFonte - (velocidadeRelativaAproximacaoObservador + velocidadeRelativaAproximacaoFonte) * t, 2) + 1, 0.5);
             intensidade = potencia / (4 * Math.PI * Math.pow(distancia, 2));
-            listaIntensidade.add(intensidade);
+
+            if(posicaoAtualObservador < posicaoAtualFonte){
+                velocidadeRelativaAproximacaoObservador = velocidadeObservador;
+                velocidadeRelativaAproximacaoFonte = velocidadeFonte;
+            } else{
+                velocidadeRelativaAproximacaoObservador = -velocidadeObservador;
+                velocidadeRelativaAproximacaoFonte = -velocidadeFonte;
+            }
+
+            frequenciaPercebida = frequencia * doppler(velocidadeRelativaAproximacaoObservador, velocidadeRelativaAproximacaoFonte, velocidadeSom);
+            listaIntensidade.add([intensidade, frequenciaPercebida]);
 
             t += periodoAmostragem;
         }
         
         return listaIntensidade;
     }
+
+
 }
