@@ -12,7 +12,7 @@ public class Experimento
   private int taxaAmostragem;
   private Fonte fonte;
 
-  public Experimento(double posicaoInicialFonte, double velocidadeFonte, double velocidadeObservador, double velocidadeSom, double tempoDuracao, int taxaAmostragem, Fonte f)
+  public Experimento(double posicaoInicialFonte, double velocidadeFonte, double velocidadeObservador, double velocidadeSom, double tempoDuracao, int taxaAmostragem, Fonte fonte)
   {
     this.posicaoInicialFonte = posicaoInicialFonte;
     this.velocidadeFonte = velocidadeFonte;
