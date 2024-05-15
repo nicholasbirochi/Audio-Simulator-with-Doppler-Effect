@@ -6,6 +6,7 @@ create database PBL
 go
 use PBL
 go
+	
 create table cadastro
 (
 	usuarioID int primary key identity not null,
@@ -14,7 +15,7 @@ create table cadastro
 	senha VARCHAR(100)
 )
 go
-	
+
 create table fonte
 (
 	fonteID int primary key identity not null,
@@ -22,12 +23,20 @@ create table fonte
 	nomeFonte VARCHAR(100)
 )
 go
-	
-create table fonte
+
+create table ambiente
 (
 	ambienteID int primary key identity not null,
 	velocidadeSom decimal(10,5),
 	nomeAmbiente VARCHAR(100)
+)
+go
+
+create table timbre
+(
+	timbreID int primary key identity not null,
+	deformacao decimal(10,5),
+	nomeInstrumento VARCHAR(100)
 )
 go
 
@@ -39,10 +48,12 @@ create table simulacao
 	posicaoInicialObservador decimal(10,5),
 	velocidadeFonte decimal(10,5),
 	posicaoInicialFonte decimal(10,5),
+	timbreID int,
 	ambienteID int,
-	fonteID int,
+	fonteID int
 )
 go
 alter table simulacao
 add constraint fk_fonteID foreign key (fonteID) references fonte,
-    constraint fk_ambienteID foreign key (ambienteID) references ambiente
+	constraint fk_ambienteID foreign key (ambienteID) references ambiente,
+	constraint fk_timbreID foreign key (timbreID) references timbre
