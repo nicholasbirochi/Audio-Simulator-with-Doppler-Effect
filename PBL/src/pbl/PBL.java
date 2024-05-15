@@ -4,22 +4,21 @@ import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
 public class PBL {
 
     public static void main(String[] args) {
-        Fonte f = new Fonte(5, 440);
-        Experimento exp = new Experimento(10, -2, 1, 440, 5, 44100, f);
-        double[] frequencias = Fisica.frequenciasAntesDepois(exp);
-        List<Double> intensidades = Fisica.intensidadeSom(exp);
+        Fonte f = new Fonte(4, 440);
+        Experimento exp = new Experimento(25, -10, 1, 440, 5, 44100, f);
         
         String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
         Scanner scanner = new Scanner(System.in);
 
         try {
-            String caminhoAudio = caminhoDesktop + '/' + nota + ".wav";
+            String caminhoAudio = caminhoDesktop + "/audio.wav";
             File arquivoAudio = new File(caminhoAudio);
             if (arquivoAudio.exists()) {
                 System.out.println("O arquivo já existe. Escolha uma opção:");
@@ -30,7 +29,7 @@ public class PBL {
                 if (escolha == 2) {
                     int contador = 1;
                     while (arquivoAudio.exists()) {
-                        caminhoAudio = caminhoDesktop + '/' + nota + "(" + contador + ").wav";
+                        caminhoAudio = caminhoDesktop + "/audio (" + contador + ").wav";
                         arquivoAudio = new File(caminhoAudio);
                         contador++;
                     }
@@ -47,15 +46,14 @@ public class PBL {
     public static void criarArquivo(String caminhoArquivo, Experimento exp)
             throws IOException, UnsupportedAudioFileException {
 
-        double[] frequencias = Fisica.frequenciasAntesDepois(exp);
-        List<Double> intensidadesFrequencias = Fisica.intensidadeFrequenciaDoSom(exp);
+        List<Double[]> intensidadesFrequencias = Fisica.intensidadeFrequenciaDoSom(exp);
         Double maiorIntensidade = Calculo.acharMax(intensidadesFrequencias);
-        int taxaAmostragem = exp.getTaxaAmostragem;
-        int numAmostras = intensidades.size();
+        int taxaAmostragem = exp.getTaxaAmostragem();
+        int numAmostras = intensidadesFrequencias.size();
 
         byte[] dadosAudio = new byte[2 * numAmostras];
         int i = 0;
-        foreach (double[] inf : intensidadesFrequencias) {
+        for (Double[] inf : intensidadesFrequencias) {
             double tempo = i / (double) taxaAmostragem;
             double valor = (inf[0]/maiorIntensidade) * Calculo.seno(2 * Math.PI * inf[1] * tempo);
             short amostra = (short) (valor * Short.MAX_VALUE);
