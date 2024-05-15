@@ -44,7 +44,7 @@ public class Calculo
         }
 
         double max = Double.MIN_VALUE;
-        for (double[] num : numbers) {
+        for (Double[] num : numbers) {
             if (num[0] > max) {
                 max = num[0];
             }
