@@ -1,5 +1,7 @@
 package pbl;
 
+import java.util.List;
+
 public class Calculo
 {
     // Função para o cálculo do fatorial, para não utilizar da biblioteca:
@@ -42,7 +44,7 @@ public class Calculo
         }
 
         double max = Double.MIN_VALUE;
-        for (double num : numbers) {
+        for (double[] num : numbers) {
             if (num[0] > max) {
                 max = num[0];
             }
