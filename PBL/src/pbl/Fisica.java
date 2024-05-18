@@ -10,9 +10,9 @@ public class Fisica
         return (velSom + velObsAprox) / (velSom - velFonteAprox);
     }
 
-    public static List<Double[]> intensidadeFrequenciaDoSom(Experimento exp)
+    public static List<Double[]> amplitudeFrequenciaDoSom(Experimento exp)
     {
-        List<Double[]> listaIntensidadesFrequencias = new ArrayList<Double[]>();
+        List<Double[]> listaAmplitudesFrequencias = new ArrayList<Double[]>();
 
         double posicaoInicialFonte = exp.getPosicaoInicialFonte();
         double posicaoInicialObservador = 0;
@@ -27,7 +27,6 @@ public class Fisica
         double tempoDuracao = exp.getTempoDuracao();
         
         Fonte fonte = exp.getFonte();
-        double potencia = fonte.getPotencia();
         double frequencia = fonte.getFrequencia();
         
         double frequenciaAmostragem = exp.getTaxaAmostragem();
@@ -35,7 +34,7 @@ public class Fisica
 
         
         double distancia;
-        double intensidade;
+        double amplitude;
         double frequenciaPercebida;
         double t = 0;
 
@@ -45,7 +44,7 @@ public class Fisica
         while (t < tempoDuracao)
         {
             distancia = Math.pow(Math.pow(posicaoInicialFonte - (velocidadeRelativaAproximacaoObservador + velocidadeRelativaAproximacaoFonte) * t, 2) + 1, 0.5);
-            intensidade = potencia / (4 * Math.PI * Math.pow(distancia, 2));
+            amplitude = 1 / distancia;
 
             if(posicaoAtualObservador < posicaoAtualFonte){
                 velocidadeRelativaAproximacaoObservador = velocidadeObservador;
@@ -57,13 +56,13 @@ public class Fisica
 
             frequenciaPercebida = frequencia * doppler(velocidadeRelativaAproximacaoObservador, velocidadeRelativaAproximacaoFonte, velocidadeSom);
 
-            Double[] values = {intensidade, frequenciaPercebida};
-            listaIntensidadesFrequencias.add(values); 
+            Double[] values = {amplitude, frequenciaPercebida};
+            listaAmplitudesFrequencias.add(values); 
 
             t += periodoAmostragem;
         }
         
-        return listaIntensidadesFrequencias;
+        return listaAmplitudesFrequencias;
     }
 
 
