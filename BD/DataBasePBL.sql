@@ -27,7 +27,6 @@ go
 create table timbre
 (
 	timbreID int primary key identity not null,
-	deformacao decimal(10,5),
 	instrumentoNome VARCHAR(100)
 )
 go
