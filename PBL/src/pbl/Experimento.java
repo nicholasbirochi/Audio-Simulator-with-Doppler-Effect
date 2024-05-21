@@ -4,18 +4,23 @@ import java.util.ArrayList;
 
 public class Experimento
 {
+  private String nome;
+  private int id;
+  
   private double posicaoInicialFonte;
   private double velocidadeFonte;
   private double velocidadeObservador;
-  private double velocidadeSom;
   private double tempoDuracao;
   private int taxaAmostragem;
+  
   private Fonte fonte;
-  private String nome;
-  private int id;
+  private Ambiente ambiente;
+  
 
-  public Experimento(double posicaoInicialFonte, double velocidadeFonte, double velocidadeObservador, double velocidadeSom, double tempoDuracao, int taxaAmostragem, Fonte fonte)
+  public Experimento(int id, String nome, double posicaoInicialFonte, double velocidadeFonte, double velocidadeObservador, double velocidadeSom, double tempoDuracao, int taxaAmostragem, Fonte fonte)
   {
+    this.id = id;
+    this.nome = nome;
     this.posicaoInicialFonte = posicaoInicialFonte;
     this.velocidadeFonte = velocidadeFonte;
     this.velocidadeObservador = velocidadeObservador;
@@ -59,6 +64,10 @@ public class Experimento
 
   public int getId(){
     return this.id;
+  }
+
+  public Ambiente getAmbiente(){
+    return this.ambiente;
   }
     
 }
