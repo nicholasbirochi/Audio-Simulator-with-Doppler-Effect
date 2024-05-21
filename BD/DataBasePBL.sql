@@ -9,6 +9,8 @@ go
 create table fonte
 (
 	fonteID int primary key identity not null,
+	timbreID int,
+	potencia decimal(10,5),
 	frequencia decimal(10,5),
 	fonteNome VARCHAR(100)
 )
@@ -38,7 +40,6 @@ create table simulacao
 	posicaoInicialObservador decimal(10,5),
 	velocidadeFonte decimal(10,5),
 	posicaoInicialFonte decimal(10,5),
-	timbreID int,
 	ambienteID int,
 	fonteID int
 )
@@ -46,4 +47,7 @@ go
 alter table simulacao
 add constraint fk_fonteID foreign key (fonteID) references fonte,
 	constraint fk_ambienteID foreign key (ambienteID) references ambiente,
-	constraint fk_timbreID foreign key (timbreID) references timbre
+
+go
+alter table fonte
+add constraint fk_timbreID foreign key (timbreID) references timbre
