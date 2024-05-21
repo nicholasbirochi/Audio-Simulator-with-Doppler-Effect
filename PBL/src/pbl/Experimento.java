@@ -11,6 +11,8 @@ public class Experimento
   private double tempoDuracao;
   private int taxaAmostragem;
   private Fonte fonte;
+  private String nome;
+  private int id;
 
   public Experimento(double posicaoInicialFonte, double velocidadeFonte, double velocidadeObservador, double velocidadeSom, double tempoDuracao, int taxaAmostragem, Fonte fonte)
   {
@@ -49,6 +51,14 @@ public class Experimento
 
   public Fonte getFonte(){
     return this.fonte;
+  }
+
+  public String getNome(){
+    return this.nome;
+  }
+
+  public int getId(){
+    return this.id;
   }
     
 }
