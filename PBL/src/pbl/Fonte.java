@@ -6,6 +6,8 @@ public class Fonte
     private double potencia;
     private double frequencia;
     private TimbreInterface timbre;
+    private String nome;
+    private int id;
 
     // Construtor:
     public Fonte(double potencia, double frequencia, TimbreInterface timbre)
@@ -28,5 +30,13 @@ public class Fonte
     
     public TimbreInterface getTimbre(){
         return timbre;
+    }
+
+    public String getNome(){
+        return this.nome;
+    }
+    
+    public int getId(){
+        return this.id;
     }
 }
