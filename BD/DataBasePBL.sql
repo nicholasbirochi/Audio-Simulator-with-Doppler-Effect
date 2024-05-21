@@ -39,6 +39,8 @@ create table simulacao
 	posicaoInicialObservador decimal(10,5),
 	velocidadeFonte decimal(10,5),
 	posicaoInicialFonte decimal(10,5),
+	tempoDuracao int,
+	taxaAmostragem VARCHAR(50),
 	ambienteID int,
 	fonteID int
 )
