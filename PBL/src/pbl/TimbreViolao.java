@@ -1,6 +1,6 @@
 package pbl;
 
-public class TimbreViolao implements TimbreInterface {
+public class TimbreViolao implements Timbre {
     @Override
     public double onda(double angulo){
 

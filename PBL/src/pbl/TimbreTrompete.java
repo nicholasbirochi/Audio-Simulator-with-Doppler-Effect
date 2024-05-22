@@ -1,7 +1,7 @@
 
 package pbl;
 
-public class TimbreTrompete implements TimbreInterface {
+public class TimbreTrompete implements Timbre {
     @Override
     public double onda(double angulo){
         double amostra = 0;

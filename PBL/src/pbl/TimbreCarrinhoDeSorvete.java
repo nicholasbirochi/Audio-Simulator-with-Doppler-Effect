@@ -1,7 +1,7 @@
 
 package pbl;
 
-public class TimbreCarrinhoDeSorvete implements TimbreInterface{
+public class TimbreCarrinhoDeSorvete implements Timbre{
     @Override
     public double onda(double angulo){
         double amostra = 0;

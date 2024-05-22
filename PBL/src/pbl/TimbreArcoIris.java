@@ -1,7 +1,7 @@
 
 package pbl;
 
-public class TimbreArcoIris implements TimbreInterface{
+public class TimbreArcoIris implements Timbre{
     @Override
     public double onda(double angulo){
         double amostra = 0;
