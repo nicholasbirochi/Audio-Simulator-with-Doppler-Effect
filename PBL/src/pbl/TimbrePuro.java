@@ -2,7 +2,7 @@
 package pbl;
 
 
-public class TimbrePuro implements TimbreInterface {
+public class TimbrePuro implements Timbre {
     @Override
     public double onda(double angulo){
         

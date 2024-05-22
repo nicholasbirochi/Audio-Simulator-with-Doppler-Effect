@@ -1,6 +1,6 @@
 package pbl;
 
-public class TimbreAlienigena implements TimbreInterface {
+public class TimbreAlienigena implements Timbre {
     @Override
     public double onda(double angulo){
         double amostra = 0;

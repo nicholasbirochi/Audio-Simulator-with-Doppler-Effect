@@ -12,9 +12,10 @@ import java.util.Scanner;
 public class PBL {
 
     public static void main(String[] args) {
-        TimbreInterface instrumento = new TimbreArcoIris();
-        Fonte f = new Fonte(4, 440, instrumento);
-        Experimento exp = new Experimento(25, -10, 1, 440, 5, 44100, f);
+        Ambiente ambiente = new Ambiente(1, "ar", 330);
+        Timbre timbre = new TimbrePuro();
+        Fonte fonte = new Fonte(4, 440, timbre);
+        Experimento exp = new Experimento(1, "Experimento de teste", 25, -10, 1, 5, 44100, ambiente, fonte);
         
         String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
         Scanner scanner = new Scanner(System.in);
@@ -53,7 +54,7 @@ public class PBL {
         List<Double[]> amplitudesFrequencias = Fisica.amplitudeFrequenciaDoSom(exp);   
         int taxaAmostragem = exp.getTaxaAmostragem();
         int numAmostras = amplitudesFrequencias.size();
-        TimbreInterface timbre = exp.getFonte().getTimbre();
+        Timbre timbre = exp.getFonte().getTimbre();
 
         byte[] dadosAudio = new byte[2 * numAmostras];
         int i = 0;

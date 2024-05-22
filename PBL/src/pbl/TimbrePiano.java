@@ -1,6 +1,6 @@
 package pbl;
 
-public class TimbrePiano implements TimbreInterface {
+public class TimbrePiano implements Timbre {
     @Override
     public double onda(double angulo){
         if(Math.abs(angulo) >= Math.PI * 2*440)
