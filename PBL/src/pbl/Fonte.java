@@ -5,12 +5,12 @@ public class Fonte
     // Atributos:
     private double potencia;
     private double frequencia;
-    private TimbreInterface timbre;
+    private Timbre timbre;
     private String nome;
     private int id;
 
     // Construtor:
-    public Fonte(double potencia, double frequencia, TimbreInterface timbre)
+    public Fonte(double potencia, double frequencia, Timbre timbre)
     {
         this.potencia = potencia;
         this.frequencia = frequencia;
@@ -28,7 +28,7 @@ public class Fonte
         return frequencia;
     }
     
-    public TimbreInterface getTimbre(){
+    public Timbre getTimbre(){
         return timbre;
     }
 

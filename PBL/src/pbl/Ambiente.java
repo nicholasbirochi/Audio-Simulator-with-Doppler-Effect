@@ -8,7 +8,7 @@ public class Ambiente
   private String nome;
   private int id;
 
-  public Experimento(int id, String nome, double velocidadeSom)
+  public Ambiente(int id, String nome, double velocidadeSom)
   {
     this.velocidadeSom = velocidadeSom;
     this.nome = nome;

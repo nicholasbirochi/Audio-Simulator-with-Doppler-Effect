@@ -22,7 +22,7 @@ public class Fisica
 
         double velocidadeFonte = exp.getVelocidadeFonte();
         double velocidadeObservador = exp.getVelocidadeObservador();
-        double velocidadeSom = exp.getVelocidadeSom();
+        double velocidadeSom = exp.getAmbiente().getVelocidadeSom();
 
         double tempoDuracao = exp.getTempoDuracao();
         
