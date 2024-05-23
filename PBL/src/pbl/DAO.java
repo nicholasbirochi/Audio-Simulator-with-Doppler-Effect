@@ -78,6 +78,20 @@ public class DAO {
              return null;
         }
     }
+    public List<String> buscarNomesDeAmbientes()throws SQLException, ClassNotFoundException, NoSuchMethodException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+        String sql = "SELECT ambienteNome FROM ambiente";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            ResultSet resultSet = statement.executeQuery();
+
+            List<String> nomesAmbiente = new ArrayList<String>();
+            while(resultSet.next()){
+                nomesAmbiente.add(resultSet.getString("ambienteNome"));
+            }
+            return nomesAmbiente;    
+        }catch (Exception e){
+            return null;
+        }
+    }
     /*
     public void inserir(Produto produto) throws SQLException {
         String sql = "INSERT INTO produto (nome, preco) VALUES (?, ?)";
