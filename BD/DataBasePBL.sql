@@ -12,7 +12,7 @@ create table fonte
 	timbreID int,
 	potencia decimal(10,5),
 	frequencia decimal(10,5),
-	fonteNome VARCHAR(100)
+	fonteNome VARCHAR(100) unique
 )
 go
 
@@ -20,21 +20,21 @@ create table ambiente
 (
 	ambienteID int primary key identity not null,
 	velocidadeSom decimal(10,5),
-	ambienteNome VARCHAR(100)
+	ambienteNome VARCHAR(100) unique
 )
 go
 
 create table timbre
 (
 	timbreID int primary key identity not null,
-	instrumentoNome VARCHAR(100)
+	instrumentoNome VARCHAR(100) unique
 )
 go
 
 create table simulacao
 (
 	experimentoID int primary key identity not null,
-	experimentoNome VARCHAR(100),
+	experimentoNome VARCHAR(100) unique,
 	velocidadeObservador decimal(10,5),
 	posicaoInicialObservador decimal(10,5),
 	velocidadeFonte decimal(10,5),
