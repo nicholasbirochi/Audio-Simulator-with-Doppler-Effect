@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pbl.controller.Controlador">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" text="TESTE" textAlignment="CENTER">
+      <font>
+         <Font name="Fieldwork-GeoThin" size="16.0" />
+      </font>
+   </Label>
+
+   <GridPane alignment="CENTER" hgap="20" vgap="20">
+      <children>
+         <VBox alignment="CENTER" spacing="10">
+            <children>
+               <StackPane>
+                  <children>
+                     <StackPane maxWidth="-Infinity" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #fff; -fx-background-radius: 8px; -fx-padding: 10px;">
+                        <children>
+                           <ImageView fx:id="imageTimbreAbelhaEletrica12" fitHeight="36.0" fitWidth="36.0">
+                              <image>
+                                 <Image url="@imgs/abelha.png" />
+                              </image>
+                           </ImageView>
+                        </children>
+                     </StackPane>
+                  </children>
+               </StackPane>
+               <Label text="Abelha Elétrica">
+                  <font>
+                     <Font name="Fieldwork-Geo-Hair" size="13.0" />
+                  </font>
+               </Label>
+               <Button onAction="#onTimbreAbelhaEletricaClick" style="-fx-background-color: #FFCE39;" text="Escolher" textAlignment="CENTER" textFill="WHITE">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1">
+            <children>
+               <StackPane>
+                  <children>
+                     <StackPane maxWidth="-Infinity" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #fff; -fx-background-radius: 8px; -fx-padding: 10px;">
+                        <children>
+                           <ImageView fx:id="imageTimbreAbelhaEletrica121" fitHeight="36.0" fitWidth="36.0">
+                              <image>
+                                 <Image url="@../../../../resources/com/pbl/view/imgs/ufo.png" />
+                              </image>
+                           </ImageView>
+                        </children>
+                     </StackPane>
+                  </children>
+               </StackPane>
+               <Label text="Alienígena">
+                  <font>
+                     <Font name="Fieldwork-Geo-Hair" size="13.0" />
+                  </font>
+               </Label>
+               <Button onAction="#onTimbreAbelhaEletricaClick" style="-fx-background-color: #5adbb5;" text="Escolher" textAlignment="CENTER" textFill="WHITE">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="2">
+            <children>
+               <StackPane>
+                  <children>
+                     <StackPane maxWidth="-Infinity" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #fff; -fx-background-radius: 8px; -fx-padding: 10px;">
+                        <children>
+                           <ImageView fx:id="imageTimbreAbelhaEletrica1211" fitHeight="36.0" fitWidth="36.0">
+                              <image>
+                                 <Image url="@../../../../resources/com/pbl/view/imgs/rainbow.png" />
+                              </image>
+                           </ImageView>
+                        </children>
+                     </StackPane>
+                  </children>
+               </StackPane>
+               <Label text="Arco-Íris">
+                  <font>
+                     <Font name="Fieldwork-Geo-Hair" size="13.0" />
+                  </font>
+               </Label>
+               <Button onAction="#onTimbreAbelhaEletricaClick" style="-fx-background-color: #d945d1;" text="Escolher" textAlignment="CENTER" textFill="WHITE">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="3">
+            <children>
+               <StackPane>
+                  <children>
+                     <StackPane maxWidth="-Infinity" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #fff; -fx-background-radius: 8px; -fx-padding: 10px;">
+                        <children>
+                           <ImageView fx:id="imageTimbreAbelhaEletrica1212" fitHeight="36.0" fitWidth="36.0">
+                              <image>
+                                 <Image url="@imgs/ice-cream.png" />
+                              </image>
+                           </ImageView>
+                        </children>
+                     </StackPane>
+                  </children>
+               </StackPane>
+               <Label text="Carrinho de&#10;Sorvete" textAlignment="CENTER">
+                  <font>
+                     <Font name="Fieldwork-Geo-Hair" size="13.0" />
+                  </font>
+               </Label>
+               <Button onAction="#onTimbreAbelhaEletricaClick" style="-fx-background-color: #ffeecc;" text="Escolher" textAlignment="CENTER" textFill="#4a4747">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" spacing="10" GridPane.rowIndex="2">
+            <children>
+               <StackPane>
+                  <children>
+                     <StackPane maxWidth="-Infinity" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #fff; -fx-background-radius: 8px; -fx-padding: 10px;">
+                        <children>
+                           <ImageView fx:id="imageTimbreAbelhaEletrica12121" fitHeight="36.0" fitWidth="36.0">
+                              <image>
+                                 <Image url="@../../../../resources/com/pbl/view/imgs/piano.png" />
+                              </image>
+                           </ImageView>
+                        </children>
+                     </StackPane>
+                  </children>
+               </StackPane>
+               <Label text="Piano">
+                  <font>
+                     <Font name="Fieldwork-Geo-Hair" size="13.0" />
+                  </font>
+               </Label>
+               <Button onAction="#onTimbreAbelhaEletricaClick" style="-fx-background-color: #242424;" text="Escolher" textAlignment="CENTER" textFill="WHITE">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <children>
+               <StackPane>
+                  <children>
+                     <StackPane maxWidth="-Infinity" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #fff; -fx-background-radius: 8px; -fx-padding: 10px;">
+                        <children>
+                           <ImageView fx:id="imageTimbreAbelhaEletrica12122" fitHeight="36.0" fitWidth="36.0">
+                              <image>
+                                 <Image url="@imgs/magic.png" />
+                              </image>
+                           </ImageView>
+                        </children>
+                     </StackPane>
+                  </children>
+               </StackPane>
+               <Label text="Timbre Puro">
+                  <font>
+                     <Font name="Fieldwork-Geo-Hair" size="13.0" />
+                  </font>
+               </Label>
+               <Button onAction="#onTimbreAbelhaEletricaClick" style="-fx-background-color: #844cfc;" text="Escolher" textAlignment="CENTER" textFill="WHITE">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <children>
+               <StackPane>
+                  <children>
+                     <StackPane maxWidth="-Infinity" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #fff; -fx-background-radius: 8px; -fx-padding: 10px;">
+                        <children>
+                           <ImageView fx:id="imageTimbreAbelhaEletrica12123" fitHeight="36.0" fitWidth="36.0">
+                              <image>
+                                 <Image url="@../../../../resources/com/pbl/view/imgs/play.png" />
+                              </image>
+                           </ImageView>
+                        </children>
+                     </StackPane>
+                  </children>
+               </StackPane>
+               <Label text="Trompete">
+                  <font>
+                     <Font name="Fieldwork-Geo-Hair" size="13.0" />
+                  </font>
+               </Label>
+               <Button onAction="#onTimbreAbelhaEletricaClick" style="-fx-background-color: #FFCE39;" text="Escolher" textAlignment="CENTER" textFill="WHITE">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+            </children>
+         </VBox>
+         <VBox alignment="CENTER" spacing="10" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <children>
+               <StackPane>
+                  <children>
+                     <StackPane maxWidth="-Infinity" prefHeight="48.0" prefWidth="48.0" style="-fx-background-color: #fff; -fx-background-radius: 8px; -fx-padding: 10px;">
+                        <children>
+                           <ImageView fx:id="imageTimbreAbelhaEletrica12124" fitHeight="36.0" fitWidth="36.0">
+                              <image>
+                                 <Image url="@../../../../resources/com/pbl/view/imgs/guitar.png" />
+                              </image>
+                           </ImageView>
+                        </children>
+                     </StackPane>
+                  </children>
+               </StackPane>
+               <Label text="Violão">
+                  <font>
+                     <Font name="Fieldwork-Geo-Hair" size="13.0" />
+                  </font>
+               </Label>
+               <Button onAction="#onTimbreAbelhaEletricaClick" style="-fx-background-color: #d99445#d99445;" text="Escolher" textAlignment="CENTER" textFill="WHITE">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor>
+               </Button>
+            </children>
+         </VBox>
+
+         <!-- Adicionar mais VBox para os outros timbres -->
+
+      </children>
+      <columnConstraints>
+         <ColumnConstraints />
+         <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+         <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+      </rowConstraints>
+   </GridPane>
+</VBox>
