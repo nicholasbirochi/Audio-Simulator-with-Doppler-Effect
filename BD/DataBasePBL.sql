@@ -49,21 +49,21 @@ create table simulacao
 go
 alter table simulacao
 add constraint fk_fonteID foreign key (fonteID) references fonte,
-	constraint fk_ambienteID foreign key (ambienteID) references ambiente,
+	constraint fk_ambienteID foreign key (ambienteID) references ambiente
 
 go
 alter table fonte
 add constraint fk_timbreID foreign key (timbreID) references timbre
 
 -- Valores inseridos pelo desenvolvedor:
-INSERT INTO timbre values (NULL,TimbreAbelhaEletrica),
-			  (NULL, TimbreAlienigena),
-			  (NULL, TimbreArcoIris),
-			  (NULL, TimbreCarrinhoDeSorvete),
-			  (NULL, TimbrePiano),
-			  (NULL, TimbrePuro),
-			  (NULL, TimbreTrompete),
-			  (NULL, TimbreViolao)
+INSERT INTO timbre values ('TimbreAbelhaEletrica'),
+			  ('TimbreAlienigena'),
+  			  ('TimbreArcoIris'),
+			  ('TimbreCarrinhoDeSorvete'),
+			  ('TimbrePiano'),
+			  ('TimbrePuro'),
+			  ('TimbreTrompete'),
+			  ('TimbreViolao')
 
-INSERT INTO ambiente values (NULL, 330, 'Ar'),
-			    (NULL, 343, 'Água')
+INSERT INTO ambiente values (330, 'Ar'),
+			    (343, 'Água')
