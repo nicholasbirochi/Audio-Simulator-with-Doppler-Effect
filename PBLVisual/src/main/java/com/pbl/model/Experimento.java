@@ -8,7 +8,7 @@ public class Experimento
   private int id;
   
   private double posicaoInicialFonte;
-  private double = distanciaLateral;
+  private double distanciaLateral;
   private double velocidadeFonte;
   private double velocidadeObservador;
   private double tempoDuracao;
