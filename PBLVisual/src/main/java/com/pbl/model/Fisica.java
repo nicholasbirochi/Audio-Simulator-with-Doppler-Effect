@@ -15,7 +15,7 @@ public class Fisica
         List<Double[]> listaAmplitudesFrequencias = new ArrayList<Double[]>();
 
         double posicaoInicialFonte = exp.getPosicaoInicialFonte();
-        double distanciaLateral = exp.getPosicaoLateral();
+        double distanciaLateral = exp.getDistanciaLateral();
         double posicaoInicialObservador = 0;
 
         double posicaoAtualFonte = posicaoInicialFonte;
