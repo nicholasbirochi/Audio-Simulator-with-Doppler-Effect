@@ -15,11 +15,11 @@ public class Fisica
         List<Double[]> listaAmplitudesFrequencias = new ArrayList<Double[]>();
 
         double posicaoInicialFonte = exp.getPosicaoInicialFonte();
+        double distanciaLateral = exp.getPosicaoLateral();
         double posicaoInicialObservador = 0;
 
         double posicaoAtualFonte = posicaoInicialFonte;
         double posicaoAtualObservador = posicaoInicialObservador;
-        double distanciaLateral = exp.getPosicaoLateral;
 
         double velocidadeFonte = exp.getVelocidadeFonte();
         double velocidadeObservador = exp.getVelocidadeObservador();
@@ -44,7 +44,7 @@ public class Fisica
 
         while (t < tempoDuracao)
         {
-            distancia = Math.pow(Math.pow(posicaoInicialFonte - (velocidadeRelativaAproximacaoObservador + velocidadeRelativaAproximacaoFonte) * t, 2) + 1, 0.5);
+            distancia = Math.pow(Math.pow(posicaoInicialFonte - (velocidadeRelativaAproximacaoObservador + velocidadeRelativaAproximacaoFonte) * t, 2) + Math.pow(distanciaLateral), 0.5);
             amplitude = 1 / distancia;
 
             if(posicaoAtualObservador < posicaoAtualFonte){
