@@ -19,6 +19,7 @@ public class Fisica
 
         double posicaoAtualFonte = posicaoInicialFonte;
         double posicaoAtualObservador = posicaoInicialObservador;
+        double distanciaLateral = exp.getPosicaoLateral;
 
         double velocidadeFonte = exp.getVelocidadeFonte();
         double velocidadeObservador = exp.getVelocidadeObservador();
