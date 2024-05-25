@@ -10,8 +10,14 @@ import javafx.scene.control.Slider;
 import javafx.scene.image.ImageView;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
+import java.sql.Connection;
+
+import com.pbl.model.ConexaoBD;
 
 public class Controlador {
+    ConexaoBD conx = new ConexaoBD();
+    Connection connection = conx.getConexao();
+
     @FXML
     private Label welcomeText;
 
@@ -49,7 +55,7 @@ public class Controlador {
             Timbre timbre = new TimbreAbelhaEletrica();
             Fonte fonte = new Fonte(4, 440, timbre);
             // Use a variável duracaoAudio para definir a duração do experimento
-            Experimento exp = new Experimento(1, "Experimento de teste",25, -10, 0, duracaoAudio, 44100, ambiente, fonte);
+            Experimento exp = new Experimento(1, "Experimento de teste",25,1, -10, 0, duracaoAudio, 44100, ambiente, fonte);
             String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
             PBL.criarArquivo(caminhoDesktop + "/Audio.wav", exp);
             System.out.println("Arquivo gerado com sucesso!");
