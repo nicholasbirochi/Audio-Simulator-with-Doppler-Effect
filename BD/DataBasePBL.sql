@@ -36,6 +36,7 @@ create table simulacao
 	experimentoID int primary key identity not null,
 	experimentoNome VARCHAR(100) unique,
 	velocidadeObservador decimal(10,5),
+	posicaoLateral decimal(10,5),
 	posicaoInicialObservador decimal(10,5),
 	velocidadeFonte decimal(10,5),
 	posicaoInicialFonte decimal(10,5),
