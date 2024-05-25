@@ -8,6 +8,7 @@ public class Experimento
   private int id;
   
   private double posicaoInicialFonte;
+  private double = distanciaLateral;
   private double velocidadeFonte;
   private double velocidadeObservador;
   private double tempoDuracao;
@@ -17,11 +18,12 @@ public class Experimento
   private Ambiente ambiente;
   
 
-  public Experimento(int id, String nome, double posicaoInicialFonte, double velocidadeFonte, double velocidadeObservador, double tempoDuracao, int taxaAmostragem, Ambiente ambiente, Fonte fonte)
+  public Experimento(int id, String nome, double posicaoInicialFonte, double distanciaLateral double velocidadeFonte, double velocidadeObservador, double tempoDuracao, int taxaAmostragem, Ambiente ambiente, Fonte fonte)
   {
     this.id = id;
     this.nome = nome;
     this.posicaoInicialFonte = posicaoInicialFonte;
+    this.distanciaLateral = distanciaLateral;
     this.velocidadeFonte = velocidadeFonte;
     this.velocidadeObservador = velocidadeObservador;
     this.ambiente = ambiente;
@@ -32,6 +34,10 @@ public class Experimento
 
   public double getPosicaoInicialFonte(){
     return this.posicaoInicialFonte;
+  }
+
+  public double getDistanciaLateral(){
+    return this.distanciaLateral;
   }
 
   public double getVelocidadeFonte(){
