@@ -18,7 +18,7 @@ public class Experimento
   private Ambiente ambiente;
   
 
-  public Experimento(int id, String nome, double posicaoInicialFonte, double distanciaLateral double velocidadeFonte, double velocidadeObservador, double tempoDuracao, int taxaAmostragem, Ambiente ambiente, Fonte fonte)
+  public Experimento(int id, String nome, double posicaoInicialFonte, double distanciaLateral, double velocidadeFonte, double velocidadeObservador, double tempoDuracao, int taxaAmostragem, Ambiente ambiente, Fonte fonte)
   {
     this.id = id;
     this.nome = nome;
