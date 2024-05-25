@@ -44,7 +44,7 @@ public class Fisica
 
         while (t < tempoDuracao)
         {
-            distancia = Math.pow(Math.pow(posicaoInicialFonte - (velocidadeRelativaAproximacaoObservador + velocidadeRelativaAproximacaoFonte) * t, 2) + Math.pow(distanciaLateral), 0.5);
+            distancia = Math.pow(Math.pow(posicaoInicialFonte - (velocidadeRelativaAproximacaoObservador + velocidadeRelativaAproximacaoFonte) * t, 2) + Math.pow(distanciaLateral, 2), 0.5);
             amplitude = 1 / distancia;
 
             if(posicaoAtualObservador < posicaoAtualFonte){
