@@ -225,7 +225,7 @@
       <top>
          <AnchorPane BorderPane.alignment="CENTER">
             <children>
-               <HBox prefHeight="40.0" prefWidth="1220.0" style="-fx-background-color: #0d0d0d; -fx-background-radius: 0 0 8px 0;">
+               <HBox fx:id="topBar" prefHeight="40.0" prefWidth="1220.0" style="-fx-background-color: #0d0d0d; -fx-background-radius: 0 0 8px 0;">
                   <children>
                      <Label alignment="CENTER" contentDisplay="CENTER" minWidth="-Infinity" prefHeight="24.0" prefWidth="1215.0" text="Efeito Doppler - Projeto PBL" textAlignment="CENTER" textFill="WHITE">
                         <font>
