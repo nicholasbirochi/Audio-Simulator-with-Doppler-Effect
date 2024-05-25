@@ -9,13 +9,6 @@ BEGIN
 	from ambiente
 END
 
-go
-
-create procedure sp_timbreTodosNomes as
-BEGIN
-	select instrumentoNome
-	from timbre
-END
 
 go
 
