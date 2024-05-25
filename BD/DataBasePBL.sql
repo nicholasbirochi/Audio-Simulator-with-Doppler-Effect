@@ -9,61 +9,44 @@ use PBL
 go
 create table fonte
 (
-	fonteID int primary key identity not null,
-	timbreID int,
-	potencia decimal(10,5),
-	frequencia decimal(10,5),
-	fonteNome VARCHAR(100) unique
+	fonteNome VARCHAR(50) primary key,
+	timbreNome VARCHAR(50) not null,
+	potencia decimal(10,5) not null,
+	frequencia decimal(10,5) not null
 )
 go
 
 create table ambiente
 (
-	ambienteID int primary key identity not null,
-	velocidadeSom decimal(10,5),
-	ambienteNome VARCHAR(100) unique
+	ambienteNome VARCHAR(50) primary key,
+	velocidadeSom decimal(10,5) not null
 )
 go
 
 create table timbre
 (
-	timbreID int primary key identity not null,
-	instrumentoNome VARCHAR(100) unique
+	instrumentoNome VARCHAR(50) primary key
 )
 go
 
-create table simulacao
+create table experimento
 (
-	experimentoID int primary key identity not null,
-	experimentoNome VARCHAR(100) unique,
-	velocidadeObservador decimal(10,5),
-	posicaoLateral decimal(10,5),
-	posicaoInicialObservador decimal(10,5),
-	velocidadeFonte decimal(10,5),
-	posicaoInicialFonte decimal(10,5),
-	tempoDuracao int,
-	taxaAmostragem VARCHAR(50),
-	ambienteID int,
-	fonteID int
+	experimentoNome VARCHAR(50) primary key,
+	velocidadeObservador decimal(10,5) not null,
+	posicaoLateral decimal(10,5) not null,
+	posicaoInicialObservador decimal(10,5) not null,
+	velocidadeFonte decimal(10,5) not null,
+	posicaoInicialFonte decimal(10,5) not null,
+	tempoDuracao int not null,
+	taxaAmostragem VARCHAR(50) not null,
+	ambienteNome VARCHAR(50) not null,
+	fonteNome VARCHAR(50) not null
 )
 go
-alter table simulacao
-add constraint fk_fonteID foreign key (fonteID) references fonte,
-	constraint fk_ambienteID foreign key (ambienteID) references ambiente
+alter table experimento
+add constraint fk_fonteNome foreign key (fonteNome) references fonte,
+	constraint fk_ambienteNome foreign key (ambienteNome) references ambiente
 
 go
 alter table fonte
-add constraint fk_timbreID foreign key (timbreID) references timbre
-
--- Valores inseridos pelo desenvolvedor:
-INSERT INTO timbre values ('TimbreAbelhaEletrica'),
-			  ('TimbreAlienigena'),
-  			  ('TimbreArcoIris'),
-			  ('TimbreCarrinhoDeSorvete'),
-			  ('TimbrePiano'),
-			  ('TimbrePuro'),
-			  ('TimbreTrompete'),
-			  ('TimbreViolao')
-
-INSERT INTO ambiente values (330, 'Ar'),
-			    (343, 'Água')
+add constraint fk_timbreNome foreign key (timbreNome) references timbre
