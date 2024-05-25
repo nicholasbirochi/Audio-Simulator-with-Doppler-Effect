@@ -16,7 +16,7 @@ public class Aplicacao extends Application {
         System.out.println("FXML file found at: " + fxmlLocation);
 
         FXMLLoader fxmlLoader = new FXMLLoader(fxmlLocation);
-        Scene scene = new Scene(fxmlLoader.load(), 600, 800);
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("Efeito Doppler");
         stage.setScene(scene);
         stage.show();
