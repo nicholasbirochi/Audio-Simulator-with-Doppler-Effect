@@ -11,7 +11,6 @@ import javafx.scene.image.ImageView;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.sql.Connection;
-
 import com.pbl.model.ConexaoBD;
 
 public class Controlador {
