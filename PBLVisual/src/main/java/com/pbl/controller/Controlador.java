@@ -10,18 +10,32 @@ import javafx.scene.layout.HBox;
 
 
 public class Controlador {
-//    ConexaoBD conx = new ConexaoBD();
-//    Connection connection = conx.getConexao();
+    //    ConexaoBD conx = new ConexaoBD();
+    //    Connection connection = conx.getConexao();
 
     @FXML
-    private Button buttonClose;
+    private HBox topBar;
+
+    private double xOffset = 0;
+    private double yOffset = 0;
+
+    @FXML
+    public void initialize() {
+        topBar.setOnMousePressed(event -> {
+            xOffset = event.getSceneX();
+            yOffset = event.getSceneY();
+        });
+
+        topBar.setOnMouseDragged(event -> {
+            Stage stage = (Stage) topBar.getScene().getWindow();
+            stage.setX(event.getScreenX() - xOffset);
+            stage.setY(event.getScreenY() - yOffset);
+        });
+    }
 
     @FXML
     private void handleCloseButtonAction() {
-        // Obtém a janela atual através do botão
-        Stage stage = (Stage) buttonClose.getScene().getWindow();
-        // Fecha a janela
+        Stage stage = (Stage) topBar.getScene().getWindow();
         stage.close();
     }
-
 }
