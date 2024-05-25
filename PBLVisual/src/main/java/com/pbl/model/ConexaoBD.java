@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexaoPBL {
+public class ConexaoBD {
     public Connection getConexao() {
         //throws ClassNotFoundException, SQLException
         Connection conexao = null;
