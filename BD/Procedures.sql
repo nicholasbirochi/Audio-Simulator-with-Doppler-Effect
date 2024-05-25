@@ -1,51 +1,132 @@
 use PBL
 
-create or alter procedure sp_buscarTimbrePorId (@id int) as
-begin
-	SELECT timbreID, instrumentoNome
-	FROM timbre
-	WHERE timbreID = @id
-end
+go
 
---exec sp_buscarTimbrePorId 1 
-
-create or alter procedure sp_buscarTimbreIDPorNome (@nome VARCHAR(50)) as
-begin	
-	SELECT timbreID, instrumentoNome FROM timbre WHERE instrumentoNome = @nome
-end
-
---exec sp_buscarTimbreIDPorNome 'ainn'
-
-create or alter procedure sp_inserirFonte(@timbreID int,
-										  @potencia decimal(10,2),
-										  @frequencia decimal(10,2),
-										  @fonteNome VARCHAR(50)) as
-begin
-	INSERT into fonte(timbreID, potencia, frequencia, fonteNome) values(@timbreID,
-																		@potencia,
-																		@frequencia,
-																		@fonteNome)
-end
-
---exec sp_inserirFonte 1, 20.2, 20.2, 'AINN'
-
-----use PBL
-----create or alter trigger trg_verificacaoIDsim on simulacao
-----for insert as
-----BEGIN
-----	DECLARE @proximo int = (select MAX(experimentoID) from simulacao) + 1
-----	insert into setores values (@proximo, null, 0)
-----END
-
-----create or alter trigger trg_verificacaoIDfont on fonte
-----for insert as
-----BEGIN
-----	DECLARE @proximo int = (select MAX(fonteID) from fonte) + 1
-----	insert into fonte values (@proximo, null, 0)
-----END
-
-----drop trigger trg_verificacaoIFfont
+-- Todas as procedures que buscam todos os nomes:
+create procedure sp_ambientesTodosNomes as
+BEGIN
+	select ambienteNome
+	from ambiente
+END
 
 
-----insert into fonte(frequencia, nome) values (23.45, 'Ambul�ncia')
-----select * from fonte
+go
+
+create procedure sp_fontesTodosNomes as
+BEGIN
+	select fonteNome
+	from fonte
+END
+
+go
+
+create procedure sp_experimentoTodosNomes as
+BEGIN
+	select experimentoNome
+	from experimento
+END
+
+go
+
+/*==============================================================================*/
+-- Buscando as tabelas pelos seus nomes:
+create procedure sp_ambienteBuscarPorNome (@nome VARCHAR(50)) as
+BEGIN
+	select *
+	from ambiente a
+	where @nome = a.ambienteNome
+END
+
+go
+
+create procedure sp_fonteBuscarPorNome (@nome VARCHAR(50)) as
+BEGIN
+	select *
+	from fonte f
+	where @nome = f.fonteNome
+END
+
+go
+
+create procedure sp_experimentoBuscarPorNome (@nome VARCHAR(50)) as
+BEGIN
+	select *
+	from experimento e
+	where @nome = e.experimentoNome
+END
+
+go
+
+/*==============================================================================*/
+-- Adicionando informações às tabelas:
+create procedure sp_adicionarAmbiente (@nome VARCHAR(50),
+												@velocidadeSom decimal(10,5)) as
+BEGIN
+	insert into ambiente values(@nome,
+								@velocidadeSom)
+END
+
+go
+
+create procedure sp_adicionarTimbre (@nome VARCHAR(50)) as
+BEGIN
+	insert into timbre values(@nome)
+END
+
+go
+
+create procedure sp_adicionarFonte (@nomeFonte VARCHAR(50),
+											 @nomeTimbre VARCHAR(50),
+											 @potencia decimal(10,5),
+											 @frequencia decimal(10,5)) as
+BEGIN
+	insert into fonte values(@nomeFonte,
+							 @nomeTimbre,
+							 @potencia,
+							 @frequencia)
+END
+
+go
+
+create procedure sp_adicionarExperimento (@nomeExperimento VARCHAR(50),
+												   @velocidadeObservador decimal(10,5),
+												   @posicaoLateral decimal(10,5),
+												   @posicaoInicialObservador decimal(10,5),
+												   @velocidadeFonte decimal(10,5),
+												   @posicaoInicialFonte decimal(10,5),
+												   @tempoDuracao int,
+												   @taxaAmostragem VARCHAR(50),
+												   @nomeAmbiente VARCHAR(50),
+												   @nomeFonte VARCHAR(50)) as
+BEGIN
+	insert into experimento values(@nomeExperimento,
+								   @velocidadeObservador,
+								   @posicaoLateral,
+								   @posicaoInicialObservador,
+								   @velocidadeFonte,
+								   @posicaoInicialFonte,
+								   @tempoDuracao,
+								   @taxaAmostragem,
+								   @nomeAmbiente,
+								   @nomeFonte)
+END
+
+go
+
+-- Valores inseridos pelo desenvolvedor:
+exec sp_adicionarAmbiente 'Ar', 330
+exec sp_adicionarAmbiente 'Água', 343
+
+exec sp_adicionarTimbre 'TimbreAbelhaEletrica'
+exec sp_adicionarTimbre 'TimbreAlienigena'
+exec sp_adicionarTimbre 'TimbreArcoIris'
+exec sp_adicionarTimbre 'TimbreCarrinhoDeSorvete'
+exec sp_adicionarTimbre 'TimbrePiano'
+exec sp_adicionarTimbre 'TimbrePuro'
+exec sp_adicionarTimbre 'TimbreTrompete'
+exec sp_adicionarTimbre 'TimbreViolao'
+
+
+exec sp_adicionarFonte 'Lá do Violao', 'TimbreViolao', 5, 440
+exec sp_adicionarFonte 'Lá do Piano', 'TimbrePiano', 5, 880
+exec sp_adicionarFonte 'Dó do Timbre puro', 'TimbrePuro', 5, 523.2
