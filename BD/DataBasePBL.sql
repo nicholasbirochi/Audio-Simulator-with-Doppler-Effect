@@ -1,3 +1,4 @@
+-- Criando a base das tabelas:
 use master
 go
 drop database PBL
@@ -53,3 +54,16 @@ add constraint fk_fonteID foreign key (fonteID) references fonte,
 go
 alter table fonte
 add constraint fk_timbreID foreign key (timbreID) references timbre
+
+-- Valores inseridos pelo desenvolvedor:
+INSERT INTO timbre values (NULL,TimbreAbelhaEletrica),
+			  (NULL, TimbreAlienigena),
+			  (NULL, TimbreArcoIris),
+			  (NULL, TimbreCarrinhoDeSorvete),
+			  (NULL, TimbrePiano),
+			  (NULL, TimbrePuro),
+			  (NULL, TimbreTrompete),
+			  (NULL, TimbreViolao)
+
+INSERT INTO ambiente values (NULL, 330, 'Ar'),
+			    (NULL, 343, 'Água')
