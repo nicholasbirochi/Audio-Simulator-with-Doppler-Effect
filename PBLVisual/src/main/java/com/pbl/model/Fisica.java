@@ -26,14 +26,14 @@ public class Fisica
         double velocidadeSom = exp.getAmbiente().getVelocidadeSom();
 
         double tempoDuracao = exp.getTempoDuracao();
-        
+
         Fonte fonte = exp.getFonte();
         double frequencia = fonte.getFrequencia();
-        
+
         double frequenciaAmostragem = exp.getTaxaAmostragem();
         double periodoAmostragem = 1 / frequenciaAmostragem;
 
-        
+
         double distancia;
         double amplitude;
         double frequenciaPercebida;
@@ -58,11 +58,11 @@ public class Fisica
             frequenciaPercebida = frequencia * doppler(velocidadeRelativaAproximacaoObservador, velocidadeRelativaAproximacaoFonte, velocidadeSom);
 
             Double[] values = {amplitude, frequenciaPercebida};
-            listaAmplitudesFrequencias.add(values); 
+            listaAmplitudesFrequencias.add(values);
 
             t += periodoAmostragem;
         }
-        
+
         return listaAmplitudesFrequencias;
     }
 

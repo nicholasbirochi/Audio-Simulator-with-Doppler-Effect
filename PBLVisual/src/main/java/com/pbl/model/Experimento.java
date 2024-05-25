@@ -6,17 +6,17 @@ public class Experimento
 {
   private String nome;
   private int id;
-  
+
   private double posicaoInicialFonte;
   private double distanciaLateral;
   private double velocidadeFonte;
   private double velocidadeObservador;
   private double tempoDuracao;
   private int taxaAmostragem;
-  
+
   private Fonte fonte;
   private Ambiente ambiente;
-  
+
 
   public Experimento(int id, String nome, double posicaoInicialFonte, double distanciaLateral, double velocidadeFonte, double velocidadeObservador, double tempoDuracao, int taxaAmostragem, Ambiente ambiente, Fonte fonte)
   {
@@ -71,5 +71,5 @@ public class Experimento
   public Ambiente getAmbiente(){
     return this.ambiente;
   }
-    
+
 }
