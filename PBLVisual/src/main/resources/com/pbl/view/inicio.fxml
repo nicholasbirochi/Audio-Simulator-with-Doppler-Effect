@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -40,17 +41,17 @@
                <Font name="Fieldwork-Geo-Hair" size="13.0" />
             </font>
          </Label>
-         <Slider majorTickUnit="5.0" max="20.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" GridPane.columnIndex="1">
+         <Slider fx:id="sliderDuracao" majorTickUnit="5.0" max="20.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" GridPane.columnIndex="1">
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
          </Slider>
-         <Slider GridPane.columnIndex="1" GridPane.rowIndex="1" />
-         <Label text="Duração do Áudio (Segundos)" GridPane.rowIndex="1">
+         <Label text="Distância" GridPane.rowIndex="1">
             <font>
                <Font name="Fieldwork-Geo-Hair" size="13.0" />
             </font>
          </Label>
+         <Spinner editable="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
       </children>
    </GridPane>
    <Separator prefWidth="200.0" />
