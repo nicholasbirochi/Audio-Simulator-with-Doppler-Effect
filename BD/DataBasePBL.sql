@@ -37,8 +37,8 @@ create table experimento
 	posicaoInicialObservador decimal(10,5) not null,
 	velocidadeFonte decimal(10,5) not null,
 	posicaoInicialFonte decimal(10,5) not null,
-	tempoDuracao int not null,
-	taxaAmostragem VARCHAR(50) not null,
+	tempoDuracao decimal(10,5) not null,
+	taxaAmostragem int not null,
 	ambienteNome VARCHAR(50) not null,
 	fonteNome VARCHAR(50) not null
 )
