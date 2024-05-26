@@ -46,7 +46,7 @@
                      <Font size="24.0" />
                   </font>
                </Label>
-               <MFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8000ff" styleClass="btnMenu" stylesheets="@styles.css" text="Timbres" textFill="WHITE">
+               <MFXButton fx:id="btnTimbre" alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8000ff" styleClass="btnMenu" stylesheets="@styles.css" text="Timbres" textFill="WHITE">
                   <font>
                      <Font name="Comfortaa Regular" size="14.0" />
                   </font>
@@ -219,7 +219,7 @@
                      <Cursor fx:constant="HAND" />
                   </cursor>
                </MFXButton>
-                  <MFXButton prefHeight="39.0" prefWidth="246.0" rippleColor="#6200ab" style="-fx-background-color: #8200ff;" text="Gerar Áudio" textFill="WHITE">
+                  <MFXButton fx:id="btnGerar" onAction="#gerarAudio" prefHeight="39.0" prefWidth="246.0" rippleColor="#6200ab" style="-fx-background-color: #8200ff;" text="Gerar Áudio" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -287,7 +287,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Abelha Elétrica" textFill="WHITE" />
-                              <MFXButton prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnSelectTimbreAbelha" onAction="#selecionarTimbreAbelhaEletrica" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -307,7 +307,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Alienígena" textFill="WHITE" />
-                              <MFXButton prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnSelectTimbreAlien" onAction="#selecionarTimbreAlienigena" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -327,7 +327,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Arco-Íris" textFill="WHITE" />
-                              <MFXButton prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnSelectArcoIris" onAction="#selecionarTimbreArcoIris" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -347,7 +347,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Carrinho de Sorvete" textFill="WHITE" />
-                              <MFXButton prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnSelectSorvete" onAction="#selecionarTimbreCarrinhoDeSorvete" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -367,7 +367,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Piano" textFill="WHITE" />
-                              <MFXButton prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnSelectPiano" onAction="#selecionarTimbrePiano" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -387,7 +387,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Timbre Puro" textFill="WHITE" />
-                              <MFXButton prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnSelectTimbrePuro" onAction="#selecionarTimbrePuro" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -407,7 +407,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Violão" textFill="WHITE" />
-                              <MFXButton prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnSelectViolao" onAction="#selecionarTimbreViolao" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -427,7 +427,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Trompete" textFill="WHITE" />
-                              <MFXButton prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnSelectTrompete" onAction="#selecionarTimbreTrompete" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>

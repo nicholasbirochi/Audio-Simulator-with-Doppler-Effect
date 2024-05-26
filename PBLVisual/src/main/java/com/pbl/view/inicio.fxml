@@ -40,7 +40,7 @@
                      <Font size="24.0" />
                   </font>
                </Label>
-               <MFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" style="-fx-background-color: #212121;" text="Timbres" textFill="WHITE">
+               <MFXButton fx:id="btnTimbres" alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" style="-fx-background-color: #212121;" text="Timbres" textFill="WHITE">
                   <font>
                      <Font name="Comfortaa Regular" size="14.0" />
                   </font>
