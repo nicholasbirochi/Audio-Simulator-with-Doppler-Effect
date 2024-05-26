@@ -4,13 +4,11 @@ public class Ambiente
 {
   private double velocidadeSom;
   private String nome;
-  private int id;
 
-  public Ambiente(int id, String nome, double velocidadeSom)
+  public Ambiente(String nome, double velocidadeSom)
   {
     this.velocidadeSom = velocidadeSom;
     this.nome = nome;
-    this.id = id;
   }
   
   public double getVelocidadeSom(){
@@ -19,10 +17,6 @@ public class Ambiente
 
   public String getNome(){
     return this.nome;
-  }
-
-  public int getId(){
-    return this.id;
   }
     
 }

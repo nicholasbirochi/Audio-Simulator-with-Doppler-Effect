@@ -1,17 +1,26 @@
 package com.pbl.model;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+import javax.sound.sampled.AudioFileFormat;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 public class Fonte
 {
     // Atributos:
-    private double potencia;
-    private double frequencia;
-    private Timbre timbre;
-    private String nome;
-    private int id;
+    private final double potencia;
+    private final double frequencia;
+    private final Timbre timbre;
+    private final String nome;
 
     // Construtor:
-    public Fonte(double potencia, double frequencia, Timbre timbre)
+    public Fonte(String nome, double potencia, double frequencia, Timbre timbre)
     {
+        this.nome = nome;
         this.potencia = potencia;
         this.frequencia = frequencia;
         this.timbre = timbre;
@@ -36,7 +45,12 @@ public class Fonte
         return this.nome;
     }
     
-    public int getId(){
-        return this.id;
+    public void tocarFonte(String caminhoArquivo)
+          throws IOException, UnsupportedAudioFileException {
+
+        Ambiente ambiente = new Ambiente("ar", 330);
+        Experimento exp = new Experimento("Experimento de teste", 0, 1, 0, 0, 5, 44100, ambiente, this);
+        
+        exp.criarArquivoDeSimulacao(caminhoArquivo);
     }
 }
