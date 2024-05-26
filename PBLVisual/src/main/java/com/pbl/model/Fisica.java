@@ -1,6 +1,8 @@
 package com.pbl.model;
+import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Fisica
 {
@@ -64,6 +66,14 @@ public class Fisica
         }
 
         return listaAmplitudesFrequencias;
+    }
+    
+    public static void ouvirTimbre(Timbre timbre, String caminhoArquivo) throws IOException, UnsupportedAudioFileException{
+        Ambiente ambiente = new Ambiente("ar", 330);
+        Fonte fonte = new Fonte("fonte qualquer", 5, 440, timbre);
+        Experimento exp = new Experimento("Experimento de teste", 0, 1, 0, 0, 5, 44100, ambiente, fonte);
+        
+        exp.criarArquivoDeSimulacao(caminhoArquivo);
     }
 
 
