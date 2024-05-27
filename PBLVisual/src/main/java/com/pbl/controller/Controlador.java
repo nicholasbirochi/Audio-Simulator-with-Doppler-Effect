@@ -104,7 +104,7 @@ public class Controlador {
 
         // Defina os parâmetros para o experimento
         Ambiente ambiente = new Ambiente("Ar", 330);
-        Fonte fonte = new Fonte("Lá do Violao", 1, 440, this.timbreAtual); // Use o timbre selecionado
+        Fonte fonte = new Fonte("Lá do Violao", 5, 440, this.timbreAtual); // Use o timbre selecionado
         Experimento exp = new Experimento("Experimento de teste", 25,1, -10, 1, 5, 44100, ambiente, fonte);
 
         try {
