@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXSlider?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -46,7 +47,7 @@
                      <Font size="24.0" />
                   </font>
                </Label>
-               <MFXButton fx:id="btnTimbre" alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8000ff" styleClass="btnMenu" stylesheets="@styles.css" text="Timbres" textFill="WHITE">
+               <MFXButton fx:id="btnTimbres" alignment="BASELINE_LEFT" onAction="#showPageTimbres" prefHeight="38.0" prefWidth="303.0" rippleColor="#8000ff" styleClass="btnMenu" stylesheets="@styles.css" text="Timbres" textFill="WHITE">
                   <font>
                      <Font name="Comfortaa Regular" size="14.0" />
                   </font>
@@ -85,7 +86,38 @@
                      <Cursor fx:constant="HAND" />
                   </cursor>
                </MFXButton>
-               <MFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" styleClass="btnMenu" stylesheets="@styles.css" text="Fonte" textFill="WHITE">
+                  <MFXButton fx:id="btnConfiguracoes" alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" styleClass="btnMenu" stylesheets="@styles.css" text="Configurações" textFill="WHITE">
+                     <font>
+                        <Font name="Comfortaa Regular" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets left="24.0" />
+                     </padding>
+                     <graphic>
+                        <FontIcon iconLiteral="fas-flask">
+                           <iconColor>
+                              <LinearGradient endX="1.0" endY="1.0" startX="0.5402843601895735" startY="0.4312796208530806">
+                                 <stops>
+                                    <Stop>
+                                       <color>
+                                          <Color red="0.5" blue="1.0" />
+                                       </color>
+                                    </Stop>
+                                    <Stop offset="1.0">
+                                       <color>
+                                          <Color red="1.0" blue="0.7666666507720947" />
+                                       </color>
+                                    </Stop>
+                                 </stops>
+                              </LinearGradient>
+                           </iconColor>
+                        </FontIcon>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </MFXButton>
+               <MFXButton fx:id="btnFontes" alignment="BASELINE_LEFT" onAction="#showPageFonte" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" styleClass="btnMenu" stylesheets="@styles.css" text="Fonte" textFill="WHITE">
                   <font>
                      <Font name="Comfortaa Regular" size="14.0" />
                   </font>
@@ -121,7 +153,7 @@
                      <Cursor fx:constant="HAND" />
                   </cursor>
                </MFXButton>
-               <MFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" styleClass="btnMenu" stylesheets="@styles.css" text="Ambiente" textFill="WHITE">
+               <MFXButton fx:id="btnAmbiente" alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" styleClass="btnMenu" stylesheets="@styles.css" text="Ambiente" textFill="WHITE">
                   <font>
                      <Font name="Comfortaa Regular" size="14.0" />
                   </font>
@@ -157,7 +189,7 @@
                      <Cursor fx:constant="HAND" />
                   </cursor>
                </MFXButton>
-               <MFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" styleClass="btnMenu" stylesheets="@styles.css" text="Observador" textFill="WHITE">
+               <MFXButton fx:id="btnObservador" alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" styleClass="btnMenu" stylesheets="@styles.css" text="Observador" textFill="WHITE">
                   <font>
                      <Font name="Comfortaa Regular" size="14.0" />
                   </font>
@@ -188,7 +220,7 @@
                      <Cursor fx:constant="HAND" />
                   </cursor>
                </MFXButton>
-               <MFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" styleClass="btnMenu" stylesheets="@styles.css" text="Objeto" textFill="WHITE">
+               <MFXButton fx:id="btnObjeto" alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" styleClass="btnMenu" stylesheets="@styles.css" text="Objeto" textFill="WHITE">
                   <font>
                      <Font name="Comfortaa Regular" size="14.0" />
                   </font>
@@ -262,7 +294,7 @@
          <center>
             <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane alignment="CENTER_RIGHT" prefWidth="977.0" StackPane.alignment="CENTER_RIGHT">
+                  <GridPane fx:id="pageTimbres" alignment="CENTER_RIGHT" prefWidth="977.0" visible="false" StackPane.alignment="CENTER_RIGHT">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -274,7 +306,7 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0">
+                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="245.0" spacing="16.0">
                            <children>
                               <VBox alignment="CENTER" spacing="10" />
                               <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
@@ -287,7 +319,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Abelha Elétrica" textFill="WHITE" />
-                              <MFXButton fx:id="btnSelectTimbreAbelha" onAction="#selecionarTimbreAbelhaEletrica" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnTimbreAbelha" onAction="#selecionarTimbreAbelhaEletrica" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -307,7 +339,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Alienígena" textFill="WHITE" />
-                              <MFXButton fx:id="btnSelectTimbreAlien" onAction="#selecionarTimbreAlienigena" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnTimbreAlien" onAction="#selecionarTimbreAlienigena" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -327,7 +359,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Arco-Íris" textFill="WHITE" />
-                              <MFXButton fx:id="btnSelectArcoIris" onAction="#selecionarTimbreArcoIris" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnTimbreArcoIris" onAction="#selecionarTimbreArcoIris" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -347,7 +379,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Carrinho de Sorvete" textFill="WHITE" />
-                              <MFXButton fx:id="btnSelectSorvete" onAction="#selecionarTimbreCarrinhoDeSorvete" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnTimbreSorvete" onAction="#selecionarTimbreCarrinhoDeSorvete" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -367,7 +399,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Piano" textFill="WHITE" />
-                              <MFXButton fx:id="btnSelectPiano" onAction="#selecionarTimbrePiano" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnTimbrePiano" onAction="#selecionarTimbrePiano" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -387,7 +419,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Timbre Puro" textFill="WHITE" />
-                              <MFXButton fx:id="btnSelectTimbrePuro" onAction="#selecionarTimbrePuro" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnTimbrePuro" onAction="#selecionarTimbrePuro" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -407,7 +439,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Violão" textFill="WHITE" />
-                              <MFXButton fx:id="btnSelectViolao" onAction="#selecionarTimbreViolao" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnTimbreViolao" onAction="#selecionarTimbreViolao" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -427,7 +459,7 @@
                                  </children>
                               </StackPane>
                               <Label text="Trompete" textFill="WHITE" />
-                              <MFXButton fx:id="btnSelectTrompete" onAction="#selecionarTimbreTrompete" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
+                              <MFXButton fx:id="btnTimbreTrompete" onAction="#selecionarTimbreTrompete" prefHeight="28.0" prefWidth="86.0" text="Selecionar">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -435,7 +467,29 @@
                            </children>
                         </VBox>
                      </children>
+                     <padding>
+                        <Insets bottom="40.0" />
+                     </padding>
                   </GridPane>
+                  <VBox fx:id="pageFonte" alignment="CENTER" prefHeight="611.0" prefWidth="873.0" spacing="24.0">
+                     <children>
+                        <Label text="Velocidade Fonte (m/s)" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Comfortaa Regular" size="12.0" />
+                           </font>
+                        </Label>
+                        <MFXSlider fx:id="sliderVelFonte" max="30.0" min="-30.0" minWidth="-Infinity" prefWidth="180.0" showMinorTicks="true" value="-10.0" />
+                        <Label text="Posićão Inicial&#10;da Fonte" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font name="Comfortaa Regular" size="12.0" />
+                           </font>
+                        </Label>
+                        <MFXSlider max="50.0" minWidth="-Infinity" prefWidth="180.0" showMinorTicks="true" value="25.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="40.0" />
+                     </padding>
+                  </VBox>
                </children>
             </StackPane>
          </center>
