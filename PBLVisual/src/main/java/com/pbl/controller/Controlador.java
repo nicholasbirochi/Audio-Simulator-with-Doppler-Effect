@@ -29,10 +29,17 @@ public class Controlador {
     @FXML
     private VBox pageFonte;
 
+//    @FXML
+//    private MFXSlider sliderVelFonte;
+//
+//    double valorSlider = sliderVelFonte.getValue();
+
+
     public void showPageFonte() {
         pageTimbres.setVisible(false);
         pageFonte.setVisible(true);
     }
+
     public void showPageTimbres() {
         pageTimbres.setVisible(true);
         pageFonte.setVisible(false);
@@ -54,6 +61,7 @@ public class Controlador {
             stage.setY(event.getScreenY() - yOffset);
         });
     }
+
     private Timbre timbreAtual = new TimbreAbelhaEletrica();
 
     public void selecionarTimbreAbelhaEletrica() {
@@ -100,23 +108,26 @@ public class Controlador {
     String caminhoAudio = caminhoDesktop + "/Áudio.wav";
 
     public void gerarAudio() {
-        PBL pbl = new PBL();
-
         // Defina os parâmetros para o experimento
-        Ambiente ambiente = new Ambiente("Ar", 330);
-        Fonte fonte = new Fonte("Lá do Violao", 5, 440, this.timbreAtual); // Use o timbre selecionado
-        Experimento exp = new Experimento("Experimento de teste", 25,1, -10, 1, 5, 44100, ambiente, fonte);
+        Ambiente ambiente = new Ambiente("ar", 330.0);
+        Fonte fonte = new Fonte("Fonte", 4.0, 440.0, this.timbreAtual); // Use o timbre selecionado
+        Experimento exp = new Experimento("Experimento de teste", 25.0, 1.0, -10.0, 1.0, 5.0, 44100, ambiente, fonte);
 
         try {
-            pbl.criarArquivo(caminhoAudio, exp);
+            exp.criarArquivoDeSimulacao(caminhoAudio);
             System.out.println("Arquivo de áudio criado com sucesso em: " + caminhoAudio);
         } catch (IOException | UnsupportedAudioFileException e) {
             System.out.println("Erro ao criar arquivo de áudio: " + e.getMessage());
         }
+
+
     }
+
     @FXML
     private void handleCloseButtonAction() {
         Stage stage = (Stage) topBar.getScene().getWindow();
         stage.close();
     }
 }
+
+
