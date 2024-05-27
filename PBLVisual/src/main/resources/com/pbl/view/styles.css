@@ -5,3 +5,6 @@
 .btnMenu:focused {
     -fx-background-color: rgba(128, 0, 255, 0.4);
 }
+TextField{
+
+}
