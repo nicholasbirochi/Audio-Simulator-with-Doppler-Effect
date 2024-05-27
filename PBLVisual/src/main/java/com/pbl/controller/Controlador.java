@@ -5,6 +5,7 @@ import com.pbl.model.*;
 import java.io.IOException;
 import java.sql.Connection;
 
+//import io.github.palexdev.materialfx.controls.MFXSlider;
 import javafx.fxml.FXML;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.GridPane;
@@ -23,11 +24,15 @@ public class Controlador {
 
     @FXML
     private HBox topBar;
+//    @FXML
+//    private MFXSlider sliderVelFonte;
 
     @FXML
     private GridPane pageTimbres;
     @FXML
     private VBox pageFonte;
+    @FXML
+    private VBox pageAmbiente;
 
 //    @FXML
 //    private MFXSlider sliderVelFonte;
@@ -38,11 +43,19 @@ public class Controlador {
     public void showPageFonte() {
         pageTimbres.setVisible(false);
         pageFonte.setVisible(true);
+        pageAmbiente.setVisible(false);
+
     }
 
     public void showPageTimbres() {
         pageTimbres.setVisible(true);
         pageFonte.setVisible(false);
+        pageAmbiente.setVisible(false);
+    }
+    public void showPageAmbiente() {
+        pageTimbres.setVisible(false);
+        pageFonte.setVisible(false);
+        pageAmbiente.setVisible(true);
     }
 
     private double xOffset = 0;
