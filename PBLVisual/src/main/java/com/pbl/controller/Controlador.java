@@ -33,6 +33,8 @@ public class Controlador {
     private VBox pageFonte;
     @FXML
     private VBox pageAmbiente;
+    @FXML
+    private VBox pageObservador;
 
 //    @FXML
 //    private MFXSlider sliderVelFonte;
@@ -44,18 +46,26 @@ public class Controlador {
         pageTimbres.setVisible(false);
         pageFonte.setVisible(true);
         pageAmbiente.setVisible(false);
-
+        pageObservador.setVisible(false);
     }
 
     public void showPageTimbres() {
         pageTimbres.setVisible(true);
         pageFonte.setVisible(false);
         pageAmbiente.setVisible(false);
+        pageObservador.setVisible(false);
     }
     public void showPageAmbiente() {
         pageTimbres.setVisible(false);
         pageFonte.setVisible(false);
         pageAmbiente.setVisible(true);
+        pageObservador.setVisible(false);
+    }
+    public void showPageObservador() {
+        pageTimbres.setVisible(false);
+        pageFonte.setVisible(false);
+        pageAmbiente.setVisible(false);
+        pageObservador.setVisible(true);
     }
 
     private double xOffset = 0;
