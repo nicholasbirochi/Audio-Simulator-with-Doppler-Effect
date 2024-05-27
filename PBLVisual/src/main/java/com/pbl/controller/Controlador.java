@@ -103,9 +103,9 @@ public class Controlador {
         PBL pbl = new PBL();
 
         // Defina os parâmetros para o experimento
-        Ambiente ambiente = new Ambiente(1, "ar", 330);
-        Fonte fonte = new Fonte(4, 440, this.timbreAtual); // Use o timbre selecionado
-        Experimento exp = new Experimento(1, "Experimento de teste", 25,1, -10, 1, 5, 44100, ambiente, fonte);
+        Ambiente ambiente = new Ambiente("Ar", 330);
+        Fonte fonte = new Fonte("Lá do Violao", 1, 440, this.timbreAtual); // Use o timbre selecionado
+        Experimento exp = new Experimento("Experimento de teste", 25,1, -10, 1, 5, 44100, ambiente, fonte);
 
         try {
             pbl.criarArquivo(caminhoAudio, exp);
