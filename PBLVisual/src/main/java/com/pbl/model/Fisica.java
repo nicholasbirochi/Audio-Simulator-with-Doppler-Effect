@@ -12,7 +12,7 @@ public class Fisica
         return (velSom + velObsAprox) / (velSom - velFonteAprox);
     }
 
-    public static List<Double[]> amplitudeFrequenciaDoSom(Experimento exp, int frequenciaAmostragem, double tempoDuracao)
+    public static List<Double[]> amplitudeFrequenciaDoSom(Experimento exp, double frequenciaAmostragem, double tempoDuracao)
     {
         List<Double[]> listaAmplitudesFrequencias = new ArrayList<Double[]>();
 
@@ -57,8 +57,8 @@ public class Fisica
             frequenciaPercebida = frequencia * doppler(velocidadeRelativaAproximacaoObservador, velocidadeRelativaAproximacaoFonte, velocidadeSom);
 
             Double[] values = {amplitude, frequenciaPercebida};
-            listaAmplitudesFrequencias.add(values);
 
+            listaAmplitudesFrequencias.add(values);
             t += periodoAmostragem;
         }
 
