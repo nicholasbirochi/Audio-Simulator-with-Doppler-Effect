@@ -65,12 +65,12 @@ public class Fisica
         return listaAmplitudesFrequencias;
     }
     
-    public static void ouvirTimbre(Timbre timbre, String caminhoArquivo) throws IOException, UnsupportedAudioFileException{
+    public static void ouvirTimbre(Timbre timbre, String caminhoArquivo, int taxaAmostragem, double duracao) throws IOException, UnsupportedAudioFileException{
         Ambiente ambiente = new Ambiente("ar", 330);
         Fonte fonte = new Fonte("fonte qualquer", 5, 440, timbre);
         Experimento exp = new Experimento("Experimento de teste", 0, 1, 0, 0, ambiente, fonte);
         
-        exp.criarArquivoDeSimulacao(caminhoArquivo);
+        exp.criarArquivoDeSimulacao(caminhoArquivo, int taxaAmostragem, double duracao);
     }
 
 
