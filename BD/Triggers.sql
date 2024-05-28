@@ -57,7 +57,7 @@ BEGIN
     IF EXISTS (SELECT 1 FROM ambiente WHERE @nome IN (SELECT ambienteNome FROM deleted))
     BEGIN
 	-- Permite o delete se o valor existir:
-        DELETE INTO ambiente SELECT * FROM deleted;
+        DELETE ambiente SELECT * FROM deleted;
     END
     ELSE
     BEGIN
@@ -76,7 +76,7 @@ BEGIN
     IF EXISTS (SELECT 1 FROM fonte WHERE @nome IN (SELECT fonteNome FROM deleted))
     BEGIN
 	-- Permite o delete se o valor existir:
-        DELETE INTO fonte SELECT * FROM deleted;
+        DELETE fonte SELECT * FROM deleted;
     END
     ELSE
     BEGIN
