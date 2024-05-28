@@ -16,7 +16,7 @@ public class PBL {
 
         //dados de geração do audio
         int taxaAmostragem = 44100; //em hz
-        double duracao = 5.0 //em segundos
+        double duracao = 5.0; //em segundos
         
         String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
         Scanner scanner = new Scanner(System.in);
