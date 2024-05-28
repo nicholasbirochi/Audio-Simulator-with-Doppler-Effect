@@ -37,8 +37,7 @@ create table experimento
 	posicaoLateral decimal(10,5) not null,
 	velocidadeObservador decimal(10,5) not null,
 	ambienteNome VARCHAR(50) not null,
-	fonteNome VARCHAR(50) not null,
-	observadorNome VARCHAR(50) not null
+	fonteNome VARCHAR(50) not null
 )
 go
 alter table experimento

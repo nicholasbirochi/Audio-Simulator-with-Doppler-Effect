@@ -17,14 +17,12 @@ public class Experimento
   private double distanciaLateral;
   private double velocidadeFonte;
   private double velocidadeObservador;
-  private double tempoDuracao;
-  private int taxaAmostragem;
 
   private Fonte fonte;
   private Ambiente ambiente;
 
 
-  public Experimento(String nome, double posicaoInicialFonte, double distanciaLateral, double velocidadeFonte, double velocidadeObservador, double tempoDuracao, int taxaAmostragem, Ambiente ambiente, Fonte fonte)
+  public Experimento(String nome, double posicaoInicialFonte, double distanciaLateral, double velocidadeFonte, double velocidadeObservador, Ambiente ambiente, Fonte fonte)
   {
     this.nome = nome;
     this.posicaoInicialFonte = posicaoInicialFonte;
@@ -32,8 +30,6 @@ public class Experimento
     this.velocidadeFonte = velocidadeFonte;
     this.velocidadeObservador = velocidadeObservador;
     this.ambiente = ambiente;
-    this.tempoDuracao = tempoDuracao;
-    this.taxaAmostragem = taxaAmostragem;
     this.fonte = fonte;
   }
 
