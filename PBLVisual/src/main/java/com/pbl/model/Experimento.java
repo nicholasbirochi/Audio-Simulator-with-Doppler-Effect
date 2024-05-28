@@ -20,9 +20,6 @@ public class Experimento
 
   private Fonte fonte;
   private Ambiente ambiente;
-  private double tempoDuracao = 5;
-  private int taxaAmostragem = 44100;
-
 
   public Experimento(String nome, double posicaoInicialFonte, double distanciaLateral, double velocidadeFonte, double velocidadeObservador, Ambiente ambiente, Fonte fonte)
   {
@@ -51,14 +48,6 @@ public class Experimento
     return this.velocidadeObservador;
   }
 
-  public double getTempoDuracao(){
-    return this.tempoDuracao;
-  }
-
-  public int getTaxaAmostragem(){
-    return this.taxaAmostragem;
-  }
-
   public Fonte getFonte(){
     return this.fonte;
   }
@@ -71,11 +60,10 @@ public class Experimento
     return this.ambiente;
   }
   
-    public void criarArquivoDeSimulacao(String caminhoArquivo)
+    public void criarArquivoDeSimulacao(String caminhoArquivo, int taxaAmostragem, double duracao)
           throws IOException, UnsupportedAudioFileException {
 
-      List<Double[]> amplitudesFrequencias = Fisica.amplitudeFrequenciaDoSom(this);
-      int taxaAmostragem = this.getTaxaAmostragem();
+      List<Double[]> amplitudesFrequencias = Fisica.amplitudeFrequenciaDoSom(this, taxaAmostragem, duracao);
       int numAmostras = amplitudesFrequencias.size();
       Timbre timbre = this.getFonte().getTimbre();
 

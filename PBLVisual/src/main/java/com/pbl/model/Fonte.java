@@ -45,12 +45,12 @@ public class Fonte
         return this.nome;
     }
     
-    public void tocarFonte(String caminhoArquivo)
+    public void tocarFonte(String caminhoArquivo, int taxaAmostragem, double duracao)
           throws IOException, UnsupportedAudioFileException {
 
         Ambiente ambiente = new Ambiente("ar", 330);
         Experimento exp = new Experimento("Experimento de teste", 0, 1, 0, 0,ambiente, this);
         
-        exp.criarArquivoDeSimulacao(caminhoArquivo);
+        exp.criarArquivoDeSimulacao(caminhoArquivo, taxaAmostragem, duracao);
     }
 }
