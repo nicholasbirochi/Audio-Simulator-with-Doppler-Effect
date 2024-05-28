@@ -7,6 +7,7 @@ import java.sql.Connection;
 
 //import io.github.palexdev.materialfx.controls.MFXSlider;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -28,13 +29,15 @@ public class Controlador {
 //    private MFXSlider sliderVelFonte;
 
     @FXML
-    private GridPane pageTimbres;
+    private VBox pageTimbres;
     @FXML
     private VBox pageFonte;
     @FXML
     private VBox pageAmbiente;
     @FXML
-    private VBox pageObservador;
+    private VBox pageExperimento;
+    @FXML
+    private Label selectedTimbreLabel;
 
 //    @FXML
 //    private MFXSlider sliderVelFonte;
@@ -46,26 +49,26 @@ public class Controlador {
         pageTimbres.setVisible(false);
         pageFonte.setVisible(true);
         pageAmbiente.setVisible(false);
-        pageObservador.setVisible(false);
+        pageExperimento.setVisible(false);
     }
 
     public void showPageTimbres() {
         pageTimbres.setVisible(true);
         pageFonte.setVisible(false);
         pageAmbiente.setVisible(false);
-        pageObservador.setVisible(false);
+        pageExperimento.setVisible(false);
     }
     public void showPageAmbiente() {
         pageTimbres.setVisible(false);
         pageFonte.setVisible(false);
         pageAmbiente.setVisible(true);
-        pageObservador.setVisible(false);
+        pageExperimento.setVisible(false);
     }
-    public void showPageObservador() {
+    public void showPageExperimento() {
         pageTimbres.setVisible(false);
         pageFonte.setVisible(false);
         pageAmbiente.setVisible(false);
-        pageObservador.setVisible(true);
+        pageExperimento.setVisible(true);
     }
 
     private double xOffset = 0;
@@ -90,41 +93,49 @@ public class Controlador {
     public void selecionarTimbreAbelhaEletrica() {
         this.timbreAtual = new TimbreAbelhaEletrica();
         System.out.println("Timbre selecionado: Abelha Elétrica");
+        selectedTimbreLabel.setText("Timbre selecionado: Abelha Elétrica");
     }
 
     public void selecionarTimbreAlienigena() {
         this.timbreAtual = new TimbreAlienigena();
         System.out.println("Timbre selecionado: Alienígena");
+        selectedTimbreLabel.setText("Timbre selecionado: Alienígena");
     }
 
     public void selecionarTimbreArcoIris() {
         this.timbreAtual = new TimbreArcoIris();
         System.out.println("Timbre selecionado: Arco-Íris");
+        selectedTimbreLabel.setText("Timbre selecionado: Arco-Íris");
     }
 
     public void selecionarTimbreCarrinhoDeSorvete() {
         this.timbreAtual = new TimbreCarrinhoDeSorvete();
         System.out.println("Timbre selecionado: Carrinho de Sorvete");
+        selectedTimbreLabel.setText("Timbre selecionado: Carrinho de Sorvete");
     }
 
     public void selecionarTimbrePiano() {
         this.timbreAtual = new TimbrePiano();
         System.out.println("Timbre selecionado: Piano");
+        selectedTimbreLabel.setText("Timbre selecionado: Piano");
     }
 
     public void selecionarTimbrePuro() {
         this.timbreAtual = new TimbrePuro();
         System.out.println("Timbre selecionado: Puro");
+        selectedTimbreLabel.setText("Timbre selecionado: Puro");
     }
 
     public void selecionarTimbreViolao() {
         this.timbreAtual = new TimbreViolao();
         System.out.println("Timbre selecionado: Violão");
+        selectedTimbreLabel.setText("Timbre selecionado: Violão");
     }
 
     public void selecionarTimbreTrompete() {
         this.timbreAtual = new TimbreTrompete();
         System.out.println("Timbre selecionado: Trompete");
+        selectedTimbreLabel.setText("Timbre selecionado: Trompete");
     }
 
     String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
