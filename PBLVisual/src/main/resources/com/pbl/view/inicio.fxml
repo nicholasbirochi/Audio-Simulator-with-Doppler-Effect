@@ -923,7 +923,7 @@
                            </font>
                         </Label>
                         <ComboBox minWidth="-Infinity" prefWidth="165.0" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8;" />
-                        <MFXButton fx:id="btnGerar1" prefHeight="39.0" prefWidth="246.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 100% 0% to 0% 100%, #7f4cbd, #e7458f);" text="Reproduzir" textFill="WHITE">
+                        <MFXButton fx:id="btnReproduzir" onAction="#playAudioFile" prefHeight="39.0" prefWidth="246.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 100% 0% to 0% 100%, #7f4cbd, #e7458f);" text="Reproduzir" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
