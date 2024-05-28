@@ -13,6 +13,10 @@ public class PBL {
         Timbre timbre = new TimbrePuro();
         Fonte fonte = new Fonte("Abelhinha aguda", 4, 440, timbre);
         Experimento exp = new Experimento("Experimento de teste", 25, 1, -10, 1, ambiente, fonte);
+
+        //dados de geração do audio
+        int taxaAmostragem = 44100; //em hz
+        double duracao = 5.0 //em segundos
         
         String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
         Scanner scanner = new Scanner(System.in);
@@ -36,7 +40,7 @@ public class PBL {
                 }
             }
 
-            exp.criarArquivoDeSimulacao(caminhoAudio);
+            exp.criarArquivoDeSimulacao(caminhoAudio, taxaAmostragem, duracao);
             System.out.println("Arquivo de áudio criado com sucesso em: " + caminhoAudio);
         } catch (IOException | UnsupportedAudioFileException e) {
             System.out.println("Erro ao criar arquivo de áudio: " + e.getMessage());

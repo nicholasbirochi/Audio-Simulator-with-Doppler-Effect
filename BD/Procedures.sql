@@ -93,7 +93,6 @@ go
 create procedure sp_adicionarExperimento (@nomeExperimento VARCHAR(50),
 												   @velocidadeObservador decimal(10,5),
 												   @posicaoLateral decimal(10,5),
-												   @posicaoInicialObservador decimal(10,5),
 												   @velocidadeFonte decimal(10,5),
 												   @posicaoInicialFonte decimal(10,5),
 												   @nomeAmbiente VARCHAR(50),
