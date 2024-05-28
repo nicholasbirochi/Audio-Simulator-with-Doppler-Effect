@@ -15,6 +15,11 @@ import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
 import javafx.util.Duration;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import java.io.File;
 
 public class Controlador {
 
@@ -23,6 +28,11 @@ public class Controlador {
 
     @FXML
     private HBox topBar;
+    @FXML
+    private void handleCloseButtonAction() {
+        Stage stage = (Stage) topBar.getScene().getWindow();
+        stage.close();
+    }
     @FXML
     private VBox pageHome;
     @FXML
@@ -52,7 +62,7 @@ public class Controlador {
     @FXML
     public void initialize() {
 
-//         Adiciona um ouvinte para a propriedade textProperty
+        // Adiciona um ouvinte para a propriedade textProperty
         duracaoAudio.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -96,7 +106,6 @@ public class Controlador {
 
 
     }
-
 
     // Método para atualizar o label com animação
     private void updateTimbreLabel(String timbre) {
@@ -236,8 +245,8 @@ public class Controlador {
         selectedTimbreLabelFonte.setText("Timbre selecionado: Trompete");
     }
 
-    String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
-    String caminhoAudio = caminhoDesktop + "/Áudio.wav";
+    String caminhoDesktop = System.getProperty("user.home") + "\\Desktop";
+    String caminhoAudio = caminhoDesktop + "\\Áudio.wav";
 
     // Método para gerar áudio
     public void gerarAudio() {
@@ -247,16 +256,40 @@ public class Controlador {
         Experimento exp = new Experimento("Experimento de teste", 25.0, 1.0, -10.0, 1.0, ambiente, fonte);
 
         try {
-            exp.criarArquivoDeSimulacao(caminhoAudio, 44100, 5);
+            exp.criarArquivoDeSimulacao(caminhoAudio, 44100, duracao); // Use o valor da duração
             System.out.println("Arquivo de áudio criado com sucesso em: " + caminhoAudio);
         } catch (IOException | UnsupportedAudioFileException e) {
             System.out.println("Erro ao criar arquivo de áudio: " + e.getMessage());
         }
     }
 
-    @FXML
-    private void handleCloseButtonAction() {
-        Stage stage = (Stage) topBar.getScene().getWindow();
-        stage.close();
+    // Método para reproduzir o áudio usando um caminho predefinido
+    public void playAudioFile() {
+        try {
+            // Abre o arquivo de áudio
+            File audioFile = new File(caminhoAudio);
+            if (!audioFile.exists()) {
+                System.out.println("Arquivo de áudio não encontrado: " + caminhoAudio);
+                return;
+            }
+
+            // Cria um fluxo de áudio a partir do arquivo
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+
+            // Obtém um clip de áudio e abre o fluxo de áudio
+            Clip audioClip = AudioSystem.getClip();
+            audioClip.open(audioStream);
+
+            // Reproduz o áudio
+            audioClip.start();
+
+            System.out.println("Reproduzindo áudio: " + caminhoAudio);
+        } catch (UnsupportedAudioFileException e) {
+            System.out.println("O formato de arquivo de áudio não é suportado: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo de áudio: " + e.getMessage());
+        } catch (LineUnavailableException e) {
+            System.out.println("Linha de áudio não disponível: " + e.getMessage());
+        }
     }
 }
