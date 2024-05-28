@@ -94,8 +94,6 @@ create procedure sp_adicionarExperimento (@nomeExperimento VARCHAR(50),
 												   @posicaoInicialObservador decimal(10,5),
 												   @velocidadeFonte decimal(10,5),
 												   @posicaoInicialFonte decimal(10,5),
-												   @tempoDuracao decimal(10,5),
-												   @taxaAmostragem int,
 												   @nomeAmbiente VARCHAR(50),
 												   @nomeFonte VARCHAR(50)) as
 BEGIN
@@ -105,8 +103,6 @@ BEGIN
 								   @posicaoInicialObservador,
 								   @velocidadeFonte,
 								   @posicaoInicialFonte,
-								   @tempoDuracao,
-								   @taxaAmostragem,
 								   @nomeAmbiente,
 								   @nomeFonte)
 END
