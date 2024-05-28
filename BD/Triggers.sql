@@ -1,4 +1,4 @@
--- Triggers as quais verificam os inserts:
+-- Triggers os quais verificam os inserts:
 use PBL
 go
 
@@ -8,15 +8,15 @@ INSTEAD OF INSERT
 AS
 BEGIN
 	Declare @nome VARCHAR(50) = (select ambienteNome from ambiente)
-    -- Verifica se o valor j· existe na tabela
+    -- Verifica se o valor j√° existe na tabela
     IF EXISTS (SELECT 1 FROM ambiente WHERE @nome IN (SELECT ambienteNome FROM inserted))
     BEGIN
-        -- LanÁa um erro para impedir a inserÁ„o
-        RAISERROR('J· existe esse Ambiente.', 16, 1);
+        -- Lan√ßa um erro para impedir a inser√ß√£o
+        RAISERROR('J√° existe esse Ambiente.', 16, 1);
     END
     ELSE
     BEGIN
-        -- Permite a inserÁ„o se o valor n„o existir
+        -- Permite a inser√ß√£o se o valor n√£o existir
         INSERT INTO ambiente SELECT * FROM inserted;
     END
 END
@@ -28,35 +28,60 @@ INSTEAD OF INSERT
 AS
 BEGIN
 	Declare @nome VARCHAR(50) = (select fonteNome from fonte)
-    -- Verifica se o valor j· existe na tabela
+    -- Verifica se o valor j√° existe na tabela
     IF EXISTS (SELECT 1 FROM fonte WHERE @nome IN (SELECT fonteNome FROM inserted))
     BEGIN
-        -- LanÁa um erro para impedir a inserÁ„o
-        RAISERROR('J· existe essa Fonte.', 16, 1);
+        -- Lan√ßa um erro para impedir a inser√ß√£o
+        RAISERROR('J√° existe essa Fonte.', 16, 1);
     END
     ELSE
     BEGIN
-        -- Permite a inserÁ„o se o valor n„o existir
+        -- Permite a inser√ß√£o se o valor n√£o existir
         INSERT INTO fonte SELECT * FROM inserted;
     END
 END
 go
 
-create or alter trigger trg_insObservador
-ON observador
+
+/*===========================================================================================*/
+-- Triggers os quais verificam os deletes:
+
+
+create or alter trigger trg_delAmbiente
+ON ambiente
 INSTEAD OF INSERT
 AS
 BEGIN
-	Declare @nome VARCHAR(50) = (select observadorNome from observador)
-    -- Verifica se o valor j· existe na tabela
-    IF EXISTS (SELECT 1 FROM observador WHERE @nome IN (SELECT observadorNome FROM inserted))
+	Declare @nome VARCHAR(50) = (select ambienteNome from ambiente)
+    -- Verifica se o valor j√° existe na tabela
+    IF EXISTS (SELECT 1 FROM ambiente WHERE @nome IN (SELECT ambienteNome FROM deleted))
     BEGIN
-        -- LanÁa um erro para impedir a inserÁ„o
-        RAISERROR('J· existe esse Observador.', 16, 1);
+        -- Lan√ßa um erro para impedir a inser√ß√£o
+        RAISERROR('J√° existe esse Observador.', 16, 1);
     END
     ELSE
     BEGIN
-        -- Permite a inserÁ„o se o valor n„o existir
-        INSERT INTO observador SELECT * FROM inserted;
+        -- Permite a inser√ß√£o se o valor n√£o existir
+        INSERT INTO ambiente SELECT * FROM deleted;
+    END
+END
+go
+	    
+create or alter trigger trg_delFonte
+ON fonte
+INSTEAD OF INSERT
+AS
+BEGIN
+	Declare @nome VARCHAR(50) = (select fonteNome from fonte)
+    -- Verifica se o valor j√° existe na tabela
+    IF EXISTS (SELECT 1 FROM fonte WHERE @nome IN (SELECT fonteNome FROM deleted))
+    BEGIN
+        -- Lan√ßa um erro para impedir a inser√ß√£o
+        RAISERROR('J√° existe esse Observador.', 16, 1);
+    END
+    ELSE
+    BEGIN
+        -- Permite a inser√ß√£o se o valor n√£o existir
+        INSERT INTO fonte SELECT * FROM deleted;
     END
 END
