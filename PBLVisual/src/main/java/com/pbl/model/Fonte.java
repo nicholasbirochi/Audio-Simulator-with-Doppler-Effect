@@ -49,7 +49,7 @@ public class Fonte
           throws IOException, UnsupportedAudioFileException {
 
         Ambiente ambiente = new Ambiente("ar", 330);
-        Experimento exp = new Experimento("Experimento de teste", 0, 1, 0, 0, 5, 44100, ambiente, this);
+        Experimento exp = new Experimento("Experimento de teste", 0, 1, 0, 0,ambiente, this);
         
         exp.criarArquivoDeSimulacao(caminhoArquivo);
     }
