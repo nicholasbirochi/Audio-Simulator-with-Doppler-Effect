@@ -146,7 +146,7 @@ public class DAO {
                 
                 Fonte fonte = buscarFontePorNome(fonteNome);
                 Ambiente ambiente = buscarAmbientePorNome(ambienteNome);
-                return new Experimento(experimentoNome, posicaoInicialFonte, posicaoLateral, velocidadeFonte, velocidadeObservador, tempoDuracao, taxaAmostragem, ambiente, fonte);
+                return new Experimento(experimentoNome, posicaoInicialFonte, posicaoLateral, velocidadeFonte, velocidadeObservador, ambiente, fonte);
             } else {
                 // Caso não encontre o ambiente, retornar null ou lançar uma exceção apropriada
                 return null;

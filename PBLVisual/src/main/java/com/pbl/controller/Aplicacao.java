@@ -31,14 +31,6 @@ public class Aplicacao extends Application {
             e.printStackTrace();
         }
     }
-//    @FXML
-//    public void handleVelocidadeFonteSlider() {
-//        double valor = velocidadeFonte.getValue();
-//        // Faça algo com o valor do slider, por exemplo:
-//        System.out.println("Valor do slider: " + valor);
-//        // Ou chame métodos para atualizar a interface com o novo valor, etc.
-//    }
-
     public static void main(String[] args) {
         launch();
     }
