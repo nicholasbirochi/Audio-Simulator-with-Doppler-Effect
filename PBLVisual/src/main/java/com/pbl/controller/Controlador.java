@@ -4,30 +4,22 @@ import com.pbl.model.*;
 
 import java.io.IOException;
 import java.sql.Connection;
-
-//import io.github.palexdev.materialfx.controls.MFXSlider;
+import javafx.animation.FadeTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.util.Duration;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-
 public class Controlador {
-    //    ConexaoBD conx = new ConexaoBD();
-    //    Connection connection = conx.getConexao();
+
+    // ConexaoBD conx = new ConexaoBD();
+    // Connection connection = conx.getConexao();
 
     @FXML
     private HBox topBar;
-//    @FXML
-//    private MFXSlider sliderVelFonte;
-
     @FXML
     private VBox pageTimbres;
     @FXML
@@ -39,40 +31,10 @@ public class Controlador {
     @FXML
     private Label selectedTimbreLabel;
 
-//    @FXML
-//    private MFXSlider sliderVelFonte;
-//
-//    double valorSlider = sliderVelFonte.getValue();
-
-
-    public void showPageFonte() {
-        pageTimbres.setVisible(false);
-        pageFonte.setVisible(true);
-        pageAmbiente.setVisible(false);
-        pageExperimento.setVisible(false);
-    }
-
-    public void showPageTimbres() {
-        pageTimbres.setVisible(true);
-        pageFonte.setVisible(false);
-        pageAmbiente.setVisible(false);
-        pageExperimento.setVisible(false);
-    }
-    public void showPageAmbiente() {
-        pageTimbres.setVisible(false);
-        pageFonte.setVisible(false);
-        pageAmbiente.setVisible(true);
-        pageExperimento.setVisible(false);
-    }
-    public void showPageExperimento() {
-        pageTimbres.setVisible(false);
-        pageFonte.setVisible(false);
-        pageAmbiente.setVisible(false);
-        pageExperimento.setVisible(true);
-    }
-
     private double xOffset = 0;
     private double yOffset = 0;
+
+    private Timbre timbreAtual = new TimbrePuro();
 
     @FXML
     public void initialize() {
@@ -86,56 +48,123 @@ public class Controlador {
             stage.setX(event.getScreenX() - xOffset);
             stage.setY(event.getScreenY() - yOffset);
         });
+
+        // Atualize o label com o timbre padrão
+        updateTimbreLabel("Puro");
     }
 
-    private Timbre timbreAtual = new TimbreAbelhaEletrica();
+    private void updateTimbreLabel(String timbre) {
+        // Crie a transição de fade-out
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(200), selectedTimbreLabel);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+
+        // Crie a transição de fade-in
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(200), selectedTimbreLabel);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+
+        // Quando o fade-out terminar, atualize o texto e inicie o fade-in
+        fadeOut.setOnFinished(event -> {
+            selectedTimbreLabel.setText("Timbre selecionado: " + timbre);
+            fadeIn.play();
+        });
+
+        // Inicie o fade-out
+        fadeOut.play();
+    }
+
+    private void switchPage(VBox currentPage, VBox newPage) {
+        // Crie a transição de fade-out
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(200), currentPage);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+
+        // Crie a transição de fade-in
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(200), newPage);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+
+        // Quando o fade-out terminar, mude a página e inicie o fade-in
+        fadeOut.setOnFinished(event -> {
+            currentPage.setVisible(false);
+            newPage.setVisible(true);
+            fadeIn.play();
+        });
+
+        // Inicie o fade-out
+        fadeOut.play();
+    }
+
+    public void showPageFonte() {
+        switchPage(getVisiblePage(), pageFonte);
+    }
+
+    public void showPageTimbres() {
+        switchPage(getVisiblePage(), pageTimbres);
+    }
+
+    public void showPageAmbiente() {
+        switchPage(getVisiblePage(), pageAmbiente);
+    }
+
+    public void showPageExperimento() {
+        switchPage(getVisiblePage(), pageExperimento);
+    }
+
+    private VBox getVisiblePage() {
+        if (pageTimbres.isVisible()) return pageTimbres;
+        if (pageFonte.isVisible()) return pageFonte;
+        if (pageAmbiente.isVisible()) return pageAmbiente;
+        return pageExperimento;
+    }
 
     public void selecionarTimbreAbelhaEletrica() {
         this.timbreAtual = new TimbreAbelhaEletrica();
         System.out.println("Timbre selecionado: Abelha Elétrica");
-        selectedTimbreLabel.setText("Timbre selecionado: Abelha Elétrica");
+        updateTimbreLabel("Abelha Elétrica");
     }
 
     public void selecionarTimbreAlienigena() {
         this.timbreAtual = new TimbreAlienigena();
         System.out.println("Timbre selecionado: Alienígena");
-        selectedTimbreLabel.setText("Timbre selecionado: Alienígena");
+        updateTimbreLabel("Alienígena");
     }
 
     public void selecionarTimbreArcoIris() {
         this.timbreAtual = new TimbreArcoIris();
         System.out.println("Timbre selecionado: Arco-Íris");
-        selectedTimbreLabel.setText("Timbre selecionado: Arco-Íris");
+        updateTimbreLabel("Arco-Íris");
     }
 
     public void selecionarTimbreCarrinhoDeSorvete() {
         this.timbreAtual = new TimbreCarrinhoDeSorvete();
         System.out.println("Timbre selecionado: Carrinho de Sorvete");
-        selectedTimbreLabel.setText("Timbre selecionado: Carrinho de Sorvete");
+        updateTimbreLabel("Carrinho de Sorvete");
     }
 
     public void selecionarTimbrePiano() {
         this.timbreAtual = new TimbrePiano();
         System.out.println("Timbre selecionado: Piano");
-        selectedTimbreLabel.setText("Timbre selecionado: Piano");
+        updateTimbreLabel("Piano");
     }
 
     public void selecionarTimbrePuro() {
         this.timbreAtual = new TimbrePuro();
         System.out.println("Timbre selecionado: Puro");
-        selectedTimbreLabel.setText("Timbre selecionado: Puro");
+        updateTimbreLabel("Puro");
     }
 
     public void selecionarTimbreViolao() {
         this.timbreAtual = new TimbreViolao();
         System.out.println("Timbre selecionado: Violão");
-        selectedTimbreLabel.setText("Timbre selecionado: Violão");
+        updateTimbreLabel("Violão");
     }
 
     public void selecionarTimbreTrompete() {
         this.timbreAtual = new TimbreTrompete();
         System.out.println("Timbre selecionado: Trompete");
-        selectedTimbreLabel.setText("Timbre selecionado: Trompete");
+        updateTimbreLabel("Trompete");
     }
 
     String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
@@ -145,7 +174,7 @@ public class Controlador {
         // Defina os parâmetros para o experimento
         Ambiente ambiente = new Ambiente("ar", 330.0);
         Fonte fonte = new Fonte("Fonte", 4.0, 440.0, this.timbreAtual); // Use o timbre selecionado
-        Experimento exp = new Experimento("Experimento de teste", 25.0, 1.0, -10.0, 1.0, 5.0, 44100, ambiente, fonte);
+        Experimento exp = new Experimento("Experimento de teste", 25.0, 1.0, -10.0, 1.0, ambiente, fonte);
 
         try {
             exp.criarArquivoDeSimulacao(caminhoAudio);
@@ -153,8 +182,6 @@ public class Controlador {
         } catch (IOException | UnsupportedAudioFileException e) {
             System.out.println("Erro ao criar arquivo de áudio: " + e.getMessage());
         }
-
-
     }
 
     @FXML
@@ -163,5 +190,3 @@ public class Controlador {
         stage.close();
     }
 }
-
-

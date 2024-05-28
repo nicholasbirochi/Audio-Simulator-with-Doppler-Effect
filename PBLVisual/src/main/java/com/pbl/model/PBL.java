@@ -12,7 +12,7 @@ public class PBL {
         Ambiente ambiente = new Ambiente("ar", 330);
         Timbre timbre = new TimbrePuro();
         Fonte fonte = new Fonte("Abelhinha aguda", 4, 440, timbre);
-        Experimento exp = new Experimento("Experimento de teste", 25, 1, -10, 1, 5, 44100, ambiente, fonte);
+        Experimento exp = new Experimento("Experimento de teste", 25, 1, -10, 1, ambiente, fonte);
         
         String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
         Scanner scanner = new Scanner(System.in);
