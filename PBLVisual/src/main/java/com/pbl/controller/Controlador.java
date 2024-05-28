@@ -5,8 +5,11 @@ import com.pbl.model.*;
 import java.io.IOException;
 import java.sql.Connection;
 import javafx.animation.FadeTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.layout.HBox;
@@ -21,6 +24,8 @@ public class Controlador {
     @FXML
     private HBox topBar;
     @FXML
+    private VBox pageHome;
+    @FXML
     private VBox pageTimbres;
     @FXML
     private VBox pageFonte;
@@ -29,7 +34,15 @@ public class Controlador {
     @FXML
     private VBox pageExperimento;
     @FXML
+    private VBox pageGerarAudio;
+    @FXML
     private Label selectedTimbreLabel;
+    @FXML
+    private Label selectedTimbreLabelFonte;
+    @FXML
+    private TextField duracaoAudio;
+
+    private double duracao = 5.0;
 
     private double xOffset = 0;
     private double yOffset = 0;
@@ -38,6 +51,34 @@ public class Controlador {
 
     @FXML
     public void initialize() {
+
+//         Adiciona um ouvinte para a propriedade textProperty
+        duracaoAudio.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Verifica se o novo valor corresponde a um número decimal válido com até 4 casas decimais
+                if (!newValue.matches("\\d*(\\.\\d{0,4})?|\\d*(,\\d{0,4})?")) {
+                    // Remove caracteres não numéricos
+                    duracaoAudio.setText(oldValue);
+                }
+
+                // Limita o valor máximo da TextField para 120
+                if (!newValue.isEmpty()) {
+                    try {
+                        double valor = Double.parseDouble(newValue.replace(',', '.')); // substitui vírgula por ponto
+                        if (valor > 120) {
+                            duracaoAudio.setText(oldValue);
+                        } else {
+                            // Atualiza o valor da duração
+                            duracao = valor;
+                        }
+                    } catch (NumberFormatException e) {
+                        duracaoAudio.setText(oldValue);
+                    }
+                }
+            }
+        });
+
         topBar.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
@@ -49,10 +90,15 @@ public class Controlador {
             stage.setY(event.getScreenY() - yOffset);
         });
 
-        // Atualize o label com o timbre padrão
+        // Atualize os labels com o timbre padrão
         updateTimbreLabel("Puro");
+        selectedTimbreLabelFonte.setText("Timbre selecionado: Puro");
+
+
     }
 
+
+    // Método para atualizar o label com animação
     private void updateTimbreLabel(String timbre) {
         // Crie a transição de fade-out
         FadeTransition fadeOut = new FadeTransition(Duration.millis(200), selectedTimbreLabel);
@@ -74,6 +120,7 @@ public class Controlador {
         fadeOut.play();
     }
 
+    // Método para trocar de página com animação
     private void switchPage(VBox currentPage, VBox newPage) {
         // Crie a transição de fade-out
         FadeTransition fadeOut = new FadeTransition(Duration.millis(200), currentPage);
@@ -94,6 +141,12 @@ public class Controlador {
 
         // Inicie o fade-out
         fadeOut.play();
+
+    }
+
+    // Métodos para exibir cada página
+    public void showPageHome() {
+        switchPage(getVisiblePage(), pageHome);
     }
 
     public void showPageFonte() {
@@ -112,64 +165,81 @@ public class Controlador {
         switchPage(getVisiblePage(), pageExperimento);
     }
 
+    public void showPageGerarAudio() {
+        switchPage(getVisiblePage(), pageGerarAudio);
+    }
+
+    // Método auxiliar para obter a página atualmente visível
     private VBox getVisiblePage() {
+        if (pageHome.isVisible()) return pageHome;
         if (pageTimbres.isVisible()) return pageTimbres;
         if (pageFonte.isVisible()) return pageFonte;
         if (pageAmbiente.isVisible()) return pageAmbiente;
-        return pageExperimento;
+        if (pageExperimento.isVisible()) return pageExperimento;
+        return pageGerarAudio;
     }
 
+    // Métodos para selecionar timbres
     public void selecionarTimbreAbelhaEletrica() {
         this.timbreAtual = new TimbreAbelhaEletrica();
         System.out.println("Timbre selecionado: Abelha Elétrica");
         updateTimbreLabel("Abelha Elétrica");
+        selectedTimbreLabelFonte.setText("Timbre selecionado: Abelha Elétrica");
     }
 
     public void selecionarTimbreAlienigena() {
         this.timbreAtual = new TimbreAlienigena();
         System.out.println("Timbre selecionado: Alienígena");
         updateTimbreLabel("Alienígena");
+        selectedTimbreLabelFonte.setText("Timbre selecionado: Alienígena");
     }
 
     public void selecionarTimbreArcoIris() {
         this.timbreAtual = new TimbreArcoIris();
         System.out.println("Timbre selecionado: Arco-Íris");
         updateTimbreLabel("Arco-Íris");
+        selectedTimbreLabelFonte.setText("Timbre selecionado: Arco-Íris");
     }
 
     public void selecionarTimbreCarrinhoDeSorvete() {
         this.timbreAtual = new TimbreCarrinhoDeSorvete();
         System.out.println("Timbre selecionado: Carrinho de Sorvete");
         updateTimbreLabel("Carrinho de Sorvete");
+        selectedTimbreLabelFonte.setText("Timbre selecionado: Carrinho de Sorvete");
     }
 
     public void selecionarTimbrePiano() {
         this.timbreAtual = new TimbrePiano();
         System.out.println("Timbre selecionado: Piano");
         updateTimbreLabel("Piano");
+        selectedTimbreLabelFonte.setText("Timbre selecionado: Piano");
     }
 
     public void selecionarTimbrePuro() {
         this.timbreAtual = new TimbrePuro();
         System.out.println("Timbre selecionado: Puro");
         updateTimbreLabel("Puro");
+        selectedTimbreLabelFonte.setText("Timbre selecionado: Puro");
     }
 
     public void selecionarTimbreViolao() {
         this.timbreAtual = new TimbreViolao();
         System.out.println("Timbre selecionado: Violão");
         updateTimbreLabel("Violão");
+        selectedTimbreLabelFonte.setText("Timbre selecionado: Violão");
     }
 
     public void selecionarTimbreTrompete() {
         this.timbreAtual = new TimbreTrompete();
         System.out.println("Timbre selecionado: Trompete");
         updateTimbreLabel("Trompete");
+        selectedTimbreLabelFonte.setText("Timbre selecionado: Trompete");
     }
 
     String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
     String caminhoAudio = caminhoDesktop + "/Áudio.wav";
 
+    // Método para gerar áudio
     public void gerarAudio() {
         // Defina os parâmetros para o experimento
         Ambiente ambiente = new Ambiente("ar", 330.0);
@@ -177,7 +247,7 @@ public class Controlador {
         Experimento exp = new Experimento("Experimento de teste", 25.0, 1.0, -10.0, 1.0, ambiente, fonte);
 
         try {
-            exp.criarArquivoDeSimulacao(caminhoAudio);
+            exp.criarArquivoDeSimulacao(caminhoAudio, 44100, 5);
             System.out.println("Arquivo de áudio criado com sucesso em: " + caminhoAudio);
         } catch (IOException | UnsupportedAudioFileException e) {
             System.out.println("Erro ao criar arquivo de áudio: " + e.getMessage());
