@@ -134,12 +134,8 @@ public class DAO {
                 String fonteNome = resultSet.getString("fonteNome");
                 String ambienteNome = resultSet.getString("ambienteNome");
                 
-                int taxaAmostragem = resultSet.getInt("taxaAmostragem");
-                int tempoDuracao = resultSet.getInt("tempoDuracao");
-                
                 double velocidadeObservador = resultSet.getDouble("velocidadeObservador");
                 double posicaoLateral = resultSet.getDouble("posicaoLateral");
-                double posicaoInicialObservador = resultSet.getDouble("posicaoInicialObservador");
                 double velocidadeFonte = resultSet.getDouble("velocidadeFonte");
                 double posicaoInicialFonte = resultSet.getDouble("posicaoInicialFonte");
                 
@@ -204,11 +200,8 @@ public class DAO {
             String nomeExperimento = experimento.getNome();
             Double velocidadeObservador = experimento.getVelocidadeObservador();
             Double posicaoLateral = experimento.getDistanciaLateral();
-            Double posicaoInicialObservador = 0.0;
             Double velocidadeFonte = experimento.getVelocidadeFonte();
             Double posicaoInicialFonte = experimento.getPosicaoInicialFonte();
-            double tempoDuracao = experimento.getTempoDuracao();
-            int taxaAmostragem = experimento.getTaxaAmostragem();
             
             String nomeAmbiente = experimento.getAmbiente().getNome();
             String nomeFonte = experimento.getFonte().getNome();
@@ -216,13 +209,10 @@ public class DAO {
             statement.setString(1, nomeExperimento);
             statement.setDouble(2, velocidadeObservador);
             statement.setDouble(3, posicaoLateral);
-            statement.setDouble(4, posicaoInicialObservador);
-            statement.setDouble(5, velocidadeFonte);
-            statement.setDouble(6, posicaoInicialFonte);
-            statement.setDouble(7, tempoDuracao);
-            statement.setInt(8, taxaAmostragem);
-            statement.setString(9, nomeAmbiente);
-            statement.setString(10, nomeFonte);              
+            statement.setDouble(4, velocidadeFonte);
+            statement.setDouble(5, posicaoInicialFonte);
+            statement.setString(6, nomeAmbiente);
+            statement.setString(7, nomeFonte);              
             
             statement.executeUpdate();
         }
