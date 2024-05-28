@@ -3,6 +3,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -189,7 +190,7 @@
                      <Cursor fx:constant="HAND" />
                   </cursor>
                </MFXButton>
-               <MFXButton fx:id="btnObservador" alignment="BASELINE_LEFT" onAction="#showPageObservador" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" styleClass="btnMenu" stylesheets="@styles.css" text="Observador" textFill="WHITE">
+               <MFXButton fx:id="btnExperimento" alignment="BASELINE_LEFT" onAction="#showPageExperimento" prefHeight="38.0" prefWidth="303.0" rippleColor="#8200ff" styleClass="btnMenu" stylesheets="@styles.css" text="Experimento" textFill="WHITE">
                   <font>
                      <Font name="Comfortaa Regular" size="14.0" />
                   </font>
@@ -197,7 +198,7 @@
                      <Insets left="24.0" />
                   </padding>
                   <graphic>
-                     <FontIcon iconLiteral="fas-eye">
+                     <FontIcon iconLiteral="fas-flask">
                         <iconColor>
                            <LinearGradient endX="1.0" endY="1.0" startX="0.5876777251184834" startY="0.1943127962085308">
                               <stops>
@@ -268,262 +269,244 @@
          <center>
             <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <GridPane fx:id="pageTimbres" alignment="CENTER_RIGHT" prefWidth="977.0" visible="false" StackPane.alignment="CENTER_RIGHT">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
+                  <VBox fx:id="pageTimbres" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
                      <children>
-                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="245.0" spacing="16.0">
+                        <Label fx:id="selectedTimbreLabel" text="Timbre Selecionado:" textFill="WHITE">
+                           <font>
+                              <Font name="Comfortaa Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <GridPane alignment="CENTER_RIGHT" prefHeight="500.0" prefWidth="977.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
                            <children>
-                              <VBox alignment="CENTER" spacing="10" />
-                              <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                              <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="245.0" spacing="16.0">
                                  <children>
-                                    <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@imgs/abelha.png" />
-                                       </image>
-                                    </ImageView>
+                                    <VBox alignment="CENTER" spacing="10" />
+                                    <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                                       <children>
+                                          <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@imgs/abelha.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <Label text="Abelha Elétrica" textFill="WHITE" />
+                                    <MFXButton fx:id="btnTimbreAbelha" onAction="#selecionarTimbreAbelhaEletrica" prefHeight="28.0" prefWidth="86.0" rippleColor="#ff8000" style="-fx-background-color: #FFCE39;" text="Selecionar" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </MFXButton>
                                  </children>
-                              </StackPane>
-                              <Label text="Abelha Elétrica" textFill="WHITE" />
-                              <MFXButton fx:id="btnTimbreAbelha" onAction="#selecionarTimbreAbelhaEletrica" prefHeight="28.0" prefWidth="86.0" rippleColor="#ff8000" style="-fx-background-color: #FFCE39;" text="Selecionar" textFill="WHITE">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </MFXButton>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.columnIndex="1">
-                           <children>
-                              <VBox alignment="CENTER" spacing="10" />
-                              <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                              </VBox>
+                              <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.columnIndex="1">
                                  <children>
-                                    <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@imgs/ufo.png" />
-                                       </image>
-                                    </ImageView>
+                                    <VBox alignment="CENTER" spacing="10" />
+                                    <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                                       <children>
+                                          <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@imgs/ufo.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <Label text="Alienígena" textFill="WHITE" />
+                                    <MFXButton fx:id="btnTimbreAlien" onAction="#selecionarTimbreAlienigena" prefHeight="28.0" prefWidth="86.0" rippleColor="#399e7e" style="-fx-background-color: #5adbb5;" text="Selecionar" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </MFXButton>
                                  </children>
-                              </StackPane>
-                              <Label text="Alienígena" textFill="WHITE" />
-                              <MFXButton fx:id="btnTimbreAlien" onAction="#selecionarTimbreAlienigena" prefHeight="28.0" prefWidth="86.0" rippleColor="#399e7e" style="-fx-background-color: #5adbb5;" text="Selecionar" textFill="WHITE">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </MFXButton>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.columnIndex="2">
-                           <children>
-                              <VBox alignment="CENTER" spacing="10" />
-                              <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                              </VBox>
+                              <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.columnIndex="2">
                                  <children>
-                                    <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@imgs/rainbow.png" />
-                                       </image>
-                                    </ImageView>
+                                    <VBox alignment="CENTER" spacing="10" />
+                                    <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                                       <children>
+                                          <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@imgs/rainbow.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <Label text="Arco-Íris" textFill="WHITE" />
+                                    <MFXButton fx:id="btnTimbreArcoIris" onAction="#selecionarTimbreArcoIris" prefHeight="28.0" prefWidth="86.0" rippleColor="#b445d9" style="-fx-background-color: #d945d1;" text="Selecionar" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </MFXButton>
                                  </children>
-                              </StackPane>
-                              <Label text="Arco-Íris" textFill="WHITE" />
-                              <MFXButton fx:id="btnTimbreArcoIris" onAction="#selecionarTimbreArcoIris" prefHeight="28.0" prefWidth="86.0" rippleColor="#b445d9" style="-fx-background-color: #d945d1;" text="Selecionar" textFill="WHITE">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </MFXButton>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.columnIndex="3">
-                           <children>
-                              <VBox alignment="CENTER" spacing="10" />
-                              <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                              </VBox>
+                              <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.columnIndex="3">
                                  <children>
-                                    <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@imgs/ice-cream.png" />
-                                       </image>
-                                    </ImageView>
+                                    <VBox alignment="CENTER" spacing="10" />
+                                    <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                                       <children>
+                                          <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@imgs/ice-cream.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <Label text="Carrinho de Sorvete" textFill="WHITE" />
+                                    <MFXButton fx:id="btnTimbreSorvete" onAction="#selecionarTimbreCarrinhoDeSorvete" prefHeight="28.0" prefWidth="86.0" rippleColor="#f09d7d" style="-fx-background-color: #f2cb7d;" text="Selecionar" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </MFXButton>
                                  </children>
-                              </StackPane>
-                              <Label text="Carrinho de Sorvete" textFill="WHITE" />
-                              <MFXButton fx:id="btnTimbreSorvete" onAction="#selecionarTimbreCarrinhoDeSorvete" prefHeight="28.0" prefWidth="86.0" rippleColor="#f09d7d" style="-fx-background-color: #f2cb7d;" text="Selecionar" textFill="WHITE">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </MFXButton>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.rowIndex="1">
-                           <children>
-                              <VBox alignment="CENTER" spacing="10" />
-                              <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                              </VBox>
+                              <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.rowIndex="1">
                                  <children>
-                                    <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@imgs/piano.png" />
-                                       </image>
-                                    </ImageView>
+                                    <VBox alignment="CENTER" spacing="10" />
+                                    <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                                       <children>
+                                          <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@imgs/piano.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <Label text="Piano" textFill="WHITE" />
+                                    <MFXButton fx:id="btnTimbrePiano" onAction="#selecionarTimbrePiano" prefHeight="28.0" prefWidth="86.0" rippleColor="#6b6b6b" style="-fx-background-color: #242424;" text="Selecionar" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </MFXButton>
                                  </children>
-                              </StackPane>
-                              <Label text="Piano" textFill="WHITE" />
-                              <MFXButton fx:id="btnTimbrePiano" onAction="#selecionarTimbrePiano" prefHeight="28.0" prefWidth="86.0" rippleColor="#6b6b6b" style="-fx-background-color: #242424;" text="Selecionar" textFill="WHITE">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </MFXButton>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <children>
-                              <VBox alignment="CENTER" spacing="10" />
-                              <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                              </VBox>
+                              <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <children>
-                                    <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@imgs/magic.png" />
-                                       </image>
-                                    </ImageView>
+                                    <VBox alignment="CENTER" spacing="10" />
+                                    <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                                       <children>
+                                          <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@imgs/magic.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <Label text="Timbre Puro" textFill="WHITE" />
+                                    <MFXButton fx:id="btnTimbrePuro" onAction="#selecionarTimbrePuro" prefHeight="28.0" prefWidth="86.0" rippleColor="#6322ee" style="-fx-background-color: #844cfc;" text="Selecionar" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </MFXButton>
                                  </children>
-                              </StackPane>
-                              <Label text="Timbre Puro" textFill="WHITE" />
-                              <MFXButton fx:id="btnTimbrePuro" onAction="#selecionarTimbrePuro" prefHeight="28.0" prefWidth="86.0" rippleColor="#6322ee" style="-fx-background-color: #844cfc;" text="Selecionar" textFill="WHITE">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </MFXButton>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
-                           <children>
-                              <VBox alignment="CENTER" spacing="10" />
-                              <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                              </VBox>
+                              <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                  <children>
-                                    <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@imgs/guitar.png" />
-                                       </image>
-                                    </ImageView>
+                                    <VBox alignment="CENTER" spacing="10" />
+                                    <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                                       <children>
+                                          <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@imgs/guitar.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <Label text="Violão" textFill="WHITE" />
+                                    <MFXButton fx:id="btnTimbreViolao" onAction="#selecionarTimbreViolao" prefHeight="28.0" prefWidth="86.0" rippleColor="#b9742c" style="-fx-background-color: d99445;" text="Selecionar" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </MFXButton>
                                  </children>
-                              </StackPane>
-                              <Label text="Violão" textFill="WHITE" />
-                              <MFXButton fx:id="btnTimbreViolao" onAction="#selecionarTimbreViolao" prefHeight="28.0" prefWidth="86.0" rippleColor="#b9742c" style="-fx-background-color: d99445;" text="Selecionar" textFill="WHITE">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </MFXButton>
-                           </children>
-                        </VBox>
-                        <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                           <children>
-                              <VBox alignment="CENTER" spacing="10" />
-                              <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                              </VBox>
+                              <VBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="73.0" spacing="16.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <children>
-                                    <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@imgs/play.png" />
-                                       </image>
-                                    </ImageView>
+                                    <VBox alignment="CENTER" spacing="10" />
+                                    <StackPane maxWidth="-Infinity" prefHeight="70.0" prefWidth="70.0" style="-fx-background-color: #212121; -fx-background-radius: 8px; -fx-padding: 10px;">
+                                       <children>
+                                          <ImageView fitHeight="36.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@imgs/play.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <Label text="Trompete" textFill="WHITE" />
+                                    <MFXButton fx:id="btnTimbreTrompete" onAction="#selecionarTimbreTrompete" prefHeight="28.0" prefWidth="86.0" style="-fx-background-color: linear-gradient(from 0% 100% to 100% 0%, #f9f295, #e0aa3e,#f9f295);" text="Selecionar" textFill="WHITE">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <rippleColor>
+                                          <LinearGradient endX="0.5914489311163895" endY="0.3919239904988123">
+                                             <stops>
+                                                <Stop>
+                                                   <color>
+                                                      <Color red="0.9764705896377563" green="0.9490196108818054" blue="0.5843137502670288" />
+                                                   </color>
+                                                </Stop>
+                                                <Stop offset="1.0">
+                                                   <color>
+                                                      <Color red="0.8784313797950745" green="0.6666666865348816" blue="0.24313725531101227" />
+                                                   </color>
+                                                </Stop>
+                                             </stops>
+                                          </LinearGradient>
+                                       </rippleColor>
+                                       <font>
+                                          <Font name="System Bold" size="13.0" />
+                                       </font>
+                                    </MFXButton>
                                  </children>
-                              </StackPane>
-                              <Label text="Trompete" textFill="WHITE" />
-                              <MFXButton fx:id="btnTimbreTrompete" onAction="#selecionarTimbreTrompete" prefHeight="28.0" prefWidth="86.0" style="-fx-background-color: linear-gradient(from 0% 100% to 100% 0%, #f9f295, #e0aa3e,#f9f295);" text="Selecionar" textFill="WHITE">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <rippleColor>
-                                    <LinearGradient endX="0.5914489311163895" endY="0.3919239904988123">
-                                       <stops>
-                                          <Stop>
-                                             <color>
-                                                <Color red="0.9764705896377563" green="0.9490196108818054" blue="0.5843137502670288" />
-                                             </color>
-                                          </Stop>
-                                          <Stop offset="1.0">
-                                             <color>
-                                                <Color red="0.8784313797950745" green="0.6666666865348816" blue="0.24313725531101227" />
-                                             </color>
-                                          </Stop>
-                                       </stops>
-                                    </LinearGradient>
-                                 </rippleColor>
-                                 <font>
-                                    <Font name="System Bold" size="13.0" />
-                                 </font>
-                              </MFXButton>
+                              </VBox>
                            </children>
-                        </VBox>
+                        </GridPane>
                      </children>
-                     <padding>
-                        <Insets bottom="60.0" left="60.0" right="60.0" top="60.0" />
-                     </padding>
-                  </GridPane>
-                  <VBox fx:id="pageFonte" alignment="CENTER" prefHeight="611.0" prefWidth="873.0" spacing="24.0">
+                  </VBox>
+                  <VBox fx:id="pageFonte" alignment="CENTER" prefHeight="611.0" prefWidth="873.0" spacing="24.0" visible="false">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
-                                 <children>
-                                    <Label text="Velocidade Fonte (m/s)" textAlignment="CENTER" textFill="WHITE">
-                                       <font>
-                                          <Font name="Comfortaa Regular" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="-10" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
-                                       <font>
-                                          <Font name="Comfortaa Regular" size="13.0" />
-                                       </font>
-                                    </TextField>
-                                    <Label text="Posição Inicial&#10;da Fonte (metros)" textAlignment="CENTER" textFill="WHITE">
-                                       <font>
-                                          <Font name="Comfortaa Regular" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
-                                       <font>
-                                          <Font name="Comfortaa Regular" size="13.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets right="10.0" />
-                                 </HBox.margin>
-                              </VBox>
-                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
-                                 <children>
-                                    <Label text="Frequência (Hz)" textAlignment="CENTER" textFill="WHITE">
-                                       <font>
-                                          <Font name="Comfortaa Regular" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="-10" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
-                                       <font>
-                                          <Font name="Comfortaa Regular" size="13.0" />
-                                       </font>
-                                    </TextField>
-                                    <Label text="Potência (Watts)" textAlignment="CENTER" textFill="WHITE">
-                                       <font>
-                                          <Font name="Comfortaa Regular" size="12.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
-                                       <font>
-                                          <Font name="Comfortaa Regular" size="13.0" />
-                                       </font>
-                                    </TextField>
-                                 </children>
-                                 <HBox.margin>
-                                    <Insets left="10.0" />
-                                 </HBox.margin>
-                              </VBox>
+                              <Label text="Nome da Fonte" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Comfortaa Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="Piano de Beethoven" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                 <font>
+                                    <Font name="Comfortaa Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="Potência (Watts)" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Comfortaa Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                 <font>
+                                    <Font name="Comfortaa Regular" size="13.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="Frequência (Hz)" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Comfortaa Regular" size="12.0" />
+                                 </font>
+                              </Label>
+                              <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="-10" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                 <font>
+                                    <Font name="Comfortaa Regular" size="13.0" />
+                                 </font>
+                              </TextField>
                            </children>
-                        </HBox>
+                        </VBox>
                         <MFXButton fx:id="btnCriarFonte" prefHeight="39.0" prefWidth="246.0" rippleColor="WHITE" style="-fx-background-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00);" text="Criar Fonte" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -572,45 +555,124 @@
                         </MFXButton>
                      </children>
                   </VBox>
-                  <VBox fx:id="pageObservador" alignment="CENTER" prefHeight="611.0" prefWidth="873.0" spacing="24.0" visible="false">
+                  <VBox fx:id="pageExperimento" alignment="CENTER" prefHeight="611.0" prefWidth="873.0" spacing="24.0" visible="false">
                      <children>
-                        <Label text="Nome do Observador" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="Comfortaa Regular" size="12.0" />
-                           </font>
-                        </Label>
-                        <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="Carro" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
-                           <font>
-                              <Font name="Comfortaa Regular" size="13.0" />
-                           </font>
-                        </TextField>
-                        <Label text="Distância Inicial do Observador" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="Comfortaa Regular" size="12.0" />
-                           </font>
-                        </Label>
-                        <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
-                           <font>
-                              <Font name="Comfortaa Regular" size="13.0" />
-                           </font>
-                        </TextField>
-                        <Label text="Velocidade Observador (m/s)" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font name="Comfortaa Regular" size="12.0" />
-                           </font>
-                        </Label>
-                        <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="12" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
-                           <font>
-                              <Font name="Comfortaa Regular" size="13.0" />
-                           </font>
-                        </TextField>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="24.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
+                                 <children>
+                                    <Label text="Nome do Experimento" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="Descoberto do Efeito" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="13.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
+                                 <children>
+                                    <Label text="Posição Observador" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="13.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
+                                 <children>
+                                    <Label text="Velocidade Observador" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="13.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
+                                 <children>
+                                    <Label text="Fonte" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox minWidth="-Infinity" prefWidth="165.0" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8;" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="24.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
+                                 <children>
+                                    <Label text="Posição Inicial Fonte" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="25" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="13.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
+                                 <children>
+                                    <Label text="Posição Lateral Fonte" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="1" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="13.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
+                                 <children>
+                                    <Label text="Velocidade Inicial Fonte" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="-10" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="13.0" />
+                                       </font>
+                                    </TextField>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
+                                 <children>
+                                    <Label text="Ambiente" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="Comfortaa Regular" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <ComboBox minWidth="-Infinity" prefWidth="165.0" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00); -fx-border-width: 2; -fx-border-radius: 8;" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
                         <MFXButton fx:id="btnCriarObservador" prefHeight="39.0" prefWidth="200.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff);" text="Gerar Observador" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
-                           <VBox.margin>
-                              <Insets top="30.0" />
-                           </VBox.margin>
                            <font>
                               <Font name="System Bold" size="13.0" />
                            </font>
