@@ -62,7 +62,8 @@ go
 create procedure sp_adicionarAmbiente (@nome VARCHAR(50),
 												@velocidadeSom decimal(10,5)) as
 BEGIN
-	insert into ambiente values(@nome,
+	insert into ambiente (ambienteNome, velocidadeSom)
+			     values(@nome,
 								@velocidadeSom)
 END
 
@@ -70,7 +71,7 @@ go
 
 create procedure sp_adicionarTimbre (@nome VARCHAR(50)) as
 BEGIN
-	insert into timbre values(@nome)
+	insert into timbre(timbreNome) values(@nome)
 END
 
 go
@@ -80,7 +81,8 @@ create procedure sp_adicionarFonte (@nomeFonte VARCHAR(50),
 											 @potencia decimal(10,5),
 											 @frequencia decimal(10,5)) as
 BEGIN
-	insert into fonte values(@nomeFonte,
+	insert into fonte(fonteNome, timbreNome, potencia, frequencia) 
+			   values(@nomeFonte,
 							 @nomeTimbre,
 							 @potencia,
 							 @frequencia)
@@ -94,19 +96,15 @@ create procedure sp_adicionarExperimento (@nomeExperimento VARCHAR(50),
 												   @posicaoInicialObservador decimal(10,5),
 												   @velocidadeFonte decimal(10,5),
 												   @posicaoInicialFonte decimal(10,5),
-												   @tempoDuracao decimal(10,5),
-												   @taxaAmostragem int,
 												   @nomeAmbiente VARCHAR(50),
 												   @nomeFonte VARCHAR(50)) as
 BEGIN
-	insert into experimento values(@nomeExperimento,
+	insert into experimento(experimentoNome, velocidadeObservador, posicaoLateral, velocidadeFonte, posicaoInicialFonte, ambienteNome, fonteNome)
+				values(@nomeExperimento,
 								   @velocidadeObservador,
 								   @posicaoLateral,
-								   @posicaoInicialObservador,
 								   @velocidadeFonte,
 								   @posicaoInicialFonte,
-								   @tempoDuracao,
-								   @taxaAmostragem,
 								   @nomeAmbiente,
 								   @nomeFonte)
 END
