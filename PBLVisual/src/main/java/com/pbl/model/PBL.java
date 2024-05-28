@@ -10,7 +10,7 @@ public class PBL {
 
     public static void main(String[] args) {
         Ambiente ambiente = new Ambiente("ar", 330);
-        Timbre timbre = new TimbreAbelhaEletrica();
+        Timbre timbre = new TimbrePuro();
         Fonte fonte = new Fonte("Abelhinha aguda", 4, 440, timbre);
         Experimento exp = new Experimento("Experimento de teste", 25, 1, -10, 1, 5, 44100, ambiente, fonte);
         
