@@ -70,7 +70,7 @@ public class Fisica
         Fonte fonte = new Fonte("fonte qualquer", 5, 440, timbre);
         Experimento exp = new Experimento("Experimento de teste", 0, 1, 0, 0, ambiente, fonte);
         
-        exp.criarArquivoDeSimulacao(caminhoArquivo, int taxaAmostragem, double duracao);
+        exp.criarArquivoDeSimulacao(caminhoArquivo, taxaAmostragem, duracao);
     }
 
 
