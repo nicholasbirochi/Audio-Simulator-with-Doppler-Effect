@@ -1,7 +1,8 @@
 package com.pbl.controller;
 
 import com.pbl.model.*;
-
+import com.pbl.DAO;
+import java.awt.*;
 import java.io.IOException;
 import java.sql.Connection;
 import javafx.animation.FadeTransition;
@@ -22,9 +23,6 @@ import javax.sound.sampled.LineUnavailableException;
 import java.io.File;
 
 public class Controlador {
-
-    // ConexaoBD conx = new ConexaoBD();
-    // Connection connection = conx.getConexao();
 
     @FXML
     private HBox topBar;
@@ -51,8 +49,25 @@ public class Controlador {
     private Label selectedTimbreLabelFonte;
     @FXML
     private TextField duracaoAudio;
-
     private double duracao = 5.0;
+    @FXML
+    private TextField taxaAmostragem;
+    @FXML
+    private TextField nomeFonte;
+    @FXML
+    private TextField potFonte;
+    @FXML
+    private TextField freqFonte;
+
+    private int taxa = 44100; // valor padrão
+    String nomeTimbre = "TimbrePuro";
+    Fonte fonte = new Fonte("Nome",5,5, new TimbrePuro());
+
+//    ConexaoBD conx = new ConexaoBD();
+//    Connection connection = conx.getConexao();
+//    DAO dao = new DAO(connection);
+//
+//    dao.adicionaFonte(fonte);
 
     private double xOffset = 0;
     private double yOffset = 0;
@@ -88,6 +103,52 @@ public class Controlador {
                 }
             }
         });
+
+        // Adiciona um ouvinte para a propriedade textProperty da taxaAmostragem
+        taxaAmostragem.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Verifica se o novo valor corresponde a um número inteiro válido
+                if (!newValue.matches("\\d*")) {
+                    // Remove caracteres não numéricos
+                    taxaAmostragem.setText(oldValue);
+                }
+
+                // Atualiza a variável de taxa de amostragem se o novo valor não estiver vazio
+                if (!newValue.isEmpty()) {
+                    try {
+                        int valor = Integer.parseInt(newValue);
+                        taxa = valor;
+                    } catch (NumberFormatException e) {
+                        taxaAmostragem.setText(oldValue);
+                    }
+                }
+            }
+        });
+
+        // Adiciona ouvintes para a propriedade textProperty de potFonte e freqFonte
+        potFonte.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Verifica se o novo valor corresponde a um número decimal positivo válido
+                if (!newValue.matches("\\d*(\\.\\d{0,4})?") || newValue.startsWith("-")) {
+                    // Remove caracteres não numéricos ou negativos
+                    potFonte.setText(oldValue);
+                }
+            }
+        });
+
+        freqFonte.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Verifica se o novo valor corresponde a um número decimal válido com sinal
+                if (!newValue.matches("-?\\d*(\\.\\d{0,4})?")) {
+                    // Remove caracteres não numéricos
+                    freqFonte.setText(oldValue);
+                }
+            }
+        });
+
 
         topBar.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
@@ -245,8 +306,8 @@ public class Controlador {
         selectedTimbreLabelFonte.setText("Timbre selecionado: Trompete");
     }
 
-    String caminhoDesktop = System.getProperty("user.home") + "\\Desktop";
-    String caminhoAudio = caminhoDesktop + "\\Áudio.wav";
+    String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
+    String caminhoAudio = caminhoDesktop + "/Áudio.wav";
 
     // Método para gerar áudio
     public void gerarAudio() {
@@ -256,7 +317,7 @@ public class Controlador {
         Experimento exp = new Experimento("Experimento de teste", 25.0, 1.0, -10.0, 1.0, ambiente, fonte);
 
         try {
-            exp.criarArquivoDeSimulacao(caminhoAudio, 44100, duracao); // Use o valor da duração
+            exp.criarArquivoDeSimulacao(caminhoAudio, taxa, duracao); // Use o valor da duração
             System.out.println("Arquivo de áudio criado com sucesso em: " + caminhoAudio);
         } catch (IOException | UnsupportedAudioFileException e) {
             System.out.println("Erro ao criar arquivo de áudio: " + e.getMessage());

@@ -1,12 +1,6 @@
 package com.pbl.model;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import javax.sound.sampled.AudioFileFormat;
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Fonte
@@ -45,7 +39,7 @@ public class Fonte
         return this.nome;
     }
     
-    public void tocarFonte(String caminhoArquivo, int taxaAmostragem, double duracao)
+    public void tocarFonte(String caminhoArquivo, double taxaAmostragem, double duracao)
           throws IOException, UnsupportedAudioFileException {
 
         Ambiente ambiente = new Ambiente("ar", 330);

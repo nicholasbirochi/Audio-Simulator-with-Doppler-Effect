@@ -15,7 +15,7 @@ public class PBL {
         Experimento exp = new Experimento("Experimento de teste", 25, 1, -10, 1, ambiente, fonte);
 
         //dados de geração do audio
-        int taxaAmostragem = 44100; //em hz
+        double taxaAmostragem = 800.0; //em hz
         double duracao = 5.0; //em segundos
         
         String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
