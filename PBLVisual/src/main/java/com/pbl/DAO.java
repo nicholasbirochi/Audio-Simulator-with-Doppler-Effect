@@ -2,6 +2,7 @@ package com.pbl;
 
 import com.pbl.model.Ambiente;
 import com.pbl.model.Experimento;
+import com.pbl.model.ConexaoBD;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
@@ -17,7 +18,7 @@ public class DAO {
     public DAO(Connection connection) {
         this.connection = connection;
     }
-    
+
     /* Buscando todos os nomes de instâncias de uma classe: */
     public List<String> ambientesTodosNomes(){
         String sql = "EXEC sp_ambientesTodosNomes";
