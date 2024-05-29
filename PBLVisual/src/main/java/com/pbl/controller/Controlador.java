@@ -67,8 +67,7 @@ public class Controlador {
 //    Connection connection = conx.getConexao();
 //    DAO dao = new DAO(connection);
 //
-//    dao.adicionaFonte(fonte);
-//
+//    dao.adicionaFonte(fonte);//
 
     private double xOffset = 0;
     private double yOffset = 0;
