@@ -60,7 +60,7 @@ public class Experimento
     return this.ambiente;
   }
   
-    public void criarArquivoDeSimulacao(String caminhoArquivo, int taxaAmostragem, double duracao)
+    public void criarArquivoDeSimulacao(String caminhoArquivo, double taxaAmostragem, double duracao)
           throws IOException, UnsupportedAudioFileException {
 
       List<Double[]> amplitudesFrequencias = Fisica.amplitudeFrequenciaDoSom(this, taxaAmostragem, duracao);
@@ -84,7 +84,7 @@ public class Experimento
           dadosAudio[2 * i + 1] = (byte) ((amostra >> 8) & 0xFF);
           i += 1;
       }
-      AudioFormat formato = new AudioFormat(taxaAmostragem, 16, 1, true, false);
+      AudioFormat formato = new AudioFormat((int) taxaAmostragem, 16, 1, true, false);
       AudioInputStream entradaAudio = new AudioInputStream(new java.io.ByteArrayInputStream(dadosAudio), formato, numAmostras);
       AudioSystem.write(entradaAudio, AudioFileFormat.Type.WAVE, new File(caminhoArquivo));
     }
