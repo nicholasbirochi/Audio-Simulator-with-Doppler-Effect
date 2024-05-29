@@ -89,9 +89,12 @@ public class Controlador {
         double potencia = Double.parseDouble(potFonte.getText());
         double frequencia = Double.parseDouble(freqFonte.getText());
         Timbre timbre = this.timbreAtual;
+        String timbreString = timbre.toString(); // Obtém a string do timbre
         Fonte fonte = new Fonte(nome, potencia, frequencia, timbre);
         dao.adicionaFonte(fonte);
+        System.out.println("Timbre: " + timbreString); // Se quiser exibir a string do timbre
     }
+
 
     public void adicionarAmbiente() throws SQLException {
         String nome = nomeAmbiente.getText();

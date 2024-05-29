@@ -711,7 +711,7 @@
                               </TextField>
                            </children>
                         </VBox>
-                        <MFXButton fx:id="btnCriarFonte" prefHeight="39.0" prefWidth="246.0" rippleColor="WHITE" style="-fx-background-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00);" text="Criar Fonte" textFill="WHITE">
+                        <MFXButton fx:id="btnCriarFonte" onAction="#adicionarFonte" prefHeight="39.0" prefWidth="246.0" rippleColor="WHITE" style="-fx-background-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00);" text="Criar Fonte" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -752,7 +752,7 @@
                               <Font name="Comfortaa Regular" size="13.0" />
                            </font>
                         </TextField>
-                        <MFXButton fx:id="btnCriarAmbiente" prefHeight="39.0" prefWidth="200.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00);" text="Gerar Áudio" textFill="WHITE">
+                        <MFXButton fx:id="btnCriarAmbiente" onAction="#adicionarAmbiente" prefHeight="39.0" prefWidth="200.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00);" text="Gerar Áudio" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -882,7 +882,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <MFXButton fx:id="btnCriarObservador" prefHeight="39.0" prefWidth="200.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff);" text="Gerar Observador" textFill="WHITE">
+                        <MFXButton fx:id="btnCriarExperimento" onAction="#adicionarExperimento" prefHeight="39.0" prefWidth="200.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff);" text="Gerar Observador" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
