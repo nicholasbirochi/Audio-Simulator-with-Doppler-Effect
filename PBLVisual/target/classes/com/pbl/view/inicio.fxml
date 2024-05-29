@@ -907,7 +907,7 @@
                               <Font name="Comfortaa Regular" size="13.0" />
                            </font>
                         </TextField>
-                        <Label text="Duraćão do Áudio (s)" textAlignment="CENTER" textFill="WHITE">
+                        <Label text="Duração do Áudio (s)" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Comfortaa Regular" size="12.0" />
                            </font>
