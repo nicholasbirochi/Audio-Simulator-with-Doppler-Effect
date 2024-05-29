@@ -11,9 +11,9 @@ public class ConexaoBD {
 
         try {
             // Endereço do host onde o banco de dados está sendo executado
-            String hostname = "HPFS-CE-LAB6701";
+            String hostname = "SANTUARIO";
             // Nome da instância do SQL Server (pode ser o nome do computador - alterar para o seu)
-            String sqlInstanceName = "HPFS-CE-LAB6701";
+            String sqlInstanceName = "SANTUARIO";
             // Nome do banco de dados
             String sqlDatabase = "PBL";
             // Nome de usuário do banco de dados

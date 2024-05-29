@@ -155,17 +155,22 @@ public class DAO {
     }
     
     /* Adicionando um registro de uma tabela: */
-    
-    public void adicionaAmbiente(Ambiente ambiente) throws SQLException{
+
+    public void adicionaAmbiente(Ambiente ambiente) throws SQLException {
         String sql = "exec sp_adicionarAmbiente ?, ?";
-        try ( PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
             String nome = ambiente.getNome();
             Double velocidadeSom = ambiente.getVelocidadeSom();
             statement.setString(1, nome);
             statement.setDouble(2, velocidadeSom);
             statement.executeUpdate();
+        } catch (SQLException e) {
+            // Log detailed error information
+            System.err.println("Erro ao adicionar ambiente: " + e.getMessage());
+            throw e;
         }
     }
+
     
     public void adicionaTimbre(Timbre timbre) throws SQLException{
         String sql = "exec sp_adicionarTimbre ?";
