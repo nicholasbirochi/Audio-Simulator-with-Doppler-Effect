@@ -21,6 +21,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import java.io.File;
+import java.sql.SQLException;
 
 public class Controlador {
 
@@ -61,6 +62,8 @@ public class Controlador {
     @FXML
     private TextField velSomAmbiente;
     @FXML
+    private TextField nomeAmbiente;
+    @FXML
     private TextField pos0Fonte;
     @FXML
     private TextField posLateralFonte;
@@ -70,6 +73,8 @@ public class Controlador {
     private TextField pos0Observador;
     @FXML
     private TextField velObservador;
+    @FXML
+    private TextField nomeExperimento;
 
     private int taxa = 44100; // valor padrão
     String nomeTimbre = "TimbrePuro";
@@ -79,7 +84,27 @@ public class Controlador {
 //    Connection connection = conx.getConexao();
 //    DAO dao = new DAO(connection);
 //
-//    dao.adicionaFonte(fonte);//
+//    public void adicionarFonte() throws SQLException {
+//        String nome = nomeFonte.getText();
+//        double potencia = Double.parseDouble(potFonte.getText());
+//        double frequencia = Double.parseDouble(freqFonte.getText());
+//        Timbre timbre = this.timbreAtual;
+//        Fonte fonte = new Fonte(nome, potencia, frequencia, timbre);
+//        dao.adicionaFonte(fonte);
+//    }
+//
+//    public void adicionarAmbiente() throws SQLException {
+//        String nome = nomeAmbiente.getText();
+//        double velocidade = Double.parseDouble(velSomAmbiente.getText());
+//        dao.adicionaAmbiente(new Ambiente(nome, velocidade));
+//    }
+//    public void adicionarExperimento() throws SQLException {
+//        String nome = nomeExperimento.getText();
+//        Double velocidadeObservador = Double.parseDouble(velObservador.getText());
+//        Double posicaoLateral = Double.parseDouble(posLateralFonte.getText());
+//        Double velocidadeFonte = Double.parseDouble(vel0Fonte.getText());
+//        Double posicaoInicialFonte = Double.parseDouble(pos0Fonte.getText());
+//    }
 
     private double xOffset = 0;
     private double yOffset = 0;
