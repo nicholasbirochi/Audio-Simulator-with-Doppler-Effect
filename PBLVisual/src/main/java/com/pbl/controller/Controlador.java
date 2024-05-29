@@ -58,6 +58,18 @@ public class Controlador {
     private TextField potFonte;
     @FXML
     private TextField freqFonte;
+    @FXML
+    private TextField velSomAmbiente;
+    @FXML
+    private TextField pos0Fonte;
+    @FXML
+    private TextField posLateralFonte;
+    @FXML
+    private TextField vel0Fonte;
+    @FXML
+    private TextField pos0Observador;
+    @FXML
+    private TextField velObservador;
 
     private int taxa = 44100; // valor padrão
     String nomeTimbre = "TimbrePuro";
@@ -141,13 +153,77 @@ public class Controlador {
         freqFonte.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                // Verifica se o novo valor corresponde a um número decimal válido com sinal
-                if (!newValue.matches("-?\\d*(\\.\\d{0,4})?")) {
-                    // Remove caracteres não numéricos
+                // Verifica se o novo valor corresponde a um número decimal positivo válido
+                if (!newValue.matches("\\d*(\\.\\d{0,4})?") || newValue.startsWith("-")) {
+                    // Remove caracteres não numéricos ou negativos
                     freqFonte.setText(oldValue);
                 }
             }
         });
+
+        velSomAmbiente.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Verifica se o novo valor corresponde a um número decimal positivo válido
+                if (!newValue.matches("\\d*(\\.\\d{0,4})?") || newValue.startsWith("-")) {
+                    // Remove caracteres não numéricos ou negativos
+                    velSomAmbiente.setText(oldValue);
+                }
+            }
+        });
+
+        pos0Fonte.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Verifica se o novo valor corresponde a um número decimal válido com sinal
+                if (!newValue.matches("-?\\d*(\\.\\d{0,4})?")) {
+                    // Remove caracteres não numéricos
+                    pos0Fonte.setText(oldValue);
+                }
+            }
+        });
+        posLateralFonte.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Verifica se o novo valor corresponde a um número decimal válido com sinal
+                if (!newValue.matches("-?\\d*(\\.\\d{0,4})?")) {
+                    // Remove caracteres não numéricos
+                    posLateralFonte.setText(oldValue);
+                }
+            }
+        });
+        vel0Fonte.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Verifica se o novo valor corresponde a um número decimal válido com sinal
+                if (!newValue.matches("-?\\d*(\\.\\d{0,4})?")) {
+                    // Remove caracteres não numéricos
+                    vel0Fonte.setText(oldValue);
+                }
+            }
+        });
+        pos0Observador.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Verifica se o novo valor corresponde a um número decimal válido com sinal
+                if (!newValue.matches("-?\\d*(\\.\\d{0,4})?")) {
+                    // Remove caracteres não numéricos
+                    pos0Observador.setText(oldValue);
+                }
+            }
+        });
+        velObservador.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // Verifica se o novo valor corresponde a um número decimal válido com sinal
+                if (!newValue.matches("-?\\d*(\\.\\d{0,4})?")) {
+                    // Remove caracteres não numéricos
+                    velObservador.setText(oldValue);
+                }
+            }
+        });
+
+
 
 
         topBar.setOnMousePressed(event -> {
@@ -185,6 +261,8 @@ public class Controlador {
             selectedTimbreLabel.setText("Timbre selecionado: " + timbre);
             fadeIn.play();
         });
+
+
 
         // Inicie o fade-out
         fadeOut.play();

@@ -274,7 +274,7 @@
          <center>
             <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox fx:id="pageHome" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0" visible="false">
+                  <VBox fx:id="pageHome" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -661,7 +661,7 @@
                         </GridPane>
                      </children>
                   </VBox>
-                  <VBox fx:id="pageFonte" alignment="CENTER" prefHeight="611.0" prefWidth="873.0" spacing="24.0">
+                  <VBox fx:id="pageFonte" alignment="CENTER" prefHeight="611.0" prefWidth="873.0" spacing="24.0" visible="false">
                      <children>
                         <HBox alignment="CENTER" prefHeight="33.0" prefWidth="977.0" spacing="6.0">
                            <children>
@@ -694,7 +694,7 @@
                                     <Font name="Comfortaa Regular" size="12.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="potFonte" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                              <TextField fx:id="potFonte" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="4" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                                  <font>
                                     <Font name="Comfortaa Regular" size="13.0" />
                                  </font>
@@ -704,7 +704,7 @@
                                     <Font name="Comfortaa Regular" size="12.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="freqFonte" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="-10" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                              <TextField fx:id="freqFonte" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="440" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                                  <font>
                                     <Font name="Comfortaa Regular" size="13.0" />
                                  </font>
@@ -737,7 +737,7 @@
                               <Font name="Comfortaa Regular" size="12.0" />
                            </font>
                         </Label>
-                        <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="Água" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                        <TextField fx:id="nomeAmbiente" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="Água" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                            <font>
                               <Font name="Comfortaa Regular" size="13.0" />
                            </font>
@@ -747,7 +747,7 @@
                               <Font name="Comfortaa Regular" size="12.0" />
                            </font>
                         </Label>
-                        <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="343" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                        <TextField fx:id="velSomAmbiente" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="343" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                            <font>
                               <Font name="Comfortaa Regular" size="13.0" />
                            </font>
@@ -779,7 +779,7 @@
                                           <Font name="Comfortaa Regular" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="Descoberto do Efeito" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                    <TextField fx:id="nomeExperimento" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="Descoberto do Efeito" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                                        <font>
                                           <Font name="Comfortaa Regular" size="13.0" />
                                        </font>
@@ -793,7 +793,7 @@
                                           <Font name="Comfortaa Regular" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                    <TextField fx:id="pos0Observador" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                                        <font>
                                           <Font name="Comfortaa Regular" size="13.0" />
                                        </font>
@@ -807,7 +807,7 @@
                                           <Font name="Comfortaa Regular" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                    <TextField fx:id="velObservador" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                                        <font>
                                           <Font name="Comfortaa Regular" size="13.0" />
                                        </font>
@@ -835,7 +835,7 @@
                                           <Font name="Comfortaa Regular" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="25" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                    <TextField fx:id="pos0Fonte" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="25" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                                        <font>
                                           <Font name="Comfortaa Regular" size="13.0" />
                                        </font>
@@ -849,7 +849,7 @@
                                           <Font name="Comfortaa Regular" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="1" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                    <TextField fx:id="posLateralFonte" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="1" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                                        <font>
                                           <Font name="Comfortaa Regular" size="13.0" />
                                        </font>
@@ -863,7 +863,7 @@
                                           <Font name="Comfortaa Regular" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="-10" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                                    <TextField fx:id="vel0Fonte" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="-10" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                                        <font>
                                           <Font name="Comfortaa Regular" size="13.0" />
                                        </font>
