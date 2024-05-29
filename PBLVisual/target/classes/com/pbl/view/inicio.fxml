@@ -661,7 +661,7 @@
                         </GridPane>
                      </children>
                   </VBox>
-                  <VBox fx:id="pageFonte" alignment="CENTER" prefHeight="611.0" prefWidth="873.0" spacing="24.0" visible="false">
+                  <VBox fx:id="pageFonte" alignment="CENTER" prefHeight="611.0" prefWidth="873.0" spacing="24.0">
                      <children>
                         <HBox alignment="CENTER" prefHeight="33.0" prefWidth="977.0" spacing="6.0">
                            <children>
@@ -684,7 +684,7 @@
                                     <Font name="Comfortaa Regular" size="12.0" />
                                  </font>
                               </Label>
-                              <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="Piano de Beethoven" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                              <TextField fx:id="nomeFonte" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="Piano de Beethoven" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                                  <font>
                                     <Font name="Comfortaa Regular" size="13.0" />
                                  </font>
@@ -694,7 +694,7 @@
                                     <Font name="Comfortaa Regular" size="12.0" />
                                  </font>
                               </Label>
-                              <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                              <TextField fx:id="potFonte" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="0" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                                  <font>
                                     <Font name="Comfortaa Regular" size="13.0" />
                                  </font>
@@ -704,7 +704,7 @@
                                     <Font name="Comfortaa Regular" size="12.0" />
                                  </font>
                               </Label>
-                              <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="-10" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                              <TextField fx:id="freqFonte" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="-10" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                                  <font>
                                     <Font name="Comfortaa Regular" size="13.0" />
                                  </font>
@@ -895,14 +895,14 @@
                         <Insets bottom="20.0" />
                      </StackPane.margin>
                   </VBox>
-                  <VBox fx:id="pageGerarAudio" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
+                  <VBox fx:id="pageGerarAudio" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0" visible="false">
                      <children>
                         <Label text="Taxa de Amostragem Áudio" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font name="Comfortaa Regular" size="12.0" />
                            </font>
                         </Label>
-                        <TextField alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="44100" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #7f4cbd, #e7458f); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
+                        <TextField fx:id="taxaAmostragem" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="44100" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #7f4cbd, #e7458f); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                            <font>
                               <Font name="Comfortaa Regular" size="13.0" />
                            </font>
@@ -911,6 +911,14 @@
                            <font>
                               <Font name="Comfortaa Regular" size="12.0" />
                            </font>
+                        </Label>
+                        <Label text="até 120s" textAlignment="CENTER" textFill="#838383">
+                           <font>
+                              <Font name="Comfortaa Regular" size="12.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="-18.0" />
+                           </VBox.margin>
                         </Label>
                         <TextField fx:id="duracaoAudio" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" promptText="5" style="-fx-background-color: #212121; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #7f4cbd, #e7458f); -fx-border-width: 2; -fx-border-radius: 8; -fx-text-fill: #fff;">
                            <font>
@@ -922,7 +930,12 @@
                               <Font name="Comfortaa Regular" size="12.0" />
                            </font>
                         </Label>
-                        <ComboBox minWidth="-Infinity" prefWidth="165.0" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8;" />
+                        <ComboBox minWidth="-Infinity" prefWidth="165.0" promptText="Escolher Experimento" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8;" />
+                        <MFXButton fx:id="btnGerar2" onAction="#gerarAudio" prefHeight="39.0" prefWidth="246.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 100% 0% to 0% 100%, #7f4cbd, #e7458f);" text="Baixar" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </MFXButton>
                         <MFXButton fx:id="btnReproduzir" onAction="#playAudioFile" prefHeight="39.0" prefWidth="246.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 100% 0% to 0% 100%, #7f4cbd, #e7458f);" text="Reproduzir" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -930,11 +943,6 @@
                            <VBox.margin>
                               <Insets top="24.0" />
                            </VBox.margin>
-                        </MFXButton>
-                        <MFXButton fx:id="btnGerar2" onAction="#gerarAudio" prefHeight="39.0" prefWidth="246.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 100% 0% to 0% 100%, #7f4cbd, #e7458f);" text="Baixar" textFill="WHITE">
-                           <cursor>
-                              <Cursor fx:constant="HAND" />
-                           </cursor>
                         </MFXButton>
                      </children>
                      <StackPane.margin>
