@@ -2,14 +2,22 @@
 use PBL
 go
 
-create or alter trigger trg_insAmbiente
+CREATE OR ALTER TRIGGER trg_insAmbiente
 ON ambiente
 INSTEAD OF INSERT
 AS
 BEGIN
-	Declare @nome VARCHAR(50) = (select ambienteNome from ambiente)
-    -- Verifica se o valor já existe na tabela
-    IF EXISTS (SELECT 1 FROM ambiente WHERE @nome IN (SELECT ambienteNome FROM inserted))
+	set nocount on
+    -- Verifica se algum dos valores a serem inseridos já existe na tabela
+    IF EXISTS (
+        SELECT 1 
+        FROM inserted i
+        WHERE EXISTS (
+            SELECT 1 
+            FROM ambiente a 
+            WHERE a.ambienteNome = i.ambienteNome
+        )
+    )
     BEGIN
         -- Lança um erro para impedir a inserção
         RAISERROR('Já existe esse Ambiente.', 16, 1);
@@ -17,8 +25,11 @@ BEGIN
     ELSE
     BEGIN
         -- Permite a inserção se o valor não existir
-        INSERT INTO ambiente SELECT * FROM inserted;
+        INSERT INTO ambiente
+        SELECT *
+        FROM inserted;
     END
+	set nocount off
 END
 go
 
@@ -27,9 +38,17 @@ ON fonte
 INSTEAD OF INSERT
 AS
 BEGIN
-	Declare @nome VARCHAR(50) = (select fonteNome from fonte)
-    -- Verifica se o valor já existe na tabela
-    IF EXISTS (SELECT 1 FROM fonte WHERE @nome IN (SELECT fonteNome FROM inserted))
+	set nocount on
+    -- Verifica se algum dos valores a serem inseridos já existe na tabela
+    IF EXISTS (
+        SELECT 1 
+        FROM inserted i
+        WHERE EXISTS (
+            SELECT 1 
+            FROM fonte f 
+            WHERE f.fonteNome = i.fonteNome
+        )
+    )
     BEGIN
         -- Lança um erro para impedir a inserção
         RAISERROR('Já existe essa Fonte.', 16, 1);
@@ -37,8 +56,11 @@ BEGIN
     ELSE
     BEGIN
         -- Permite a inserção se o valor não existir
-        INSERT INTO fonte SELECT * FROM inserted;
+        INSERT INTO fonte
+        SELECT *
+        FROM inserted;
     END
+	set nocount off
 END
 go
 
@@ -47,22 +69,33 @@ go
 -- Triggers os quais verificam os deletes:
 
 
-create or alter trigger trg_delAmbiente
+CREATE OR ALTER TRIGGER trg_delAmbiente
 ON ambiente
 INSTEAD OF DELETE
 AS
 BEGIN
-	Declare @nome VARCHAR(50) = (select ambienteNome from ambiente)
-    -- Verifica se o valor já existe na tabela
-    IF EXISTS (SELECT 1 FROM ambiente WHERE @nome IN (SELECT ambienteNome FROM deleted))
+	set nocount on
+    -- Verifica se o valor existe na tabela
+    IF EXISTS (
+        SELECT 1
+        FROM deleted d
+        WHERE EXISTS (
+            SELECT 1
+            FROM ambiente a
+            WHERE a.ambienteNome = d.ambienteNome
+        )
+    )
     BEGIN
-	-- Permite o delete se o valor existir:
-        DELETE ambiente SELECT * FROM deleted;
+        -- Permite o delete se o valor existir
+        DELETE a
+        FROM ambiente a
+        INNER JOIN deleted d ON a.ambienteNome = d.ambienteNome;
     END
     ELSE
     BEGIN
-	RAISERROR('Esse Ambiente não existe', 16, 1);
+        RAISERROR('Esse Ambiente não existe', 16, 1);
     END
+	set nocount off
 END
 go
 	    
@@ -71,15 +104,26 @@ ON fonte
 INSTEAD OF DELETE
 AS
 BEGIN
-	Declare @nome VARCHAR(50) = (select fonteNome from fonte)
-    -- Verifica se o valor já existe na tabela
-    IF EXISTS (SELECT 1 FROM fonte WHERE @nome IN (SELECT fonteNome FROM deleted))
+	set nocount on
+    -- Verifica se o valor existe na tabela
+    IF EXISTS (
+        SELECT 1
+        FROM deleted d
+        WHERE EXISTS (
+            SELECT 1
+            FROM fonte f
+            WHERE f.fonteNome = d.fonteNome
+        )
+    )
     BEGIN
-	-- Permite o delete se o valor existir:
-        DELETE fonte SELECT * FROM deleted;
+        -- Permite o delete se o valor existir
+        DELETE f
+        FROM fonte f
+        INNER JOIN deleted d ON f.fonteNome = d.fonteNome;
     END
     ELSE
     BEGIN
-	RAISERROR('Essa Fonte não existe', 16, 1);
+        RAISERROR('Essa Fonte não existe', 16, 1);
     END
+	set nocount off
 END
