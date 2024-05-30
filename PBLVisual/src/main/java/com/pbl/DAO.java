@@ -192,9 +192,9 @@ public class DAO {
             String timbre = fonte.getTimbre().getClass().getSimpleName();
             
             statement.setString(1, nome);
-            statement.setDouble(2, frequencia);
+            statement.setDouble(4, frequencia);
             statement.setDouble(3, potencia);
-            statement.setString(4, timbre);
+            statement.setString(2, timbre);
             
             statement.executeUpdate();
         }
