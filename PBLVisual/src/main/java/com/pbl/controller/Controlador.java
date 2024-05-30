@@ -3,12 +3,14 @@ package com.pbl.controller;
 import com.pbl.model.*;
 import com.pbl.DAO;
 import java.awt.*;
+import java.util.List;
 import java.io.IOException;
 import java.sql.Connection;
 import javafx.animation.FadeTransition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -93,6 +95,7 @@ public class Controlador {
         Fonte fonte = new Fonte(nome, potencia, frequencia, timbre);
         dao.adicionaFonte(fonte);
         System.out.println("Timbre: " + timbreString); // Se quiser exibir a string do timbre
+        preencherComboBoxFontes();
     }
 
 
@@ -100,14 +103,75 @@ public class Controlador {
         String nome = nomeAmbiente.getText();
         double velocidade = Double.parseDouble(velSomAmbiente.getText());
         dao.adicionaAmbiente(new Ambiente(nome, velocidade));
+        preencherComboBoxAmbientes();
     }
     public void adicionarExperimento() throws SQLException {
+        // Pega os valores dos campos de texto
         String nome = nomeExperimento.getText();
         Double velocidadeObservador = Double.parseDouble(velObservador.getText());
         Double posicaoLateral = Double.parseDouble(posLateralFonte.getText());
         Double velocidadeFonte = Double.parseDouble(vel0Fonte.getText());
         Double posicaoInicialFonte = Double.parseDouble(pos0Fonte.getText());
+
+        // Pega os itens selecionados na ComboBox de fontes e ambientes
+        String nomeFonteSelecionada = comboBoxFontes.getSelectionModel().getSelectedItem();
+        String nomeAmbienteSelecionado = comboBoxAmbientes.getSelectionModel().getSelectedItem();
+
+        // Busca a Fonte e o Ambiente selecionados no banco de dados
+        Fonte fonteSelecionada = dao.buscarFontePorNome(nomeFonteSelecionada);
+        Ambiente ambienteSelecionado = dao.buscarAmbientePorNome(nomeAmbienteSelecionado);
+
+        // Cria um novo experimento com os valores obtidos
+        Experimento experimento = new Experimento(
+                nome,
+                velocidadeObservador,
+                posicaoLateral,
+                velocidadeFonte,
+                posicaoInicialFonte,
+                ambienteSelecionado,
+                fonteSelecionada
+        );
+
+        // Adiciona o experimento ao banco de dados
+        dao.adicionaExperimento(experimento);
     }
+
+
+    @FXML
+    private ComboBox<String> comboBoxFontes;
+
+    public void preencherComboBoxFontes() {
+        try {
+            // Limpa a ComboBox
+            comboBoxFontes.getItems().clear();
+
+            // Busca os nomes das fontes do banco de dados
+            List<String> nomesFontes = dao.fontesTodosNomes();
+
+            // Adiciona os nomes das fontes à ComboBox
+            comboBoxFontes.getItems().addAll(nomesFontes);
+        } catch (Exception e) {
+            System.out.println("Erro ao preencher ComboBox: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private ComboBox<String> comboBoxAmbientes;
+    public void preencherComboBoxAmbientes() {
+        try {
+            // Limpa a ComboBox
+            comboBoxAmbientes.getItems().clear();
+
+            // Busca os nomes dos ambientes do banco de dados
+            List<String> nomesAmbientes = dao.ambientesTodosNomes();
+
+            // Adiciona os nomes dos ambientes à ComboBox
+            comboBoxAmbientes.getItems().addAll(nomesAmbientes);
+        } catch (Exception e) {
+            System.out.println("Erro ao preencher ComboBox de Ambientes: " + e.getMessage());
+        }
+    }
+
 
     private double xOffset = 0;
     private double yOffset = 0;
@@ -268,8 +332,8 @@ public class Controlador {
         // Atualize os labels com o timbre padrão
         updateTimbreLabel("Puro");
         selectedTimbreLabelFonte.setText("Timbre selecionado: Puro");
-
-
+        preencherComboBoxFontes();
+        preencherComboBoxAmbientes();
     }
 
     // Método para atualizar o label com animação
