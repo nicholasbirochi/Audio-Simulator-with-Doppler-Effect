@@ -5,6 +5,36 @@
 .btnMenu:focused {
     -fx-background-color: rgba(128, 0, 255, 0.4);
 }
-TextField{
+.combo-box {
+    -fx-background-color: #212121; /* Cor de fundo da ComboBox */
+    -fx-text-fill: #fff; /* Cor do texto na ComboBox */
+    -fx-border-radius: 8; /* Raio da borda */
+    -fx-background-radius: 8; /* Raio do fundo */
+}
 
+.combo-box .list-cell {
+    -fx-background-color: #212121; /* Cor de fundo das opções */
+    -fx-text-fill: #fff; /* Cor do texto das opções */
+    -fx-border-radius: 8; /* Raio da borda */
+}
+
+.combo-box .combo-box-base {
+    -fx-background-color: #212121; /* Cor de fundo da seleção atual */
+    -fx-text-fill: #fff; /* Cor do texto da seleção atual */
+    -fx-border-radius: 8; /* Raio da borda */
+}
+
+.combo-box .arrow {
+    -fx-background-color: #fff; /* Cor da seta */
+}
+
+.combo-box .arrow-button {
+    -fx-background-color: #212121; /* Cor do botão da seta */
+    -fx-border-radius: 8; /* Raio da borda */
+}
+
+/* Estilo para o hover */
+.combo-box .list-cell:hover {
+    -fx-background-color: #6200ab; /* Cor de fundo do hover */
+    -fx-text-fill: #fff; /* Cor do texto no hover */
 }

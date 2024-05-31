@@ -821,7 +821,7 @@
                                           <Font name="Comfortaa Regular" size="12.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="comboBoxFontes" minWidth="-Infinity" prefWidth="165.0" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8;" stylesheets="@styles.css" />
+                                    <ComboBox fx:id="comboBoxFontes" minWidth="-Infinity" prefWidth="165.0" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 2;" stylesheets="@styles.css" />
                                  </children>
                               </VBox>
                            </children>
@@ -877,7 +877,7 @@
                                           <Font name="Comfortaa Regular" size="12.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="comboBoxAmbientes" minWidth="-Infinity" prefWidth="165.0" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00); -fx-border-width: 2; -fx-border-radius: 8;" stylesheets="@styles.css" />
+                                    <ComboBox fx:id="comboBoxAmbientes" minWidth="-Infinity" prefWidth="165.0" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00); -fx-border-width: 2; -fx-border-radius: 2;" stylesheets="@styles.css" />
                                  </children>
                               </VBox>
                            </children>
@@ -930,7 +930,7 @@
                               <Font name="Comfortaa Regular" size="12.0" />
                            </font>
                         </Label>
-                        <ComboBox minWidth="-Infinity" prefWidth="165.0" promptText="Escolher Experimento" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8;" />
+                        <ComboBox fx:id="comboBoxExperimento" minWidth="-Infinity" prefWidth="165.0" promptText="Escolher Experimento" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 2;" stylesheets="@styles.css" />
                         <MFXButton fx:id="btnGerar2" onAction="#gerarAudio" prefHeight="39.0" prefWidth="246.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 100% 0% to 0% 100%, #7f4cbd, #e7458f);" text="Baixar" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />

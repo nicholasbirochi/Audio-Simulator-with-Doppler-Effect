@@ -752,7 +752,7 @@
                               <Font name="Comfortaa Regular" size="13.0" />
                            </font>
                         </TextField>
-                        <MFXButton fx:id="btnCriarAmbiente" onAction="#adicionarAmbiente" prefHeight="39.0" prefWidth="200.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00);" text="Gerar Áudio" textFill="WHITE">
+                        <MFXButton fx:id="btnCriarAmbiente" onAction="#adicionarAmbiente" prefHeight="39.0" prefWidth="200.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00);" text="Criar Ambiente" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -821,7 +821,7 @@
                                           <Font name="Comfortaa Regular" size="12.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox minWidth="-Infinity" prefWidth="165.0" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 8;" />
+                                    <ComboBox fx:id="comboBoxFontes" minWidth="-Infinity" prefWidth="165.0" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 100% 0% to 0% 100%, #dfff00, #ffaa00); -fx-border-width: 2; -fx-border-radius: 2;" stylesheets="@styles.css" />
                                  </children>
                               </VBox>
                            </children>
@@ -877,12 +877,12 @@
                                           <Font name="Comfortaa Regular" size="12.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox minWidth="-Infinity" prefWidth="165.0" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00); -fx-border-width: 2; -fx-border-radius: 8;" />
+                                    <ComboBox fx:id="comboBoxAmbientes" minWidth="-Infinity" prefWidth="165.0" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00ffdb, #27ff00); -fx-border-width: 2; -fx-border-radius: 2;" stylesheets="@styles.css" />
                                  </children>
                               </VBox>
                            </children>
                         </HBox>
-                        <MFXButton fx:id="btnCriarExperimento" onAction="#adicionarExperimento" prefHeight="39.0" prefWidth="200.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff);" text="Gerar Observador" textFill="WHITE">
+                        <MFXButton fx:id="btnCriarExperimento" onAction="#adicionarExperimento" prefHeight="39.0" prefWidth="200.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff);" text="Criar Experimento" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -930,7 +930,7 @@
                               <Font name="Comfortaa Regular" size="12.0" />
                            </font>
                         </Label>
-                        <ComboBox minWidth="-Infinity" prefWidth="165.0" promptText="Escolher Experimento" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 8;" />
+                        <ComboBox fx:id="comboBoxExperimento" minWidth="-Infinity" prefWidth="165.0" promptText="Escolher Experimento" style="-fx-background-color: #212121; -fx-text-fill: #fff; -fx-border-color: linear-gradient(from 0% 100% to 100% 0%, #00f8ff, #6600ff); -fx-border-width: 2; -fx-border-radius: 2;" stylesheets="@styles.css" />
                         <MFXButton fx:id="btnGerar2" onAction="#gerarAudio" prefHeight="39.0" prefWidth="246.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 100% 0% to 0% 100%, #7f4cbd, #e7458f);" text="Baixar" textFill="WHITE">
                            <cursor>
                               <Cursor fx:constant="HAND" />

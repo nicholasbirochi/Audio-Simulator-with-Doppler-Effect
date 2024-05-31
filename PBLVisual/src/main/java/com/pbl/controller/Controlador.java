@@ -116,10 +116,19 @@ public class Controlador {
         // Pega os itens selecionados na ComboBox de fontes e ambientes
         String nomeFonteSelecionada = comboBoxFontes.getSelectionModel().getSelectedItem();
         String nomeAmbienteSelecionado = comboBoxAmbientes.getSelectionModel().getSelectedItem();
+        System.out.println("["+nomeFonteSelecionada+"]"+"["+nomeAmbienteSelecionado+"]");
 
         // Busca a Fonte e o Ambiente selecionados no banco de dados
         Fonte fonteSelecionada = dao.buscarFontePorNome(nomeFonteSelecionada);
         Ambiente ambienteSelecionado = dao.buscarAmbientePorNome(nomeAmbienteSelecionado);
+
+        // Check if fonteSelecionada is null
+        if (fonteSelecionada == null) {
+            System.out.println("Fonte not found in the database");
+            return;
+        }
+
+        System.out.println("["+fonteSelecionada+"]"+"["+ambienteSelecionado+"]");
 
         // Cria um novo experimento com os valores obtidos
         Experimento experimento = new Experimento(
@@ -134,8 +143,8 @@ public class Controlador {
 
         // Adiciona o experimento ao banco de dados
         dao.adicionaExperimento(experimento);
+        preencherComboBoxExperimento();
     }
-
 
     @FXML
     private ComboBox<String> comboBoxFontes;
@@ -169,6 +178,24 @@ public class Controlador {
             comboBoxAmbientes.getItems().addAll(nomesAmbientes);
         } catch (Exception e) {
             System.out.println("Erro ao preencher ComboBox de Ambientes: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private ComboBox<String> comboBoxExperimento;
+
+    public void preencherComboBoxExperimento() {
+        try {
+            // Limpa a ComboBox
+            comboBoxExperimento.getItems().clear();
+
+            // Busca os nomes dos Experimento do banco de dados
+            List<String> nomesExperimentos = dao.experimentosTodosNomes();
+
+            // Adiciona os nomes dos ambientes à ComboBox
+            comboBoxExperimento.getItems().addAll(nomesExperimentos);
+        } catch (Exception e) {
+            System.out.println("Erro ao preencher ComboBox de Experimentos: " + e.getMessage());
         }
     }
 
@@ -334,6 +361,7 @@ public class Controlador {
         selectedTimbreLabelFonte.setText("Timbre selecionado: Puro");
         preencherComboBoxFontes();
         preencherComboBoxAmbientes();
+        preencherComboBoxExperimento();
     }
 
     // Método para atualizar o label com animação

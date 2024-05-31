@@ -1,8 +1,11 @@
 package com.pbl.model;
 
+import com.pbl.DAO;
+
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,6 +16,20 @@ public class PBL {
         Timbre timbre = new TimbrePuro();
         Fonte fonte = new Fonte("Abelhinha aguda", 4, 440, timbre);
         Experimento exp = new Experimento("Experimento de teste", 25, 1, -10, 1, ambiente, fonte);
+        ConexaoBD conx = new ConexaoBD();
+        Connection connection = conx.getConexao();
+        DAO dao = new DAO(connection);
+
+        String nomeAmbienteSelecionado = "Ar";
+        Ambiente ambienteSelecionado = dao.buscarAmbientePorNome(nomeAmbienteSelecionado);
+        System.out.println("Ambiente selecionado: " + ambienteSelecionado.getNome());
+
+        String nomeFonteSelecionada = "teste";
+        Fonte fonteSelecionada = dao.buscarFontePorNome(nomeFonteSelecionada);
+        System.out.println("Fonte selecionada: " + fonteSelecionada.getNome());
+
+
+
 
         //dados de geração do audio
         double taxaAmostragem = 800.0; //em hz
