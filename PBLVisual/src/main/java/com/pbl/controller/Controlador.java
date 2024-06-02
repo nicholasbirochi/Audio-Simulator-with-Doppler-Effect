@@ -200,10 +200,10 @@ public class Controlador {
             // Cria um novo experimento com os valores obtidos
             Experimento experimento = new Experimento(
                     nome,
-                    velocidadeObservador,
+                    posicaoInicialFonte,
                     posicaoLateral,
                     velocidadeFonte,
-                    posicaoInicialFonte,
+                    velocidadeObservador,
                     ambienteSelecionado,
                     fonteSelecionada
             );
@@ -602,19 +602,27 @@ public class Controlador {
 
     // Método para gerar áudio
     public void gerarAudio() {
-        // Defina os parâmetros para o experimento
-        Ambiente ambiente = new Ambiente("ar", 330.0);
-        Fonte fonte = new Fonte("Fonte", 4.0, 440.0, this.timbreAtual); // Use o timbre selecionado
-        Experimento exp = new Experimento("Experimento de teste", 25.0, 1.0, -10.0, 1.0, ambiente, fonte);
-
         try {
-            exp.criarArquivoDeSimulacao(caminhoAudio, taxa, duracao); // Use o valor da duração
+            // Pega o nome do experimento selecionado na ComboBox
+            String nomeExperimentoSelecionado = comboBoxExperimento.getSelectionModel().getSelectedItem();
+
+            // Busca o experimento do banco de dados pelo nome
+            Experimento exp = dao.buscarExperimentoPorNome(nomeExperimentoSelecionado);
+
+            // Verifica se o experimento foi encontrado
+            if (exp == null) {
+                System.out.println("Experimento não encontrado: " + nomeExperimentoSelecionado);
+                return;
+            }
+
+            // Cria o arquivo de simulação com o experimento obtido
+            exp.criarArquivoDeSimulacao(caminhoAudio, taxa, duracao);
+
             System.out.println("Arquivo de áudio criado com sucesso em: " + caminhoAudio);
         } catch (IOException | UnsupportedAudioFileException e) {
             System.out.println("Erro ao criar arquivo de áudio: " + e.getMessage());
         }
     }
-
     // Método para reproduzir o áudio usando um caminho predefinido
     public void playAudioFile() {
         try {
