@@ -13,20 +13,20 @@ public class PBL {
 
     public static void main(String[] args) {
         Ambiente ambiente = new Ambiente("ar", 330);
-        Timbre timbre = new TimbrePuro();
+        Timbre timbre = new TimbreArcoIris();
         Fonte fonte = new Fonte("Abelhinha aguda", 4, 440, timbre);
         Experimento exp = new Experimento("Experimento de teste", 25, 1, -10, 1, ambiente, fonte);
-        ConexaoBD conx = new ConexaoBD();
-        Connection connection = conx.getConexao();
-        DAO dao = new DAO(connection);
+//        ConexaoBD conx = new ConexaoBD();
+//        Connection connection = conx.getConexao();
+//        DAO dao = new DAO(connection);
 
-        String nomeAmbienteSelecionado = "Ar";
-        Ambiente ambienteSelecionado = dao.buscarAmbientePorNome(nomeAmbienteSelecionado);
-        System.out.println("Ambiente selecionado: " + ambienteSelecionado.getNome());
-
-        String nomeFonteSelecionada = "teste";
-        Fonte fonteSelecionada = dao.buscarFontePorNome(nomeFonteSelecionada);
-        System.out.println("Fonte selecionada: " + fonteSelecionada.getNome());
+//        String nomeAmbienteSelecionado = "Ar";
+//        Ambiente ambienteSelecionado = dao.buscarAmbientePorNome(nomeAmbienteSelecionado);
+//        System.out.println("Ambiente selecionado: " + ambienteSelecionado.getNome());
+//
+//        String nomeFonteSelecionada = "teste";
+//        Fonte fonteSelecionada = dao.buscarFontePorNome(nomeFonteSelecionada);
+//        System.out.println("Fonte selecionada: " + fonteSelecionada.getNome());
 
 
 
