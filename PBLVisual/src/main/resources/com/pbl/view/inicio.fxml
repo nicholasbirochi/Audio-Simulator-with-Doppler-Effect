@@ -3,11 +3,9 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -274,7 +272,7 @@
          <center>
             <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox fx:id="pageHome" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
+                  <VBox fx:id="pageHome" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0" visible="false">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -307,7 +305,7 @@
                         <Insets bottom="20.0" />
                      </padding>
                   </VBox>
-                  <VBox fx:id="pageTimbres" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0" visible="false">
+                  <VBox fx:id="pageTimbres" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
                      <children>
                         <Label fx:id="selectedTimbreLabel" text="Timbre Selecionado:" textFill="WHITE">
                            <font>
@@ -346,21 +344,6 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </MFXButton>
-                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: #FFCE39;" textFill="WHITE">
-                                             <graphic>
-                                                <FontIcon iconColor="WHITE" iconLiteral="fas-play" />
-                                             </graphic>
-                                             <tooltip>
-                                                <Tooltip text="Previsualizar Timbre">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Tooltip>
-                                             </tooltip>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
                                        </children>
                                     </HBox>
                                  </children>
@@ -385,21 +368,6 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </MFXButton>
-                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: #5adbb5;" textFill="WHITE">
-                                             <graphic>
-                                                <FontIcon iconColor="WHITE" iconLiteral="fas-play" />
-                                             </graphic>
-                                             <tooltip>
-                                                <Tooltip text="Previsualizar Timbre">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Tooltip>
-                                             </tooltip>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
                                        </children>
                                     </HBox>
                                  </children>
@@ -424,21 +392,6 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </MFXButton>
-                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: #d945d1;" textFill="WHITE">
-                                             <graphic>
-                                                <FontIcon iconColor="WHITE" iconLiteral="fas-play" />
-                                             </graphic>
-                                             <tooltip>
-                                                <Tooltip text="Previsualizar Timbre">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Tooltip>
-                                             </tooltip>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
                                        </children>
                                     </HBox>
                                  </children>
@@ -463,21 +416,6 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </MFXButton>
-                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: #f2cb7d;" textFill="WHITE">
-                                             <graphic>
-                                                <FontIcon iconColor="WHITE" iconLiteral="fas-play" />
-                                             </graphic>
-                                             <tooltip>
-                                                <Tooltip text="Previsualizar Timbre">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Tooltip>
-                                             </tooltip>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
                                        </children>
                                     </HBox>
                                  </children>
@@ -502,21 +440,6 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </MFXButton>
-                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: #242424;" textFill="WHITE">
-                                             <graphic>
-                                                <FontIcon iconColor="WHITE" iconLiteral="fas-play" />
-                                             </graphic>
-                                             <tooltip>
-                                                <Tooltip text="Previsualizar Timbre">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Tooltip>
-                                             </tooltip>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
                                        </children>
                                     </HBox>
                                  </children>
@@ -541,21 +464,6 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </MFXButton>
-                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: #844cfc;" textFill="WHITE">
-                                             <graphic>
-                                                <FontIcon iconColor="WHITE" iconLiteral="fas-play" />
-                                             </graphic>
-                                             <tooltip>
-                                                <Tooltip text="Previsualizar Timbre">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Tooltip>
-                                             </tooltip>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
                                        </children>
                                     </HBox>
                                  </children>
@@ -580,21 +488,6 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </MFXButton>
-                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: d99445;" textFill="WHITE">
-                                             <graphic>
-                                                <FontIcon iconColor="WHITE" iconLiteral="fas-play" />
-                                             </graphic>
-                                             <tooltip>
-                                                <Tooltip text="Previsualizar Timbre">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Tooltip>
-                                             </tooltip>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
                                        </children>
                                     </HBox>
                                  </children>
@@ -638,21 +531,6 @@
                                                 <Font name="System Bold" size="13.0" />
                                              </font>
                                           </MFXButton>
-                                          <Button alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="27.0" style="-fx-background-color: linear-gradient(from 0% 100% to 100% 0%, #f9f295, #e0aa3e,#f9f295);" textFill="WHITE">
-                                             <graphic>
-                                                <FontIcon iconColor="WHITE" iconLiteral="fas-play" />
-                                             </graphic>
-                                             <tooltip>
-                                                <Tooltip text="Previsualizar Timbre">
-                                                   <font>
-                                                      <Font size="14.0" />
-                                                   </font>
-                                                </Tooltip>
-                                             </tooltip>
-                                             <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                             </cursor>
-                                          </Button>
                                        </children>
                                     </HBox>
                                  </children>
@@ -722,6 +600,11 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </MFXButton>
+                        <Label fx:id="feedbackFonte" textFill="WHITE">
+                           <font>
+                              <Font name="Comfortaa Bold" size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                      <opaqueInsets>
                         <Insets />
@@ -763,6 +646,11 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </MFXButton>
+                        <Label fx:id="feedbackAmbiente" textFill="WHITE">
+                           <font>
+                              <Font name="Comfortaa Bold" size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                      <StackPane.margin>
                         <Insets bottom="20.0" />
@@ -890,6 +778,11 @@
                               <Font name="System Bold" size="13.0" />
                            </font>
                         </MFXButton>
+                        <Label fx:id="feedbackExperimento" textFill="WHITE">
+                           <font>
+                              <Font name="Comfortaa Bold" size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                      <StackPane.margin>
                         <Insets bottom="20.0" />

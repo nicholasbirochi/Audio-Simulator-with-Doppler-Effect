@@ -3,6 +3,8 @@ package com.pbl.controller;
 import com.pbl.model.*;
 import com.pbl.DAO;
 import java.awt.*;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
 import java.io.IOException;
 import java.sql.Connection;
@@ -51,6 +53,12 @@ public class Controlador {
     @FXML
     private Label selectedTimbreLabelFonte;
     @FXML
+    private Label feedbackFonte;
+    @FXML
+    private Label feedbackAmbiente;
+    @FXML
+    private Label feedbackExperimento;
+    @FXML
     private TextField duracaoAudio;
     private double duracao = 5.0;
     @FXML
@@ -88,62 +96,147 @@ public class Controlador {
 
     public void adicionarFonte() throws SQLException {
         String nome = nomeFonte.getText();
-        double potencia = Double.parseDouble(potFonte.getText());
-        double frequencia = Double.parseDouble(freqFonte.getText());
-        Timbre timbre = this.timbreAtual;
-        String timbreString = timbre.toString(); // Obtém a string do timbre
-        Fonte fonte = new Fonte(nome, potencia, frequencia, timbre);
-        dao.adicionaFonte(fonte);
-        System.out.println("Timbre: " + timbreString); // Se quiser exibir a string do timbre
-        preencherComboBoxFontes();
+        try {
+            double potencia = Double.parseDouble(potFonte.getText());
+            double frequencia = Double.parseDouble(freqFonte.getText());
+            Timbre timbre = this.timbreAtual;
+            String timbreString = timbre.toString(); // Obtém a string do timbre
+            Fonte fonte = new Fonte(nome, potencia, frequencia, timbre);
+            dao.adicionaFonte(fonte);
+            System.out.println("Timbre: " + timbreString); // Se quiser exibir a string do timbre
+            preencherComboBoxFontes();
+            updateFeedbackFonte("Fonte criada com sucesso!", "white");
+        } catch (Exception e) {
+            updateFeedbackFonte("Não foi possível criar a fonte. Tente trocar o nome da fonte.", "red");
+        }
     }
+
+    // Método para atualizar o label com animação
+    private void updateFeedbackFonte(String message, String color) {
+        feedbackFonte.setText(message);
+        feedbackFonte.setStyle("-fx-text-fill: " + color + ";");
+
+        // Crie a transição de fade-in
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(200), feedbackFonte);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+
+        // Crie a transição de fade-out após um atraso
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(200), feedbackFonte);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+        fadeOut.setDelay(Duration.seconds(5)); // Espera 5 segundos antes de iniciar o fade-out
+
+        // Quando o fade-in terminar, inicie o fade-out
+        fadeIn.setOnFinished(event -> fadeOut.play());
+
+        // Inicie o fade-in
+        fadeIn.play();
+    }
+
+
 
 
     public void adicionarAmbiente() throws SQLException {
+        try {
         String nome = nomeAmbiente.getText();
         double velocidade = Double.parseDouble(velSomAmbiente.getText());
         dao.adicionaAmbiente(new Ambiente(nome, velocidade));
+        updateFeedbackAmbienteLabel("Ambiente criado com sucesso!", "white");
         preencherComboBoxAmbientes();
+    } catch (SQLException e) {
+        updateFeedbackAmbienteLabel("Erro ao criar ambiente. Tente trocar o nome do ambiente.", "red");
     }
+    }
+
+    private void updateFeedbackAmbienteLabel(String message, String color) {
+        feedbackAmbiente.setText(message);
+        feedbackAmbiente.setStyle("-fx-text-fill: " + color + ";");
+
+        // Crie a transição de fade-in
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(200), feedbackAmbiente);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+
+        // Crie a transição de fade-out após um atraso
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(200), feedbackAmbiente);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+        fadeOut.setDelay(Duration.seconds(5)); // Espera 5 segundos antes de iniciar o fade-out
+
+        // Quando o fade-in terminar, inicie o fade-out
+        fadeIn.setOnFinished(event -> fadeOut.play());
+
+        // Inicie o fade-in
+        fadeIn.play();
+    }
+
     public void adicionarExperimento() throws SQLException {
-        // Pega os valores dos campos de texto
-        String nome = nomeExperimento.getText();
-        Double velocidadeObservador = Double.parseDouble(velObservador.getText());
-        Double posicaoLateral = Double.parseDouble(posLateralFonte.getText());
-        Double velocidadeFonte = Double.parseDouble(vel0Fonte.getText());
-        Double posicaoInicialFonte = Double.parseDouble(pos0Fonte.getText());
+        try {
+            // Pega os valores dos campos de texto
+            String nome = nomeExperimento.getText();
+            Double velocidadeObservador = Double.parseDouble(velObservador.getText());
+            Double posicaoLateral = Double.parseDouble(posLateralFonte.getText());
+            Double velocidadeFonte = Double.parseDouble(vel0Fonte.getText());
+            Double posicaoInicialFonte = Double.parseDouble(pos0Fonte.getText());
 
-        // Pega os itens selecionados na ComboBox de fontes e ambientes
-        String nomeFonteSelecionada = comboBoxFontes.getSelectionModel().getSelectedItem();
-        String nomeAmbienteSelecionado = comboBoxAmbientes.getSelectionModel().getSelectedItem();
-        System.out.println("["+nomeFonteSelecionada+"]"+"["+nomeAmbienteSelecionado+"]");
+            // Pega os itens selecionados na ComboBox de fontes e ambientes
+            String nomeFonteSelecionada = comboBoxFontes.getSelectionModel().getSelectedItem();
+            String nomeAmbienteSelecionado = comboBoxAmbientes.getSelectionModel().getSelectedItem();
+            System.out.println("[" + nomeFonteSelecionada + "]" + "[" + nomeAmbienteSelecionado + "]");
 
-        // Busca a Fonte e o Ambiente selecionados no banco de dados
-        Fonte fonteSelecionada = dao.buscarFontePorNome(nomeFonteSelecionada);
-        Ambiente ambienteSelecionado = dao.buscarAmbientePorNome(nomeAmbienteSelecionado);
+            // Busca a Fonte e o Ambiente selecionados no banco de dados
+            Fonte fonteSelecionada = dao.buscarFontePorNome(nomeFonteSelecionada);
+            Ambiente ambienteSelecionado = dao.buscarAmbientePorNome(nomeAmbienteSelecionado);
 
-        // Check if fonteSelecionada is null
-        if (fonteSelecionada == null) {
-            System.out.println("Fonte not found in the database");
-            return;
+            // Check if fonteSelecionada is null
+            if (fonteSelecionada == null) {
+                System.out.println("Fonte not found in the database");
+                return;
+            }
+
+            System.out.println("[" + fonteSelecionada + "]" + "[" + ambienteSelecionado + "]");
+
+            // Cria um novo experimento com os valores obtidos
+            Experimento experimento = new Experimento(
+                    nome,
+                    velocidadeObservador,
+                    posicaoLateral,
+                    velocidadeFonte,
+                    posicaoInicialFonte,
+                    ambienteSelecionado,
+                    fonteSelecionada
+            );
+
+            // Adiciona o experimento ao banco de dados
+            dao.adicionaExperimento(experimento);
+            updateFeedbackExperimentoLabel("Experimento criado com sucesso!", "white");
+            preencherComboBoxExperimento();
+        } catch (SQLException e) {
+            updateFeedbackExperimentoLabel("Erro ao criar experimento. Tente trocar o nome do experimento.", "red");
         }
+    }
 
-        System.out.println("["+fonteSelecionada+"]"+"["+ambienteSelecionado+"]");
+    private void updateFeedbackExperimentoLabel(String message, String color) {
+        feedbackExperimento.setText(message);
+        feedbackExperimento.setStyle("-fx-text-fill: " + color + ";");
 
-        // Cria um novo experimento com os valores obtidos
-        Experimento experimento = new Experimento(
-                nome,
-                velocidadeObservador,
-                posicaoLateral,
-                velocidadeFonte,
-                posicaoInicialFonte,
-                ambienteSelecionado,
-                fonteSelecionada
-        );
+        // Crie a transição de fade-in
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(200), feedbackExperimento);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
 
-        // Adiciona o experimento ao banco de dados
-        dao.adicionaExperimento(experimento);
-        preencherComboBoxExperimento();
+        // Crie a transição de fade-out após um atraso
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(200), feedbackExperimento);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+        fadeOut.setDelay(Duration.seconds(5)); // Espera 5 segundos antes de iniciar o fade-out
+
+        // Quando o fade-in terminar, inicie o fade-out
+        fadeIn.setOnFinished(event -> fadeOut.play());
+
+        // Inicie o fade-in
+        fadeIn.play();
     }
 
     @FXML
@@ -551,4 +644,36 @@ public class Controlador {
             System.out.println("Linha de áudio não disponível: " + e.getMessage());
         }
     }
+    private void playTimbreAudio(String timbreFileName) {
+        try {
+            // Carrega o arquivo de áudio do timbre
+            FileInputStream audioFile = new FileInputStream("./src/main/resources/timbre/" + timbreFileName);
+            if (audioFile == null) {
+                System.out.println("Arquivo de áudio não encontrado: " + timbreFileName);
+                return;
+            }
+
+            // Cria um fluxo de áudio a partir do arquivo
+            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+
+            // Obtém um clip de áudio e abre o fluxo de áudio
+            Clip audioClip = AudioSystem.getClip();
+            audioClip.open(audioStream);
+
+            // Reproduz o áudio
+            audioClip.start();
+
+            System.out.println("Reproduzindo áudio: " + timbreFileName);
+        } catch (UnsupportedAudioFileException e) {
+            System.out.println("O formato de arquivo de áudio não é suportado: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Erro ao ler o arquivo de áudio: " + e.getMessage());
+        } catch (LineUnavailableException e) {
+            System.out.println("Linha de áudio não disponível: " + e.getMessage());
+        }
+    }
+    public void playAbelhaAudio() {
+        playTimbreAudio("puro.wav");
+    }
 }
+
