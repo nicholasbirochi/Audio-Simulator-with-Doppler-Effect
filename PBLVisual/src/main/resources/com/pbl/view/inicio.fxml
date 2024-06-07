@@ -272,7 +272,7 @@
          <center>
             <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox fx:id="pageHome" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
+                  <VBox fx:id="pageHome" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0" visible="false">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -788,7 +788,7 @@
                         <Insets bottom="20.0" />
                      </StackPane.margin>
                   </VBox>
-                  <VBox fx:id="pageGerarAudio" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0" visible="false">
+                  <VBox fx:id="pageGerarAudio" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="24.0">
                      <children>
                         <Label text="Taxa de Amostragem Áudio" textAlignment="CENTER" textFill="WHITE">
                            <font>
@@ -828,6 +828,9 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
+                           <VBox.margin>
+                              <Insets top="24.0" />
+                           </VBox.margin>
                         </MFXButton>
                         <MFXButton fx:id="btnReproduzir" onAction="#playAudioFile" prefHeight="39.0" prefWidth="246.0" rippleColor="#6200ab" style="-fx-background-color: linear-gradient(from 100% 0% to 0% 100%, #7f4cbd, #e7458f);" text="Reproduzir" textFill="WHITE">
                            <cursor>
@@ -837,6 +840,11 @@
                               <Insets top="24.0" />
                            </VBox.margin>
                         </MFXButton>
+                        <Label fx:id="feedbackAudio" textFill="WHITE">
+                           <font>
+                              <Font name="Comfortaa Bold" size="14.0" />
+                           </font>
+                        </Label>
                      </children>
                      <StackPane.margin>
                         <Insets bottom="20.0" />

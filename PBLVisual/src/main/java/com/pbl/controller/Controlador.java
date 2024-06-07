@@ -59,6 +59,8 @@ public class Controlador {
     @FXML
     private Label feedbackExperimento;
     @FXML
+    private Label feedbackAudio;
+    @FXML
     private TextField duracaoAudio;
     private double duracao = 5.0;
     @FXML
@@ -216,7 +218,6 @@ public class Controlador {
             updateFeedbackExperimentoLabel("Erro ao criar experimento. Tente trocar o nome do experimento.", "red");
         }
     }
-
     private void updateFeedbackExperimentoLabel(String message, String color) {
         feedbackExperimento.setText(message);
         feedbackExperimento.setStyle("-fx-text-fill: " + color + ";");
@@ -600,7 +601,7 @@ public class Controlador {
     String caminhoDesktop = System.getProperty("user.home") + "/Desktop";
     String caminhoAudio = caminhoDesktop + "/Áudio.wav";
 
-    // Método para gerar áudio
+// Método para gerar áudio
     public void gerarAudio() {
         try {
             // Pega o nome do experimento selecionado na ComboBox
@@ -611,47 +612,79 @@ public class Controlador {
 
             // Verifica se o experimento foi encontrado
             if (exp == null) {
-                System.out.println("Experimento não encontrado: " + nomeExperimentoSelecionado);
+                String message = "Experimento não encontrado: " + nomeExperimentoSelecionado;
+                System.out.println(message);
+                updateFeedbackAudio(message, "red");
                 return;
             }
 
             // Cria o arquivo de simulação com o experimento obtido
             exp.criarArquivoDeSimulacao(caminhoAudio, taxa, duracao);
 
-            System.out.println("Arquivo de áudio criado com sucesso em: " + caminhoAudio);
-        } catch (IOException | UnsupportedAudioFileException e) {
-            System.out.println("Erro ao criar arquivo de áudio: " + e.getMessage());
+            String message = "Arquivo de áudio criado com sucesso em: " + caminhoAudio;
+            System.out.println(message);
+            updateFeedbackAudio(message, "white");
+        } catch (IOException e) {
+            String message = "Falha ao criar áudio: " + e.getMessage();
+            System.out.println(message);
+            updateFeedbackAudio(message, "red");
+        } catch (UnsupportedAudioFileException e) {
+            String message = "Erro ao reproduzir áudio: " + e.getMessage();
+            System.out.println(message);
+            updateFeedbackAudio(message, "red");
         }
     }
     // Método para reproduzir o áudio usando um caminho predefinido
+// Método para reproduzir arquivo de áudio
     public void playAudioFile() {
-        try {
-            // Abre o arquivo de áudio
-            File audioFile = new File(caminhoAudio);
-            if (!audioFile.exists()) {
-                System.out.println("Arquivo de áudio não encontrado: " + caminhoAudio);
-                return;
-            }
+        File audioFile = new File(caminhoAudio);
+        if (!audioFile.exists()) {
+            updateFeedbackAudio("Arquivo de áudio não encontrado.", "red");
+            return;
+        }
 
-            // Cria um fluxo de áudio a partir do arquivo
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
-
-            // Obtém um clip de áudio e abre o fluxo de áudio
-            Clip audioClip = AudioSystem.getClip();
-            audioClip.open(audioStream);
-
-            // Reproduz o áudio
-            audioClip.start();
-
-            System.out.println("Reproduzindo áudio: " + caminhoAudio);
+        try (AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile)) {
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+            updateFeedbackAudio("Reproduzindo áudio...", "white");
         } catch (UnsupportedAudioFileException e) {
-            System.out.println("O formato de arquivo de áudio não é suportado: " + e.getMessage());
+            String message = "Tipo de arquivo de áudio não suportado: " + e.getMessage();
+            updateFeedbackAudio(message, "red");
+            System.out.println(message);
         } catch (IOException e) {
-            System.out.println("Erro ao ler o arquivo de áudio: " + e.getMessage());
+            String message = "Erro ao ler o arquivo de áudio: " + e.getMessage();
+            updateFeedbackAudio(message, "red");
+            System.out.println(message);
         } catch (LineUnavailableException e) {
-            System.out.println("Linha de áudio não disponível: " + e.getMessage());
+            String message = "Linha de áudio não disponível: " + e.getMessage();
+            updateFeedbackAudio(message, "red");
+            System.out.println(message);
         }
     }
+    // Método para atualizar o label de feedback de áudio com animação
+    private void updateFeedbackAudio(String message, String color) {
+        feedbackAudio.setText(message);
+        feedbackAudio.setStyle("-fx-text-fill: " + color + ";");
+
+        // Crie a transição de fade-in
+        FadeTransition fadeIn = new FadeTransition(Duration.millis(200), feedbackAudio);
+        fadeIn.setFromValue(0.0);
+        fadeIn.setToValue(1.0);
+
+        // Crie a transição de fade-out após um atraso
+        FadeTransition fadeOut = new FadeTransition(Duration.millis(200), feedbackAudio);
+        fadeOut.setFromValue(1.0);
+        fadeOut.setToValue(0.0);
+        fadeOut.setDelay(Duration.seconds(5)); // Espera 5 segundos antes de iniciar o fade-out
+
+        // Quando o fade-in terminar, inicie o fade-out
+        fadeIn.setOnFinished(event -> fadeOut.play());
+
+        // Inicie o fade-in
+        fadeIn.play();
+    }
+
     private void playTimbreAudio(String timbreFileName) {
         try {
             // Carrega o arquivo de áudio do timbre
@@ -684,5 +717,7 @@ public class Controlador {
         playTimbreAudio("puro.wav");
     }
 }
+
+
 
 //Trabalho Finalizado!
