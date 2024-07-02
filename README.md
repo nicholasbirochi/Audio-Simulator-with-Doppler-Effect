@@ -3,6 +3,8 @@
 Multidisciplinary work involving  Physics, Advanced Calculus, Object-Oriented Programming, and Databases.
 Made in the third semester of Computer Engineering.
 
+Watch the presentation in Portuguese: https://www.youtube.com/watch?v=SodHzU3wJBo
+
 ## Collaborators
 
 [Vítor Braghittoni](https://github.com/VBraghittoni), [Nicolas Birochi](https://github.com/nicholasbirochi), [Henrico Birochi](https://github.com/henricobirochi), and [Edgar Camacho](https://github.com/Edgarcsr) created this project.
