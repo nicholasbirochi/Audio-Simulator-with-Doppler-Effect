@@ -1,7 +1,6 @@
 # 🎧 Audio Simulator with Doppler Effect
 
-A multidisciplinary project involving **Physics**, **Advanced Calculus**, **Object-Oriented Programming**, and **Databases**.  
-Developed in the third semester of Computer Engineering.
+A college project that generates audio to illustrate the Doppler effect, bringing together physics, calculus, object-oriented programming and SQL. It was developed by the team credited below during the third semester of Computer Engineering.
 
 🎥 **Watch the presentation (in Portuguese):** [YouTube Link](https://www.youtube.com/watch?v=SodHzU3wJBo)
 
@@ -154,3 +153,7 @@ mvn clean javafx:run
 ## �🚀 Key Takeaway
 
 This project integrates **physics simulation**, **mathematical modeling**, **programming paradigms**, and **data persistence** to create a comprehensive and educational audio simulator.
+
+## License
+
+Original code and documentation are covered by [MIT](license).
